@@ -192,19 +192,20 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 .hero h1{margin:0;font:700 clamp(40px,6.4vw,78px)/1 Fredoka,Prompt,sans-serif;background:linear-gradient(180deg,#fff3b0 0%,#ffc531 45%,#f08a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #9a5a07) drop-shadow(0 6px 0 #6b3d05) drop-shadow(0 12px 14px rgba(80,40,0,.3))}
 .hero p{margin:14px 0 0;color:var(--soft);font-size:clamp(16px,1.7vw,19px);max-width:60ch}
 .sec{max-width:1220px;margin:0 auto;padding:14px max(4vw,16px) 6px}
-.sec h2{display:flex;align-items:center;gap:10px;margin:8px 0 14px;font:700 clamp(22px,2.4vw,28px)/1.2 Prompt,sans-serif}
+.sec h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:8px 0 14px;font:700 clamp(22px,2.4vw,28px)/1.2 Prompt,sans-serif}
 .sec h2 small{font-size:15px;font-weight:500;color:var(--soft)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(156px,1fr));gap:18px}
-.card{position:relative;display:grid;justify-items:center;gap:8px;padding:22px 14px 18px;border-radius:24px;text-decoration:none;color:var(--text);
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:clamp(10px,2vw,18px)}
+.card{position:relative;display:grid;justify-items:center;align-content:start;gap:clamp(5px,1vw,8px);padding:clamp(14px,2.4vw,22px) clamp(8px,1.6vw,14px) clamp(12px,2vw,18px);border-radius:24px;text-decoration:none;color:var(--text);
   background:var(--card);border:1px solid var(--cardline);box-shadow:0 6px 0 rgba(214,150,20,.25),0 16px 30px rgba(120,70,0,.12);transition:transform .18s,box-shadow .18s}
 .card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 10px 0 rgba(214,150,20,.3),0 24px 36px rgba(120,70,0,.16)}
 .card .hx{filter:drop-shadow(0 6px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 10px 12px rgba(0,0,0,.2));transition:transform .25s}
 .card:hover .hx{transform:rotate(-6deg) scale(1.05)}
-.card .hx span{display:grid;place-items:center;width:104px;height:94px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+.card .hx span{display:grid;place-items:center;width:clamp(70px,15vw,104px);aspect-ratio:104/94;font-size:clamp(20px,4.4vw,30px)!important;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 50%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));color:#fff;font:700 30px Prompt,sans-serif;text-shadow:0 2px 0 rgba(0,0,0,.25)}
-.card b{font:600 15px/1.35 Prompt,sans-serif;text-align:center;white-space:nowrap}
-.card em{font-style:normal;font-size:13.5px;color:var(--soft);text-align:center}
-.card .go{margin-top:4px;padding:6px 16px;border-radius:12px;font-weight:600;font-size:15px;color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00}
+.card b{font:600 clamp(13px,3.2vw,16px)/1.35 Prompt,sans-serif;text-align:center}
+.nw{white-space:nowrap}
+.card em{font-style:normal;font-size:clamp(11.5px,2.8vw,14px);line-height:1.4;color:var(--soft);text-align:center}
+.card .go{margin-top:4px;padding:clamp(5px,1vw,6px) clamp(10px,2.4vw,16px);border-radius:12px;font-weight:600;font-size:clamp(12.5px,3vw,15px);white-space:nowrap;color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00}
 .dark{margin-top:26px;padding:26px 0 34px;background:linear-gradient(170deg,#1d1638,#2e1f55);color:#fff6dc;--text:#fff6dc;--soft:#cdbfa0;--card:rgba(255,255,255,.07);--cardline:rgba(255,205,80,.28)}
 .dark .card{box-shadow:0 6px 0 rgba(0,0,0,.45),0 16px 30px rgba(0,0,0,.35)}
 .dark .card .lockico{position:absolute;top:12px;right:14px;font-size:18px}
@@ -218,7 +219,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 .acts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
 .acts .go{text-decoration:none;color:#3b2200;white-space:nowrap}
 .cp,.go,.teacherbtn,.trow .btns a,.trow .btns button,.tlinks a,.tlinks button{white-space:nowrap}
-.cp{padding:6px 12px;border-radius:12px;font-weight:600;font-size:14px;color:var(--ink);background:#fff;box-shadow:0 3px 0 #e2b74d}
+.cp{padding:clamp(5px,1vw,6px) clamp(9px,2vw,12px);border-radius:12px;font-weight:600;font-size:clamp(12px,2.9vw,14px);white-space:nowrap;color:var(--ink);background:#fff;box-shadow:0 3px 0 #e2b74d}
 .dark .cp{color:#fff6dc;background:rgba(255,255,255,.12);box-shadow:0 3px 0 rgba(0,0,0,.45)}
 .teacherbar{max-width:1220px;margin:0 auto;padding:4px max(4vw,16px) 30px;display:flex;justify-content:flex-end}
 .teacherbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;color:#fff6dc;
@@ -232,36 +233,38 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 .mcard .row2{display:flex;gap:10px}.mcard .row2 > *{flex:1}
 .mcard .err{min-height:1.3em;color:#fca5a5;font-size:14px}
 .mcard.shake{animation:shake .4s}
-.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:16px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:16px}
 .trow{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:14px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.25)}
-.trow .mini{width:64px;height:58px;display:grid;place-items:center;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);color:#fff;font:700 20px Prompt,sans-serif;
+.trow .mini{width:clamp(48px,11vw,64px);aspect-ratio:64/58;font-size:clamp(15px,3.6vw,20px)!important;display:grid;place-items:center;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);color:#fff;font:700 20px Prompt,sans-serif;
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 50%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000))}
 .trow .btns{display:flex;flex-wrap:wrap;gap:8px}
-.trow .btns a,.trow .btns button{padding:7px 12px;border-radius:11px;font-weight:600;font-size:14px;text-decoration:none}
+.trow b{font-size:clamp(14px,3.4vw,16px)}
+.trow .btns a,.trow .btns button{padding:clamp(6px,1.2vw,7px) clamp(9px,2vw,12px);border-radius:11px;font-weight:600;font-size:clamp(12.5px,3vw,14px);text-decoration:none}
 .trow .btns .c1{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #8a5600}
 .trow .btns .c2{color:#fff6dc;background:rgba(255,255,255,.12);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.trow .pw{align-self:center;font-size:14px;color:#cdbfa0}.trow .pw code{font:600 15px Fredoka,monospace;color:#ffd76a;background:rgba(0,0,0,.25);padding:2px 8px;border-radius:8px}
 .tlinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
-.tlinks a,.tlinks button{padding:9px 16px;border-radius:12px;font-weight:600;font-size:15px;color:#fff6dc;text-decoration:none;background:rgba(255,255,255,.1);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.tlinks a,.tlinks button{padding:clamp(7px,1.4vw,9px) clamp(11px,2.6vw,16px);border-radius:12px;font-weight:600;font-size:clamp(13px,3.1vw,15px);white-space:nowrap;color:#fff6dc;text-decoration:none;background:rgba(255,255,255,.1);box-shadow:0 3px 0 rgba(0,0,0,.45)}
 </style></head><body class="practice">
 <div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
 <main><section class="hero"><div class="big" data-bee></div><div><h1>Spelling Bee</h1><p>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ ระดับชั้นมัธยมศึกษาปีที่ 1–6<br>ชุดสำหรับฝึกซ้อม กรุณาเลือกระดับชั้นที่ต้องการ</p></div></section>
 <section class="sec"><h2>ชุดสำหรับฝึกซ้อม</h2><div class="grid"><div class="card" style="--acc:#1f7ae0"><a class="hx" href="practice/m1/" aria-label="ชุดสำหรับฝึกซ้อม ม.1"><span>ม.1</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.1</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 5 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.1</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 5 รอบ</em>
 <div class="acts"><a class="go" href="practice/m1/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m1/">คัดลอกลิงก์</button></div></div>
 <div class="card" style="--acc:#1f9d55"><a class="hx" href="practice/m2/" aria-label="ชุดสำหรับฝึกซ้อม ม.2"><span>ม.2</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.2</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.2</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
 <div class="acts"><a class="go" href="practice/m2/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m2/">คัดลอกลิงก์</button></div></div>
 <div class="card" style="--acc:#e8710a"><a class="hx" href="practice/m3/" aria-label="ชุดสำหรับฝึกซ้อม ม.3"><span>ม.3</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.3</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.3</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
 <div class="acts"><a class="go" href="practice/m3/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m3/">คัดลอกลิงก์</button></div></div>
 <div class="card" style="--acc:#d6336c"><a class="hx" href="practice/m4/" aria-label="ชุดสำหรับฝึกซ้อม ม.4"><span>ม.4</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.4</b><em>3 ชุด ชุดละ 4 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.4</span></b><em>3 ชุด ชุดละ 4 รอบ</em>
 <div class="acts"><a class="go" href="practice/m4/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m4/">คัดลอกลิงก์</button></div></div>
 <div class="card" style="--acc:#6b4fd8"><a class="hx" href="practice/m5/" aria-label="ชุดสำหรับฝึกซ้อม ม.5"><span>ม.5</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.5</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 2 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.5</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 2 รอบ</em>
 <div class="acts"><a class="go" href="practice/m5/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m5/">คัดลอกลิงก์</button></div></div>
 <div class="card" style="--acc:#b38600"><a class="hx" href="practice/m6/" aria-label="ชุดสำหรับฝึกซ้อม ม.6"><span>ม.6</span></a>
-<b>ชุดสำหรับฝึกซ้อม ม.6</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 3 รอบ</em>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.6</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 3 รอบ</em>
 <div class="acts"><a class="go" href="practice/m6/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m6/">คัดลอกลิงก์</button></div></div></div></section>
 <section class="info">
 <div class="box"><h3>ลำดับการดำเนินการในแต่ละข้อ</h3><ul><li>Number … → 2 วินาที → คำศัพท์ → 3 วินาที → คำศัพท์</li><li>เขียนคำตอบ 20 วินาที มีเสียงเตือนทุกวินาทีใน 5 วินาทีสุดท้าย</li><li>เมื่อครบทุกข้อ: ตรวจทาน 20 วินาที → สัญญาณหมดเวลา → วางปากกา</li></ul></div>
@@ -300,7 +303,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
 }</script>
 <script>
-{const SALT='rPyhlZQpmGLyw/ZsjecwuA==',PANEL='tkvSpPpQZ31efgKQh0XqJK1QKYYheN+UfAEzcjE+X9qdf7rDR1fx9JqjmXz8q3Hws5cV/ztkAgLFOcJA1j/YQ2HXVj0K4HFGaMy2M38Zt8P88vNgQpEs19Ja3OkVPsL+R+RHOaWZyjQtIvRqSgjbOJyagvkvya2NAyjTpYgvB5ogpE8LVIh91PYPQBbj8W5j0ja3DZEY7VRhvUGlrugMazb877hoHiL5KFplPXKyLscHJul0OJi4Dq4ZKMwPUjNYkVtSWUK4R8zoNUoWDueaLURXPO1cnG1THPIf3Nz14KdAt/7GKiJ4k91ZkTUXhsQknFTWROlUaX8MayFKOGqRLlIqeeNhR8++0sAIbAb/gQirfD9SeachAUqTFf7wr2ERCZ403UKUVTIYaH3qMieijs51Pa0CNHm5+Ehf7N8TcecvQFhS0X+PQX3mMxU3Gyy+YPrFXwIlorniP+5ULhjGSv6cf3BN+Eo5jPdQH7fYnpJpPDLoCmg+Lh1rUJoos8syqtjx1oGpDdde3u9wfWGUxmier9QlMH/bcCTqyrYzHutIquu/dfUOa66jWrWIxVkvs2F4qJZEgEzIO9hYl9u03hSm6GCVdDWDdlhtsKzZmzBTdNwMidM/G4yAYtFTzZ9bo+AxJW/7sIH/oCFQCNDk6WmSW9NLynsH67pdxEL2Q0ruqT0Cd6AFt3WeIcy39Z4vzmGRrZil83gqhv7ShauB3wh0m/FkHv6cZWF0Nq/nkIbaNTXoNsnVBcnknsxaQo3RYEaFpmpJ2g2+XNIlMKsQbsjinUF6vuzk5izYLPe998BnUinr1OifKRGlZMNhQ8c/9d3Pi9VsqVpIfxRDXMRrDS5xx+wvLfmevMSSRX/A7Y7abU0xB2TZ7M/1+tlePlP0LQCVlRlGPaMWl1UoGDcb5KkNWu+4JIp7VrgxYPTdN6XD2F9VxzkYh5PKO5/6cQl2RYI5l/eDJbZBfk+Sz5vXqX7hw450DfU+FidDY0zLba5DbzTlnV6X/t6oPLUF5xyklUHI5sKnEFewsXlnbwWERMxgAhO5F4NUoBcfzD4WFxk2b2lcgm0H6/PVDZZo1KDeqqP4ZhphE6eChTV9QfQ6IHpb9xayTfItdZxNiJzbxsFF/quVvju3sljkQknUI+cqKnCdqS65jZyMsUtv4NFghgoeK/EGWoQ/AoBjCsVoQI0lG/8DdMQmDG8fh9tz/8o/aiWQoMFkvvHvjpoztyH0ylAIkMwC6AQXJYfuAjMaDg/mfY9Kn3NOkrwXWGwPg2QXwxiXTJ77zFsNzbSz+kXqd0DHhLSWkNi1Sp1/Genx1hOWfNnZX4R3EPBeI7QhJTskMm+Gl1ig2rxXUTVPgE2YKrad1HmlnS6JBzG8PDe5AR2KQpMWdxx9eJoGfoDEnE2In1LlFszYaf522wg8pVrDQJCHaEBSmECKSuSjvEWKVYaS2lY5sdfkzVy0nQdfIpNWWg3Ntgtbc/CbyurAtQbkQekJPQZx279bld1bThkNV2Bp75TTUwHzK7zul956LbCM3fpF7cxLpmQ9gPQRvd4gZ4Ed',GR=["m1", "m2", "m3", "m4", "m5", "m6"];
+{const SALT='7OmUjak3bAfnl5V8R/7x7A==',PANEL='K4q7M5x5A+gPsqGXaPQB1EusJ2IGntXgdlPxx4JOS8778lxxFcUgihPkogHsZhNEh15/DS/E355dPYHneSFkmCfLawR/QBDIxyi+O9qXiV0jD8a5WjorDjm4BI3vS2x/RwM+k0kZR5IzdsZSnch+H17ymlCu7LPMccBT5Lb8WdmlO+0nPxSIgUY8TWXTuByGmOsio7yCpbwOZpq1nbO1FFMe1/s++3jNmbgI7MWVBsYCqJ915H/ZQnVu1QPkYq+6mcB+g3GokikZz2dq9YHGMMCXyUMrUPO4sSDFLPO6RUS+xTJCTmNTmMQO76dIsaM2Ur3vhATP8zKNdnND0qNPqZ5jIS5lTBLTl2/EXEqC6zY+FMGMyrjsiT2hEzSHAaJ8q5+5ZqcwRSU8n8HbR9vgRafcxUKUn2O5nOZAKjLNoBeJ6WCLtG4/5WMl+ynTfbR1QwgaEdECIA85+WgJPOvSFodrw8TshGDRh4ZTKLAVd5SFIQzZoDsNqnsx1SE7rCeB5WSX6g3cA2tk45VszK2xh/gz/9rD651eHrohvZ14LHNB8ADw5WxWJFdzsRFoGCTMgMtU9tk338pGeHOI/M+8XqapSNm7Qk2Vuo1skF3hFh8ufKRJ/+UVZ8NIhndevoODI94fBroUfyqx3gA6luCtKfqwcE0Ifb0AAYYOwNwbC3aC6W5R5i1MVwQG2G6zSZDZC47y5Rt2OyE/vX+QfoCixOkSejUrPk/DRvy1XqDtLOqHCFpHTadX1FpKbXg4hgHb48uH9IeN5Y6AgVaqpadKrbG4HjFjFtQ3DwBHZEy4rTnRHO+Dp1yjpIlVgBlRVHLF8KqChbKl6IiE2uGA5OtX5hfKF8x/JCYhd6P8S6fxXVZ8mKA13NvGicgO4z3F8rP2CWMXtFdZX7KdiLuLRaUAzGyIVBg3b1zybIJBOCxDUlBVKi81Td0DYJWMsyCXb6V+B5x6D/xQH5TXd3vUQ0HQlDGt4yVCEogFiHwoYEJXRcIMaV96z6XjTwR44aHPnPh+8oFBdYomdSJleadxNaD4U4syN+U4vL9GwKWMFmUUBlnEkqsKWZl1vtSJ4yeAwWZqQtd10jJJaAjRMUm3V2PJkNHjiuhg7xdjAcIveSJS0cUq+1lsJdEJPLZbRcYhgvlFE5YLdikghLSVaEzk3Ayq1tDdBbVP2nCbZOxTbpsMw6TQQHYiVqPhwDjPddQQISkDVgWFGEJ/bEqXKqz1EqJ4/AlfXPChoi9BOsdqXnuLkLpr+vU8VAktBVP8xa5DOIStuoY2VzA7DjkKbwl4kTtXbiI7K0X8KeIUiCo1w62fUHpLCvId13ceINWVyiGNOwM4agZcEcWXcqkrmbXuvamdI73KDORHlUbekXivpjJUbapt40yG6LPlPrO6kpRT3leivgNaA5M9SoB3WXdJoNr3z9X0rt6j7eF7+agjGdku9/adrVuzRlJpaExlsaDJoDu6NdZkVF73XgWWE3dgBFn3SkDp4dRL8XvOb0WePstdx2uAlIB9quJ2jBNOhqJzx+oXkfKdMsz2Rmx/GkyeAECXK553Gu9M056mdJT/g+c11mrZFpOw4NJ05RwXhx33oQQIXYhPWpO5uwMAJcnHFrR93qXLDDBpGkuYXjjHb9aVSXYqB4n87fS2t552nYqwUEEyVMIIcGeDL4arTOHR',GR=["m1", "m2", "m3", "m4", "m5", "m6"];
 const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 const abs=p=>new URL(p,location.href).href;
 const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2000)};
@@ -309,11 +312,11 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if
 async function open_(pw,silent){
   try{
     const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
-    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(SALT),iterations:150000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(SALT),iterations:600000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     const buf=b64(PANEL);const P=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:buf.slice(0,12)},key,buf.slice(12))));
-    try{sessionStorage.setItem('bee-teacher-pw',pw);GR.forEach(g=>sessionStorage.setItem('bee-'+g+'-c-pw',pw))}catch(e){}
-    $('thead').innerHTML='พื้นที่สำหรับครู <small>'+P.note+'</small>';$('tgrid').innerHTML=P.grades.map(x=>`<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b style="white-space:nowrap">${P.label} ${x.name}</b><div class="btns">
-      <a class="c1" href="${x.compete}">${P.open}</a><button class="c2" type="button" data-copy="${x.practice}">คัดลอกลิงก์ฝึกซ้อม</button></div></div></div>`).join('');
+    try{sessionStorage.setItem('bee-teacher-pw',pw);P.grades.forEach(x=>sessionStorage.setItem('bee-'+x.g+'-c-pw',x.pw))}catch(e){}
+    $('thead').innerHTML='<span class="nw">พื้นที่สำหรับครู</span> <small>'+P.note+'</small>';$('tgrid').innerHTML=P.grades.map(x=>`<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">${P.label}</span> <span class="nw">${x.name}</span></b><div class="btns">
+      <a class="c1" href="${x.compete}">${P.open}</a><span class="pw">รหัส: <code>${x.pw}</code></span><button class="c2" type="button" data-copy="${x.practice}">คัดลอกลิงก์ฝึกซ้อม</button></div></div></div>`).join('');
     $('tlinks').innerHTML=`<a href="${P.sheetKey}" target="_blank" rel="noopener">${P.keyLabel}</a><a href="${P.sheetPractice}" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a><button type="button" id="tout">ออกจากพื้นที่ครู</button>`;
     $('tout').onclick=()=>{try{sessionStorage.removeItem('bee-teacher-pw');GR.forEach(g=>sessionStorage.removeItem('bee-'+g+'-c-pw'))}catch(e){}location.reload()};
     $('teacher').hidden=false;$('modal').hidden=true;$('tbtn').textContent='🔓 พื้นที่สำหรับครู';

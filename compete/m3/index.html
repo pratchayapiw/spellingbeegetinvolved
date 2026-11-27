@@ -266,7 +266,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 {
 const MODE = 'compete', KP = 'bee-m3-c', SHARE = '';
 let DATA = {"WORDS":{},"T":{}};
-const SALT = 'FeDaWBz2zAnykShyS4F+ng==';
+const SALT = 'Rt2jcy+oDoBshU3AKb4nlw==';
 const $ = id => document.getElementById(id);
 
 /* ---------- original cartoon bee (inline SVG) ---------- */
@@ -315,7 +315,7 @@ const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
 let KEY = null;
 async function deriveKey(pw) {
   const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
-  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: 150000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: 600000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
 }
 async function decryptFile(url) {
   const buf = b64((await (await fetch(url, { cache: 'force-cache' })).text()).trim());
