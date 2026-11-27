@@ -292,7 +292,7 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
 const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const u=b.dataset.copy||location.href;try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์แล้ว';}catch(e){prompt('คัดลอกลิงก์นี้',u);return}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}));}</script>
-<script>{const SALT='AJQqvsiZTHA+d8tKUtm80A==',PANEL='xeK0qsf3pOc8ZT/mcqOhVEzzdDBxFwS+jOxsq7Kquz4uYJ9PiDLeDn2lvJ/UYgSG+Mz4N6wXdnU2BivayX743dKXn31nS8hIRE6iWnKGln03+p5GcRKePIF6EWkJVCS49CGkjrIFEHuwY+lAh4DoCe7WyUnsDe+HGCFLW0RDTXLZiBy3nv+bLl8e8UcTAXcXednnJMyq5sXltHlPTW0t8nZW59bNCFCO1n+mvKoHspvN8dXRZqnvpivIhZkAaOpyeSFhbxiLNiX+gdmWNUQh78s/zqlZ42sOdjAqObD6YwRslnW3YjoCSYLN4PDUj0ZmGZy0jjdPAcoUmHHY9CpdvbOvgOmopgV5mJKQvHnHqDDXwlg6d+EeP/CqmQWLz/esCV7I0yMMldcXx0C7JlKuKnHx/ft7a+uuFzlFuKNwlD7bQho/DAV2dF0+a44HzKaIpHqoY8LN7o4JLupdoLqlRMjUnf2k9ji8XKAxR6+3coReikwTOClMuFbAsZrR9YTya/7WdINWe2Ntt2Y0I4hC/rxxh0jg24HHlAaL8bFrjxFZXP27zhw4KtK3+iF7kMe1LTz5O4+dOynraJuEN58xxi7v2KpvYTxiP+mi4nXRXA==';
+<script>{const SALT='Kr69Riv2idvuA6U104YlPA==',PANEL='KeBKG/50mvqtLj5/3iTFmqjG9rbUeaxNLhLUtJCHbVaO7ou4SuqJhxgltuvqqtZ2nBVIAYeRxPd7nTuH3YK0JdaC8f/eujdPDOOCYPktnKOSG4MThbuteCWM4Aggcx4UDECUhEHFP/NBxkHg9RwRY1syWWNwW5qBNtQ3aqLYNjVXiQ43Pal32lPn7xi2Dq23vamzag2efAdu+O6WRk4B68IYPjlScfz4PlvhmgZCZMwqIrNFHjk0trdJwEX/isd22DWsQOO/N8WCoi8/aUDCbIWPbA05offKIcH7QWsAd7Cwugh9MMSY6brZ7g0SnIsc4IOwGxlHVf57OedOkO78gnMvtErpXHorxNW0e8oEkFyRQsGg7D+eCh6FDy3So/ij3ih4/B2xlUasgaFW279og74O8Sda2fkuPIWa+TNBQCJBEU95SMgmg12bsVQoymTNubQMYB7LuImYr2nxMjZGi9eRU23VZw3gXw9b1pvAA8Xc9th25GHvKrpo1IPDVrdKZWofO83sX3cyZRRcefAXIe7x/v5JqtwZ+Bvy2vE86S2beK3UnU0jHIQLNLLnbNy3Quej4YDV1uX6z1usLuA17USe+dY5yl7KAWDeDZWQxg==';
 const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 async function kdf(pw,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt'])}
@@ -305,8 +305,8 @@ const mins=g=>Math.max(1,Math.ceil(((+ss.get('bee-'+g+'-c-exp')||0)-Date.now())/
 function render(){
  $('tgrid').innerHTML=P.grades.map(x=>{const ok=valid(x.g);return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?` <span class="ok">ปลดล็อกแล้ว · อีก ${mins(x.g)} นาที</span>`:''}</b><div class="btns">
  <a class="c1" href="compete/${x.g}/" data-g="${x.g}" data-n="${x.name}">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/${x.g}/">📚 ฝึกซ้อม</a></div></div></div>`}).join('');
- $('tlinks').innerHTML=`<a href="${P.sheetKey}" target="_blank" rel="noopener">ตารางเฉลยชุดแข่งขัน ม.1–ม.6</a><a href="${P.sheetPractice}" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a><a href="#" id="tout">ออกจากระบบ</a>`;
- $('tout').onclick=e=>{e.preventDefault();ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');P.grades.forEach(x=>{ss.del('bee-'+x.g+'-c-pw');ss.del('bee-'+x.g+'-c-exp')});location.reload()};
+ $('tlinks').innerHTML=`<a href="#" id="tout">🔒 ล็อกชุดแข่งขันทั้งหมด</a>`;
+ $('tout').onclick=e=>{e.preventDefault();P.grades.forEach(x=>{ss.del('bee-'+x.g+'-c-pw');ss.del('bee-'+x.g+'-c-exp')});location.reload()};
 }
 async function login(pw,silent){
  try{const k=await kdf(pw,b64(SALT));P=JSON.parse(new TextDecoder().decode(await dec(k,b64(PANEL))));ss.set('bee-teacher-pw',pw);if(!silent||!(+ss.get('bee-teacher-exp')))ss.set('bee-teacher-exp',String(Date.now()+TTL));
@@ -324,6 +324,5 @@ $('gform').addEventListener('submit',async e=>{e.preventDefault();if(!cur)return
   const salt=b64((await (await fetch('compete/'+g+'/',{cache:'no-store'})).text()).match(/const SALT = '([^']*)'/)[1]);
   await dec(await kdf(pw,salt),b);ss.set('bee-'+g+'-c-pw',pw);ss.set('bee-'+g+'-c-exp',String(Date.now()+TTL));location.href=cur.getAttribute('href')}
  catch(err){$('gerr').innerHTML='รหัสไม่ถูกต้อง กรุณาตรวจสอบกับ<span class="nw">แอดมิน</span>';shake($('gcard'))}});
-const pw0=ss.get('bee-teacher-pw');if(pw0&&+ss.get('bee-teacher-exp')>Date.now())login(pw0,true);else{ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');$('tpw').focus()}
-setInterval(()=>{if(P&&+ss.get('bee-teacher-exp')<=Date.now()){ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');location.reload()}else if(P)render()},30000);}</script>
+P={"grades": [{"g": "m1", "name": "ม.1", "acc": "#1f7ae0"}, {"g": "m2", "name": "ม.2", "acc": "#1f9d55"}, {"g": "m3", "name": "ม.3", "acc": "#e8710a"}, {"g": "m4", "name": "ม.4", "acc": "#d6336c"}, {"g": "m5", "name": "ม.5", "acc": "#6b4fd8"}, {"g": "m6", "name": "ม.6", "acc": "#b38600"}]};$('gate').hidden=true;$('area').hidden=false;render();setInterval(render,30000);}</script>
 </body></html>
