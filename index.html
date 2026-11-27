@@ -146,6 +146,8 @@ body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#
 .speed span{font-size:14px;color:var(--soft);padding:0 6px}
 .speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
 .speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
+.brief{display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;padding:4px 5px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.brief[hidden]{display:none}.brief .btn{min-height:38px;padding:0 14px}.brief .blbl{padding:0 6px;font-weight:600;white-space:nowrap}.brief .btn[aria-pressed=true]{background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);color:#3b2200}
 .seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
 .seek{flex:1;height:40px;accent-color:#f59e0b}
 .time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
@@ -258,7 +260,7 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <section class="sec" id="gate"><div class="login"><h2>พื้นที่สำหรับครู</h2><p>กรุณากรอกรหัสผ่านสำหรับครูเพื่อเข้าใช้งาน</p>
 <form id="tform"><input id="tpw" type="password" autocomplete="off" placeholder="รหัสผ่านสำหรับครู" aria-label="รหัสผ่านสำหรับครู"><button class="btn main" type="submit">เข้าสู่ระบบ</button></form><div class="err" id="terr" aria-live="polite"></div></div></section>
 <section class="sec" id="area" hidden><h2>เลือกระดับชั้น</h2><div class="tgrid" id="tgrid"></div>
-<p class="note"><b>ชุดแข่งขัน</b> กรอกรหัสของชั้นนั้น <span class="nw">(ขอได้จากแอดมิน)</span> เพียงครั้งเดียว แล้วกดเปิดได้ทันทีภายใน 60 นาที (ล็อกอัตโนมัติเมื่อครบเวลาหรือปิดหน้าเว็บ) · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
+<p class="note"><b>ชุดแข่งขัน</b> กรอกรหัสของชั้นนั้น <span class="nw">(ขอได้จากแอดมิน)</span> เพียงครั้งเดียว แล้วกดเปิดได้ทันที · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
 <div class="tlinks" id="tlinks"></div></section>
 <div class="modal" id="gm" hidden><div class="mcard" id="gcard"><h2 id="gtitle"></h2><p>กรุณากรอกรหัสชุดแข่งขันของชั้นนี้ <span class="nw">(ขอได้จากแอดมิน)</span></p>
 <form id="gform"><input id="gpw" type="password" autocomplete="off" placeholder="รหัสชุดแข่งขัน" aria-label="รหัสชุดแข่งขัน">
@@ -292,7 +294,7 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
 const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const u=b.dataset.copy||location.href;try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์แล้ว';}catch(e){prompt('คัดลอกลิงก์นี้',u);return}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}));}</script>
-<script>{const SALT='Kr69Riv2idvuA6U104YlPA==',PANEL='KeBKG/50mvqtLj5/3iTFmqjG9rbUeaxNLhLUtJCHbVaO7ou4SuqJhxgltuvqqtZ2nBVIAYeRxPd7nTuH3YK0JdaC8f/eujdPDOOCYPktnKOSG4MThbuteCWM4Aggcx4UDECUhEHFP/NBxkHg9RwRY1syWWNwW5qBNtQ3aqLYNjVXiQ43Pal32lPn7xi2Dq23vamzag2efAdu+O6WRk4B68IYPjlScfz4PlvhmgZCZMwqIrNFHjk0trdJwEX/isd22DWsQOO/N8WCoi8/aUDCbIWPbA05offKIcH7QWsAd7Cwugh9MMSY6brZ7g0SnIsc4IOwGxlHVf57OedOkO78gnMvtErpXHorxNW0e8oEkFyRQsGg7D+eCh6FDy3So/ij3ih4/B2xlUasgaFW279og74O8Sda2fkuPIWa+TNBQCJBEU95SMgmg12bsVQoymTNubQMYB7LuImYr2nxMjZGi9eRU23VZw3gXw9b1pvAA8Xc9th25GHvKrpo1IPDVrdKZWofO83sX3cyZRRcefAXIe7x/v5JqtwZ+Bvy2vE86S2beK3UnU0jHIQLNLLnbNy3Quej4YDV1uX6z1usLuA17USe+dY5yl7KAWDeDZWQxg==';
+<script>{const SALT='FWFMUc6/d+gpX38rMP7m7w==',PANEL='VbgLXK6jINsEKU47W67x64Hhc/DeEoVllgXJKeg2I2YKcrijNSCDtl4xWmEKOQ7dL2KxtdoXivWx8uM3aCU+vKgLQruWEG5FQf0LWd9QmEPtabe8c/HEfgYQRtHemzmaMSRYyYOdo4f3c2BXw/8OENpzrAyEyIKJqJ+Du7uJjdhDxfNk11GbY/+xc793PlNOBXT2dNahC6h2DT10B2vLn2pVif04CmhCJZnDZcE/lE9r6YGYOFNbGYjEFy9UBvft5wXY2kxIh6XAVgWH7XrpcdBk3zLQIhau95DZn7AFBtYrNmTxtswHr2NpLZn3ndj+Uy9b+qap/tIWp3dhycwGIwMnpXj6szS1CavUaQQ0O9v7VQBnko7I7DwLEAaS1LiM3Nu+MUzpqpD/Qj1hFhdUvyc/wmECxy9HPl+hVp3DILCd6XjNIUqwpe87ut1J9daw+yIPiSSCWemf4ayj/ynTiA44/QOpJIulXE412CDtCqdWEiQNnrOuNAQveo93BanpJKs9xmMeQ0dzZQMBoqvx24zAFY0zepAO3m8zDN29Gg1L4eWTnFaWV3evgaWBl8EwpUwpnG7bk/vZqS/rgICrHYGFDXHStT1oh2RPJUqiaw==';
 const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 async function kdf(pw,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt'])}
@@ -303,7 +305,7 @@ let P=null,cur=null;const TTL=60*60*1000;
 const valid=g=>{const e=+ss.get('bee-'+g+'-c-exp')||0;if(ss.get('bee-'+g+'-c-pw')&&e>Date.now())return true;ss.del('bee-'+g+'-c-pw');ss.del('bee-'+g+'-c-exp');return false};
 const mins=g=>Math.max(1,Math.ceil(((+ss.get('bee-'+g+'-c-exp')||0)-Date.now())/60000));
 function render(){
- $('tgrid').innerHTML=P.grades.map(x=>{const ok=valid(x.g);return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?` <span class="ok">ปลดล็อกแล้ว · อีก ${mins(x.g)} นาที</span>`:''}</b><div class="btns">
+ $('tgrid').innerHTML=P.grades.map(x=>{const ok=valid(x.g);return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?' <span class="ok">ปลดล็อกแล้ว</span>':''}</b><div class="btns">
  <a class="c1" href="compete/${x.g}/" data-g="${x.g}" data-n="${x.name}">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/${x.g}/">📚 ฝึกซ้อม</a></div></div></div>`}).join('');
  $('tlinks').innerHTML=`<a href="#" id="tout">🔒 ล็อกชุดแข่งขันทั้งหมด</a>`;
  $('tout').onclick=e=>{e.preventDefault();P.grades.forEach(x=>{ss.del('bee-'+x.g+'-c-pw');ss.del('bee-'+x.g+'-c-exp')});location.reload()};

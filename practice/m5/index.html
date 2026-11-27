@@ -152,6 +152,8 @@ body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#
 .speed span{font-size:14px;color:var(--soft);padding:0 6px}
 .speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
 .speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
+.brief{display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;padding:4px 5px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.brief[hidden]{display:none}.brief .btn{min-height:38px;padding:0 14px}.brief .blbl{padding:0 6px;font-weight:600;white-space:nowrap}.brief .btn[aria-pressed=true]{background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);color:#3b2200}
 .seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
 .seek{flex:1;height:40px;accent-color:#f59e0b}
 .time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
@@ -205,8 +207,9 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
     <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
   </div>
   <span class="badge-wrap"><span class="badge">ม.5</span></span>
-  <span class="mode">ชุดสำหรับฝึกซ้อม ม.5</span><span class="mode ttl" id="ttl" hidden></span>
+  <span class="mode">ชุดสำหรับฝึกซ้อม ม.5</span>
   <button class="pill3d" id="copy" type="button">คัดลอกลิงก์สำหรับนักเรียน</button>
+  <span class="brief" id="brief" hidden><span class="blbl">📢 คำชี้แจง</span><button class="btn" data-b="th" type="button">ไทย</button><button class="btn" data-b="en" type="button">English</button></span>
   
 </header>
 
@@ -437,7 +440,18 @@ function setRate(v) {
   document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === v)));
   try { localStorage.setItem(KP + '-rate', v); } catch (e) {}
 }
+function setupBrief() {
+  const box = $('brief'); if (MODE !== 'compete' || !box) return; box.hidden = false;
+  const ba = new Audio(); ba.preload = 'none'; let cur = '';
+  const mark = () => box.querySelectorAll('button').forEach(b => { const on = b.dataset.b === cur && !ba.paused; b.setAttribute('aria-pressed', String(on)); b.textContent = (b.dataset.b === 'th' ? 'ไทย' : 'English') + (on ? ' ■' : ''); });
+  box.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
+    if (cur === b.dataset.b && !ba.paused) { ba.pause(); ba.currentTime = 0; mark(); return; }
+    au.pause(); cur = b.dataset.b; ba.src = 'brief_' + cur + '.mp3'; ba.play().catch(() => toast('เล่นเสียงไม่สำเร็จ')); mark(); });
+  ['play', 'pause', 'ended'].forEach(ev => ba.addEventListener(ev, mark));
+  au.addEventListener('play', () => { if (!ba.paused) { ba.pause(); mark(); } });
+}
 function start() {
+  setupBrief();
   $('play').addEventListener('click', () => { au.paused ? au.play().catch(() => {}) : au.pause(); });
   $('prev').addEventListener('click', () => go(Math.min(W().length - 1, current() - 1)));
   $('next').addEventListener('click', () => go(current() + 1));
@@ -452,7 +466,8 @@ function start() {
   ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
   au.addEventListener('timeupdate', applyRate);
   $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
-  try { const r = +localStorage.getItem(KP + '-rate'); if ([0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(r)) setRate(r); } catch (e) {}
+  let rv0 = null; try { rv0 = localStorage.getItem(KP + '-rate'); } catch (e) {}
+  if (rv0 !== null && [0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(+rv0)) setRate(+rv0); else if (MODE === 'compete') setRate(0.85);
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
     if (e.code === 'Space') { e.preventDefault(); $('play').click(); }

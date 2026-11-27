@@ -152,8 +152,8 @@ body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#
 .speed span{font-size:14px;color:var(--soft);padding:0 6px}
 .speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
 .speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
-.brief{display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px;padding:5px 6px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
-.brief[hidden]{display:none}.brief .blbl{padding:0 6px;font-weight:600;white-space:nowrap}.brief .btn[aria-pressed=true]{background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);color:#3b2200}
+.brief{display:inline-flex;flex-wrap:nowrap;align-items:center;gap:6px;padding:4px 5px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.brief[hidden]{display:none}.brief .btn{min-height:38px;padding:0 14px}.brief .blbl{padding:0 6px;font-weight:600;white-space:nowrap}.brief .btn[aria-pressed=true]{background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);color:#3b2200}
 .seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
 .seek{flex:1;height:40px;accent-color:#f59e0b}
 .time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
@@ -207,8 +207,9 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
     <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
   </div>
   <span class="badge-wrap"><span class="badge">ม.4</span></span>
-  <span class="mode">ชุดแข่งขันสะกดคำศัพท์ ม.4</span><span class="mode ttl" id="ttl" hidden></span>
+  <span class="mode">ชุดแข่งขันสะกดคำศัพท์ ม.4</span>
   
+  <span class="brief" id="brief" hidden><span class="blbl">📢 คำชี้แจง</span><button class="btn" data-b="th" type="button">ไทย</button><button class="btn" data-b="en" type="button">English</button></span>
   <a class="pill3d" href="../../" >← หน้าหลัก</a>
 </header>
 
@@ -253,12 +254,11 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
   <button class="btn" id="next">ข้อถัดไป ▶</button>
   <button class="btn" id="reveal" aria-pressed="false">แสดงคำศัพท์</button>
   <button class="btn" id="full">เต็มหน้าจอ</button>
-  <span class="brief" id="brief" hidden><span class="blbl">📢 คำชี้แจง</span><button class="btn" data-b="th" type="button">ไทย</button><button class="btn" data-b="en" type="button">English</button></span>
   <div class="speed" id="speed" role="group" aria-label="ความเร็วเสียง"><span>ความเร็ว</span><button data-v="0.75" aria-pressed="false">0.75×</button><button data-v="0.85" aria-pressed="false">0.85×</button><button data-v="0.95" aria-pressed="false">0.95×</button><button data-v="1" aria-pressed="true">1.0×</button><button data-v="1.25" aria-pressed="false">1.25×</button><button data-v="1.5" aria-pressed="false">1.5×</button></div>
 </div>
 <div class="seekrow"><input class="seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="ตำแหน่งเสียง"><span class="time" id="time">0:00 / 0:00</span></div>
 </main>
-<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วมีผลเฉพาะเสียงอ่านคำศัพท์ เวลาเขียนคำตอบคงที่ 20 วินาที · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น</footer>
+<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วมีผลเฉพาะเสียงอ่านคำศัพท์ เวลาเขียนคำตอบคงที่ 20 วินาที · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น<br><b>ข้อแนะนำสำหรับครูก่อนกดเริ่ม:</b> ทดสอบเสียงลำโพงด้วยหน้าฝึกซ้อม (ไม่ใช้ชุดแข่งขัน) · ตั้งความเร็วไว้ที่ 0.85× · กดเต็มหน้าจอ และไม่กด “แสดงคำศัพท์” ระหว่างแข่ง</footer>
 
 <div class="lock" id="lock"><div class="lockcard" id="lockcard"><div class="bigbee" data-bee></div>
 <h2>ชุดแข่งขันสะกดคำศัพท์ ม.4</h2><p>กรุณากรอกรหัสผ่านเพื่อเข้าสู่ชุดแข่งขัน</p>
@@ -469,7 +469,8 @@ function start() {
   ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
   au.addEventListener('timeupdate', applyRate);
   $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
-  try { const r = +localStorage.getItem(KP + '-rate'); if ([0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(r)) setRate(r); } catch (e) {}
+  let rv0 = null; try { rv0 = localStorage.getItem(KP + '-rate'); } catch (e) {}
+  if (rv0 !== null && [0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(+rv0)) setRate(+rv0); else if (MODE === 'compete') setRate(0.85);
   document.addEventListener('keydown', e => {
     if (e.target.tagName === 'INPUT') return;
     if (e.code === 'Space') { e.preventDefault(); $('play').click(); }
