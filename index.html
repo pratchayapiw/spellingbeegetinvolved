@@ -237,23 +237,30 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 .note{margin-top:14px;color:#cdbfa0;font-size:clamp(13px,3vw,15px)}
 .box{background:rgba(255,255,255,.07);border-color:rgba(255,205,80,.28)}
 .box ul{color:#cdbfa0}
+
+.login{max-width:440px;margin:0 auto;text-align:center;padding:clamp(18px,4vw,28px);border-radius:24px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.3);box-shadow:0 20px 40px rgba(0,0,0,.3)}
+.login h2{justify-content:center;margin:0 0 4px}.login p{margin:0 0 14px;color:#cdbfa0}
+.login form,.mcard form{display:grid;gap:10px}
+.login input,.mcard input{min-height:50px;border-radius:14px;border:2px solid rgba(255,205,80,.45);background:rgba(0,0,0,.25);color:#fff;font:600 18px Fredoka,Prompt,sans-serif;text-align:center;padding:0 14px}
+.err{min-height:1.4em;margin-top:8px;color:#fca5a5;font-size:14px}
+.shake{animation:shake .4s}
+.modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(20,14,40,.72);backdrop-filter:blur(4px)}
+.modal[hidden],#area[hidden],#gate[hidden]{display:none}
+.mcard{width:min(420px,100%);text-align:center;padding:26px 22px;border-radius:24px;background:linear-gradient(170deg,#2a1f4f,#1d1638);border:1px solid rgba(255,205,80,.3);color:#fff6dc;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.mcard h2{margin:0 0 4px;font:700 clamp(19px,4.6vw,23px) Prompt,sans-serif;color:#ffd76a}.mcard p{margin:0 0 14px;color:#cdbfa0;font-size:15px}
+.row2{display:flex;gap:10px}.row2>*{flex:1}
+.ok{display:inline-block;margin-left:6px;padding:1px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#14532d;background:#bdf0c3;vertical-align:middle}
 </style></head><body class="practice">
 <div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
 <main><section class="hero"><div class="big" data-bee></div><div><h1>Spelling Bee</h1><p>หน้าหลักสำหรับครู · การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ ระดับชั้นมัธยมศึกษาปีที่ 1–6</p></div></section>
-<section class="sec"><h2>เลือกระดับชั้น</h2><div class="tgrid"><div class="trow" id="m1" style="--acc:#1f7ae0"><span class="mini">ม.1</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.1</span></b><div class="btns">
-<a class="c1" href="compete/m1/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m1">📚 ฝึกซ้อม</a></div></div></div>
-<div class="trow" id="m2" style="--acc:#1f9d55"><span class="mini">ม.2</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.2</span></b><div class="btns">
-<a class="c1" href="compete/m2/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m2">📚 ฝึกซ้อม</a></div></div></div>
-<div class="trow" id="m3" style="--acc:#e8710a"><span class="mini">ม.3</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.3</span></b><div class="btns">
-<a class="c1" href="compete/m3/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m3">📚 ฝึกซ้อม</a></div></div></div>
-<div class="trow" id="m4" style="--acc:#d6336c"><span class="mini">ม.4</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.4</span></b><div class="btns">
-<a class="c1" href="compete/m4/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m4">📚 ฝึกซ้อม</a></div></div></div>
-<div class="trow" id="m5" style="--acc:#6b4fd8"><span class="mini">ม.5</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.5</span></b><div class="btns">
-<a class="c1" href="compete/m5/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m5">📚 ฝึกซ้อม</a></div></div></div>
-<div class="trow" id="m6" style="--acc:#b38600"><span class="mini">ม.6</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">ม.6</span></b><div class="btns">
-<a class="c1" href="compete/m6/">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#m6">📚 ฝึกซ้อม</a></div></div></div></div>
-<p class="note"><b>ชุดแข่งขัน</b> ต้องกรอกรหัสผ่านของชั้นนั้นก่อนเริ่ม · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
-<div class="tlinks"><a href="https://claude.ai/artifact/C48WhkqBShjuoDuQz5cMrq" target="_blank" rel="noopener">ตารางเฉลยชุดแข่งขัน ม.1–ม.6</a><a href="https://claude.ai/artifact/Jpw3ijb9ZqcZdfrSyFiyJE" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a></div></section>
+<section class="sec" id="gate"><div class="login"><h2>พื้นที่สำหรับครู</h2><p>กรุณากรอกรหัสผ่านสำหรับครูเพื่อเข้าใช้งาน</p>
+<form id="tform"><input id="tpw" type="password" autocomplete="off" placeholder="รหัสผ่านสำหรับครู" aria-label="รหัสผ่านสำหรับครู"><button class="btn main" type="submit">เข้าสู่ระบบ</button></form><div class="err" id="terr" aria-live="polite"></div></div></section>
+<section class="sec" id="area" hidden><h2>เลือกระดับชั้น</h2><div class="tgrid" id="tgrid"></div>
+<p class="note"><b>ชุดแข่งขัน</b> กรอกรหัสของชั้นนั้น <span class="nw">(ขอได้จากแอดมิน)</span> เพียงครั้งเดียว แล้วกดเปิดได้ทันที · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
+<div class="tlinks" id="tlinks"></div></section>
+<div class="modal" id="gm" hidden><div class="mcard" id="gcard"><h2 id="gtitle"></h2><p>กรุณากรอกรหัสชุดแข่งขันของชั้นนี้ <span class="nw">(ขอได้จากแอดมิน)</span></p>
+<form id="gform"><input id="gpw" type="password" autocomplete="off" placeholder="รหัสชุดแข่งขัน" aria-label="รหัสชุดแข่งขัน">
+<div class="row2"><button class="btn" type="button" id="gcancel">ยกเลิก</button><button class="btn main" type="submit">เปิดชุดแข่งขัน</button></div><div class="err" id="gerr" aria-live="polite"></div></form></div></div>
 <section class="info">
 <div class="box"><h3>ลำดับการดำเนินการในแต่ละข้อ</h3><ul><li>Number … → 2 วินาที → คำศัพท์ → 3 วินาที → คำศัพท์</li><li>เขียนคำตอบ 20 วินาที มีเสียงเตือนทุกวินาทีใน 5 วินาทีสุดท้าย</li><li>เมื่อครบทุกข้อ: ตรวจทาน 20 วินาที → สัญญาณหมดเวลา → วางปากกา</li></ul></div>
 <div class="box"><h3>สัดส่วนระดับความยาก (ง่าย / ปานกลาง / ยาก)</h3><ul><li>รอบ 1: 30 / 30 / 40 · รอบ 2: 20 / 40 / 40</li><li>รอบ 3: 10 / 50 / 40 · รอบ 4: 0 / 60 / 40</li><li>สามารถปรับความเร็วเสียงได้ 0.75× – 1.5×</li></ul></div>
@@ -283,4 +290,35 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
 const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const u=b.dataset.copy||location.href;try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์แล้ว';}catch(e){prompt('คัดลอกลิงก์นี้',u);return}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}));}</script>
+<script>{const SALT='D4KD6k90mXGWuEYLGIe/jQ==',PANEL='j3aFlJOPKGzPkYWd0XkZmGhcFbIl5UXeTUHaNz9n4MXIRQ//nt6LVJk5MpZlLVkSOA+7W6+hXqJ8JaiQ5Zh17oTz976+rztjLaIZM75TGPm7ZtSwdew9jME5iGGmZrl5fVfTrbt4PkDh577fG2PegE70gQVc+3p4lKxUv323UajiihijcbvBWJ3dT7SJEKSRhzXhT5lC37h8wuveSRk2aFQMISBCLyeIdGKGfgxSFR2LK0kFO7/FO5lkL0Wa8UR5zduLYeLzgsqbmmhGFEgCdNSLYxKq7wnjPTFPLxuF1E2gukyHXHjbKw33eH5NRYPB/do6da7d5mZ+lKCU/msvagJytbYUiJZJwSk0E7sHnZ10sUWRynzxuwQ2RjDfwuAgVu/KvfeBKbOlSFj+gNKhf0pewQk4aF/3VI1dN/gx3fvHUIso3FITXLWVJSccbfE9hiN5KmC79We2ICqBxShstf4Ge+UUFFixLQKx/EJIoIE26jve0WAxtViXXEW/RgQi+RZ6ccjyKRwi31O1nwH0352UG2Ot69qE/IVFt3n5tfWllciack1aXIq55vxke88S7yonHk/mEL8FGLUFH5SiGStDHrxYs9hlR0Jt7aon1w==';
+const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function kdf(pw,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+ return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt'])}
+async function dec(key,b){return crypto.subtle.decrypt({name:'AES-GCM',iv:b.slice(0,12)},key,b.slice(12))}
+const ss={get:k=>{try{return sessionStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{sessionStorage.setItem(k,v)}catch(e){}},del:k=>{try{sessionStorage.removeItem(k)}catch(e){}}};
+const shake=el=>{el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')};
+let P=null,cur=null;
+function render(){
+ $('tgrid').innerHTML=P.grades.map(x=>{const ok=!!ss.get('bee-'+x.g+'-c-pw');return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?' <span class="ok">ปลดล็อกแล้ว</span>':''}</b><div class="btns">
+ <a class="c1" href="compete/${x.g}/" data-g="${x.g}" data-n="${x.name}">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#${x.g}">📚 ฝึกซ้อม</a></div></div></div>`}).join('');
+ $('tlinks').innerHTML=`<a href="${P.sheetKey}" target="_blank" rel="noopener">ตารางเฉลยชุดแข่งขัน ม.1–ม.6</a><a href="${P.sheetPractice}" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a><a href="#" id="tout">ออกจากระบบ</a>`;
+ $('tout').onclick=e=>{e.preventDefault();ss.del('bee-teacher-pw');P.grades.forEach(x=>ss.del('bee-'+x.g+'-c-pw'));location.reload()};
+}
+async function login(pw,silent){
+ try{const k=await kdf(pw,b64(SALT));P=JSON.parse(new TextDecoder().decode(await dec(k,b64(PANEL))));ss.set('bee-teacher-pw',pw);
+  $('gate').hidden=true;$('area').hidden=false;render();return true}
+ catch(e){if(!silent){$('terr').textContent='รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';shake($('gate').querySelector('.login'))}return false}
+}
+$('tform').addEventListener('submit',async e=>{e.preventDefault();$('terr').textContent='กำลังตรวจสอบ…';await login($('tpw').value.trim())});
+document.addEventListener('click',e=>{const a=e.target.closest('a.c1[data-g]');if(!a)return;if(ss.get('bee-'+a.dataset.g+'-c-pw'))return;
+ e.preventDefault();cur=a;$('gtitle').textContent='ชุดแข่งขันสะกดคำศัพท์ '+a.dataset.n;$('gerr').textContent='';$('gpw').value='';$('gm').hidden=false;$('gpw').focus()});
+$('gcancel').onclick=()=>{$('gm').hidden=true};
+$('gm').addEventListener('click',e=>{if(e.target.id==='gm')$('gm').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('gm').hidden=true});
+$('gform').addEventListener('submit',async e=>{e.preventDefault();if(!cur)return;const pw=$('gpw').value.trim(),g=cur.dataset.g;$('gerr').textContent='กำลังตรวจสอบรหัส…';
+ try{const txt=(await (await fetch('compete/'+g+'/data.txt',{cache:'no-store'})).text()).trim();const b=b64(txt);
+  const salt=b64((await (await fetch('compete/'+g+'/',{cache:'no-store'})).text()).match(/const SALT = '([^']*)'/)[1]);
+  await dec(await kdf(pw,salt),b);ss.set('bee-'+g+'-c-pw',pw);location.href=cur.getAttribute('href')}
+ catch(err){$('gerr').innerHTML='รหัสไม่ถูกต้อง กรุณาตรวจสอบกับ<span class="nw">แอดมิน</span>';shake($('gcard'))}});
+const pw0=ss.get('bee-teacher-pw');if(pw0)login(pw0,true);else $('tpw').focus();}</script>
 </body></html>
