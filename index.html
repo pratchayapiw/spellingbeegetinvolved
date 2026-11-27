@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ชุดสำหรับฝึกซ้อม ม.1–ม.6 · Spelling Bee</title>
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Spelling Bee ม.1–ม.6 · การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -212,25 +212,67 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 .box{padding:16px 18px;border-radius:18px;background:var(--card);border:1px solid var(--cardline)}
 .box h3{margin:0 0 6px;font-size:17px}.box ul{margin:0;padding-left:20px;color:var(--soft);font-size:15px}
 @media(max-width:620px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}}
+
+.card{text-decoration:none}
+.card .hx{text-decoration:none}
+.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
+.acts .go{text-decoration:none;color:#3b2200}
+.cp{padding:6px 12px;border-radius:12px;font-weight:600;font-size:14px;color:var(--ink);background:#fff;box-shadow:0 3px 0 #e2b74d}
+.dark .cp{color:#fff6dc;background:rgba(255,255,255,.12);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.teacherbar{max-width:1220px;margin:0 auto;padding:4px max(4vw,16px) 30px;display:flex;justify-content:flex-end}
+.teacherbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;color:#fff6dc;
+  background:linear-gradient(180deg,#3a2c66,#241b45);box-shadow:0 4px 0 #120d26,0 10px 20px rgba(0,0,0,.2)}
+.modal{position:fixed;inset:0;z-index:20;display:grid;place-items:center;padding:20px;background:rgba(20,14,40,.72);backdrop-filter:blur(4px)}
+.modal[hidden]{display:none}
+.mcard{width:min(420px,100%);text-align:center;padding:26px 24px;border-radius:24px;background:linear-gradient(170deg,#2a1f4f,#1d1638);border:1px solid rgba(255,205,80,.3);color:#fff6dc;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.mcard h2{margin:0 0 4px;font:700 24px Prompt,sans-serif;color:#ffd76a}.mcard p{margin:0 0 14px;color:#cdbfa0;font-size:15px}
+.mcard form{display:grid;gap:10px}
+.mcard input{min-height:50px;border-radius:14px;border:2px solid rgba(255,205,80,.45);background:rgba(0,0,0,.25);color:#fff;font:600 18px Fredoka,Prompt,sans-serif;text-align:center;padding:0 14px}
+.mcard .row2{display:flex;gap:10px}.mcard .row2 > *{flex:1}
+.mcard .err{min-height:1.3em;color:#fca5a5;font-size:14px}
+.mcard.shake{animation:shake .4s}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+.trow{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:14px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.25)}
+.trow .mini{width:64px;height:58px;display:grid;place-items:center;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);color:#fff;font:700 20px Prompt,sans-serif;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 50%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000))}
+.trow .btns{display:flex;flex-wrap:wrap;gap:8px}
+.trow .btns a,.trow .btns button{padding:7px 12px;border-radius:11px;font-weight:600;font-size:14px;text-decoration:none}
+.trow .btns .c1{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #8a5600}
+.trow .btns .c2{color:#fff6dc;background:rgba(255,255,255,.12);box-shadow:0 3px 0 rgba(0,0,0,.45)}
+.tlinks{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.tlinks a,.tlinks button{padding:9px 16px;border-radius:12px;font-weight:600;font-size:15px;color:#fff6dc;text-decoration:none;background:rgba(255,255,255,.1);box-shadow:0 3px 0 rgba(0,0,0,.45)}
 </style></head><body class="practice">
 <div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
-<main><section class="hero"><div class="big" data-bee></div><div><h1>Spelling Bee</h1><p>ชุดสำหรับฝึกซ้อมการสะกดคำศัพท์ภาษาอังกฤษ ระดับชั้นมัธยมศึกษาปีที่ 1–6 กรุณาเลือกระดับชั้นที่ต้องการ</p></div></section>
-<section class="sec"><h2>ชุดสำหรับฝึกซ้อม</h2>
-<div class="grid"><a class="card" href="practice/m1/"  style="--acc:#1f7ae0">
-<span class="hx"><span>ม.1</span></span><b>ชุดสำหรับฝึกซ้อม ม.1</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 5 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a>
-<a class="card" href="practice/m2/"  style="--acc:#1f9d55">
-<span class="hx"><span>ม.2</span></span><b>ชุดสำหรับฝึกซ้อม ม.2</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a>
-<a class="card" href="practice/m3/"  style="--acc:#e8710a">
-<span class="hx"><span>ม.3</span></span><b>ชุดสำหรับฝึกซ้อม ม.3</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a>
-<a class="card" href="practice/m4/"  style="--acc:#d6336c">
-<span class="hx"><span>ม.4</span></span><b>ชุดสำหรับฝึกซ้อม ม.4</b><em>3 ชุด ชุดละ 4 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a>
-<a class="card" href="practice/m5/"  style="--acc:#6b4fd8">
-<span class="hx"><span>ม.5</span></span><b>ชุดสำหรับฝึกซ้อม ม.5</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 2 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a>
-<a class="card" href="practice/m6/"  style="--acc:#b38600">
-<span class="hx"><span>ม.6</span></span><b>ชุดสำหรับฝึกซ้อม ม.6</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 3 รอบ</em><span class="go">เข้าสู่ชุดฝึกซ้อม</span></a></div></section><section class="info">
+<main><section class="hero"><div class="big" data-bee></div><div><h1>Spelling Bee</h1><p>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ ระดับชั้นมัธยมศึกษาปีที่ 1–6<br>ชุดสำหรับฝึกซ้อม กรุณาเลือกระดับชั้นที่ต้องการ</p></div></section>
+<section class="sec"><h2>ชุดสำหรับฝึกซ้อม</h2><div class="grid"><div class="card" style="--acc:#1f7ae0"><a class="hx" href="practice/m1/" aria-label="ชุดสำหรับฝึกซ้อม ม.1"><span>ม.1</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.1</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 5 รอบ</em>
+<div class="acts"><a class="go" href="practice/m1/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m1/">คัดลอกลิงก์</button></div></div>
+<div class="card" style="--acc:#1f9d55"><a class="hx" href="practice/m2/" aria-label="ชุดสำหรับฝึกซ้อม ม.2"><span>ม.2</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.2</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<div class="acts"><a class="go" href="practice/m2/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m2/">คัดลอกลิงก์</button></div></div>
+<div class="card" style="--acc:#e8710a"><a class="hx" href="practice/m3/" aria-label="ชุดสำหรับฝึกซ้อม ม.3"><span>ม.3</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.3</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<div class="acts"><a class="go" href="practice/m3/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m3/">คัดลอกลิงก์</button></div></div>
+<div class="card" style="--acc:#d6336c"><a class="hx" href="practice/m4/" aria-label="ชุดสำหรับฝึกซ้อม ม.4"><span>ม.4</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.4</b><em>3 ชุด ชุดละ 4 รอบ</em>
+<div class="acts"><a class="go" href="practice/m4/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m4/">คัดลอกลิงก์</button></div></div>
+<div class="card" style="--acc:#6b4fd8"><a class="hx" href="practice/m5/" aria-label="ชุดสำหรับฝึกซ้อม ม.5"><span>ม.5</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.5</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 2 รอบ</em>
+<div class="acts"><a class="go" href="practice/m5/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m5/">คัดลอกลิงก์</button></div></div>
+<div class="card" style="--acc:#b38600"><a class="hx" href="practice/m6/" aria-label="ชุดสำหรับฝึกซ้อม ม.6"><span>ม.6</span></a>
+<b>ชุดสำหรับฝึกซ้อม ม.6</b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 3 รอบ</em>
+<div class="acts"><a class="go" href="practice/m6/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="practice/m6/">คัดลอกลิงก์</button></div></div></div></section>
+<section class="info">
 <div class="box"><h3>ลำดับการดำเนินการในแต่ละข้อ</h3><ul><li>Number … → 2 วินาที → คำศัพท์ → 3 วินาที → คำศัพท์</li><li>เขียนคำตอบ 20 วินาที มีเสียงเตือนทุกวินาทีใน 5 วินาทีสุดท้าย</li><li>เมื่อครบทุกข้อ: ตรวจทาน 20 วินาที → สัญญาณหมดเวลา → วางปากกา</li></ul></div>
 <div class="box"><h3>สัดส่วนระดับความยาก (ง่าย / ปานกลาง / ยาก)</h3><ul><li>รอบ 1: 30 / 30 / 40 · รอบ 2: 20 / 40 / 40</li><li>รอบ 3: 10 / 50 / 40 · รอบ 4: 0 / 60 / 40</li><li>สามารถปรับความเร็วเสียงได้ 0.75× – 1.5×</li></ul></div>
-</section></main><div class="toast" id="toast" role="status"></div>
+</section>
+<div id="teacher" class="dark" hidden><section class="sec"><h2 id="thead"></h2>
+<div class="tgrid" id="tgrid"></div>
+<div class="tlinks" id="tlinks"></div></section></div>
+<div class="teacherbar"><button class="teacherbtn" id="tbtn" type="button">🔒 สำหรับครู</button></div>
+<div class="modal" id="modal" hidden><div class="mcard" id="mcard"><h2>พื้นที่สำหรับครู</h2><p>กรุณากรอกรหัสผ่านสำหรับครู</p>
+<form id="tform"><input id="tpw" type="password" autocomplete="off" placeholder="รหัสผ่าน" aria-label="รหัสผ่าน">
+<div class="row2"><button class="btn" type="button" id="tcancel">ยกเลิก</button><button class="btn main" type="submit">เข้าสู่ระบบ</button></div><div class="err" id="terr" aria-live="polite"></div></form></div></div></main><div class="toast" id="toast" role="status"></div>
 <script>{const BEE=`<svg class="beesvg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <defs>
 <radialGradient id="bb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff3a8"/><stop offset=".45" stop-color="#ffcc2e"/><stop offset="1" stop-color="#e08600"/></radialGradient>
@@ -255,5 +297,33 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 <ellipse cx="20" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/><ellipse cx="46" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/>
 <path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
-const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const u=b.dataset.copy||location.href;try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์แล้ว';}catch(e){prompt('คัดลอกลิงก์นี้',u);return}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}));}</script>
+}</script>
+<script>
+{const SALT='pFZfjt4o8OtBjMrt2He+7w==',PANEL='WDzydN8Enwz9bgc2HiWg6vza6xOPPTkIGMSUpflpBzpAnBFXtfmysO3mytlMnXTB9oEr5689u92tpczVRXYbYVhxW8yXf7gggYvNFd4iaDfd1xShh2z7ZaS7f4aj3EEstnb4F63H8ehhYtufYr8D9C/CENvqegzI+j3wjq0jtRDOm7OOKfGXv/NavIN8RVG0nFVLRI/+wTRXhusaAhvFRWowuFQpTCxU7fm7UIspuFwbt4sv/B4PRiPVSgTl/AQR0TEKwdB2fEtIxo21J7n70GrN8NJzzPXfrQzaBW82+cjZzz1XiWe5c8bnoWsMvhnMD4/niiQFaLjs3vgT3gZfltZYONOPlX6Eh69UPcw5hCF74InpbQuLboEpv/QFqsFj+WfelPZy0Oh28vZHD/I2Ohe7IA3IvYabT73fV6u4wFAEddJa4Bw73e83c+QZnF+XFQmleXV5uXKMZETfqjP4FEAcD+hKPRldat76eyXELQikFqmy07MH4dHIQ0I1Hkmltsi2sXxt6w2O+ln5LRsZYfmDyrcOEOKttHGT9X7+HBWA7kq4NeLHZt2pf+9q4u183tdfRlyiiEMCxeoWuwk+P3WT6uETBWyD76Sb4QbUIzsf4eihYzDY/doVeYINAcQCvFdNPZaRCpuYhLC70qE7IUMYNPP8jafSORk1trjk+D8BNzIqf2sChsEU3cRQNwmLWvjhmkFy36TZVcGUbpJcPEJS1P2P/kiZAZyrtGAJx/GH+Ka0rR4p9fuaAyn8M2CmHhbh7qx+q48IEuUCBJS+4ck3J3DT8dLXZpU0PreZLtSe+IMRxCQIKaD77YMkVbzHkBrnHTA9uJcU/XbF8ulV1Vuen1yeu1LHjbwAyxyx45K39zcTOW6GgLQKPbwCDvdgj4ygR29gjFMOD+xbh9yX3Hcmr0AK7QFE1w6rPAjnufdJrOWJAP+EX96+G5Tr++A3y2ia2SQoaOF9TkM7QrJYcpCQL6oy6b/YWMs94Z/D6JTF1H14THUwbbjdndFwxz7jcMV+ziEalxqtqz2nrBBYeZN2B2F6zks/ioW3L3BjS2IWw2gQ/Ve4pAUwbsw1SL2g0v1C1rCXhKcroydquVjm8t/oJlTCyTLnqFAxmKasouyUp274CHIiSV2Fj9uM+Poq+M464WFQFw5NO6zfOfl/GiFsqCwfucDxJ7CzErUFs8JG/gDQYEOoWcIwLaiQbTt1NSDGT6hZl0EU0+4ccD6rU8t0utcV7CCoZJ7CZgJY2fqOwjoR8sFUQMqv8LCLhWoUpBPUJrMfE4NxpRIjy2o+bwoklTRmaAb3HOVL1eg7FbEv4GtzJoT+oXJrRDdxiTKUTc3n3q0Q7QtC+VU4QMOpAjPIzy4zqMgALkUrBQke3xLp7rym/+hgABfiWgcLZieY0/EnuCu6YSa4tjTyDGS4SxaepGAx6Hl+3EPqwilKhhkY4S/teipvIQp6aySZzBIhOJBlIngoRJ+nX4kzvcyxS8rm3zX8eHZ5nkUEPHGlCVC14EjY8K9CxwGQHHjML/j8dyy1i5mipB3fFoyk2kJi/QmL',GR=["m1", "m2", "m3", "m4", "m5", "m6"];
+const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const abs=p=>new URL(p,location.href).href;
+const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('show'),2000)};
+async function copy(u){try{await navigator.clipboard.writeText(u);toast('คัดลอกลิงก์เรียบร้อยแล้ว')}catch(e){prompt('คัดลอกลิงก์นี้',u)}}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-copy]');if(b){e.preventDefault();copy(abs(b.dataset.copy))}});
+async function open_(pw,silent){
+  try{
+    const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+    const key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(SALT),iterations:150000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    const buf=b64(PANEL);const P=JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:buf.slice(0,12)},key,buf.slice(12))));
+    try{sessionStorage.setItem('bee-teacher-pw',pw);GR.forEach(g=>sessionStorage.setItem('bee-'+g+'-c-pw',pw))}catch(e){}
+    $('thead').innerHTML='พื้นที่สำหรับครู <small>'+P.note+'</small>';$('tgrid').innerHTML=P.grades.map(x=>`<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b>${P.label} ${x.name}</b><div class="btns">
+      <a class="c1" href="${x.compete}">${P.open}</a><button class="c2" type="button" data-copy="${x.practice}">คัดลอกลิงก์ฝึกซ้อม</button></div></div></div>`).join('');
+    $('tlinks').innerHTML=`<a href="${P.sheetKey}" target="_blank" rel="noopener">${P.keyLabel}</a><a href="${P.sheetPractice}" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a><button type="button" id="tout">ออกจากพื้นที่ครู</button>`;
+    $('tout').onclick=()=>{try{sessionStorage.removeItem('bee-teacher-pw');GR.forEach(g=>sessionStorage.removeItem('bee-'+g+'-c-pw'))}catch(e){}location.reload()};
+    $('teacher').hidden=false;$('modal').hidden=true;$('tbtn').textContent='🔓 พื้นที่สำหรับครู';
+    if(!silent)$('teacher').scrollIntoView({behavior:'smooth'});return true;
+  }catch(e){if(!silent){$('terr').textContent='รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';const c=$('mcard');c.classList.remove('shake');void c.offsetWidth;c.classList.add('shake')}return false}
+}
+$('tbtn').onclick=()=>{if(!$('teacher').hidden){$('teacher').scrollIntoView({behavior:'smooth'});return}$('modal').hidden=false;$('terr').textContent='';$('tpw').value='';$('tpw').focus()};
+$('tcancel').onclick=()=>{$('modal').hidden=true};
+$('modal').addEventListener('click',e=>{if(e.target.id==='modal')$('modal').hidden=true});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('modal').hidden=true});
+$('tform').addEventListener('submit',async e=>{e.preventDefault();$('terr').textContent='กำลังตรวจสอบ…';await open_($('tpw').value.trim())});
+let pw0=null;try{pw0=sessionStorage.getItem('bee-teacher-pw')}catch(e){} if(pw0)open_(pw0,true);}
+</script>
 </body></html>
