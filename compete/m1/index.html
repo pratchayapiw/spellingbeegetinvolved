@@ -54,6 +54,8 @@ header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
   color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 .badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode.ttl{background:rgba(255,255,255,.12);color:#fff6dc;box-shadow:none;font-weight:500}
+.mode[hidden]{display:none}
 .mode{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
   background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
 body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
@@ -203,7 +205,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
     <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
   </div>
   <span class="badge-wrap"><span class="badge">ม.1</span></span>
-  <span class="mode">ชุดแข่งขันสะกดคำศัพท์ ม.1</span>
+  <span class="mode">ชุดแข่งขันสะกดคำศัพท์ ม.1</span><span class="mode ttl" id="ttl" hidden></span>
   
   <a class="pill3d" href="../../" >← หน้าหลัก</a>
 </header>
@@ -458,12 +460,25 @@ function start() {
 
 if (MODE === 'compete') {
   const lock = $('lock'), form = $('lockform'), card = $('lockcard');
+  const TTL = 60 * 60 * 1000, PK = KP + '-pw', EK = KP + '-exp';
+  const sg = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+  const sset = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} };
+  const sdel = k => { try { sessionStorage.removeItem(k); } catch (e) {} };
+  const expAt = () => +sg(EK) || 0;
+  function relockIfDue() {
+    const left = expAt() - Date.now(), b = $('ttl');
+    if (b && expAt()) { const m = Math.max(0, Math.ceil(left / 60000)); b.textContent = '🔓 ล็อกอัตโนมัติใน ' + m + ' นาที'; b.hidden = false; }
+    if (lock.hidden && left <= 0) {
+      if (!au.paused) { if (b) b.textContent = '🔒 ครบ 60 นาที จะล็อกเมื่อหยุดเสียง'; return; }
+      sdel(PK); sdel(EK); location.reload();
+    }
+  }
   async function unlock(pw, silent) {
     try {
       KEY = await deriveKey(pw);
       DATA = JSON.parse(new TextDecoder().decode(await decryptFile('data.txt')));
-      try { sessionStorage.setItem(KP + '-pw', pw); } catch (e) {}
-      lock.hidden = true; start(); return true;
+      sset(PK, pw); if (!silent || !expAt()) sset(EK, String(Date.now() + TTL));
+      lock.hidden = true; start(); relockIfDue(); setInterval(relockIfDue, 10000); au.addEventListener('pause', relockIfDue); return true;
     } catch (e) {
       KEY = null;
       if (!silent) { $('lockerr').textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง'; card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); }
@@ -471,8 +486,9 @@ if (MODE === 'compete') {
     }
   }
   form.addEventListener('submit', async e => { e.preventDefault(); $('lockerr').textContent = 'กำลังตรวจสอบ…'; await unlock($('pw').value.trim()); });
-  let pw0 = null; try { pw0 = sessionStorage.getItem(KP + '-pw'); } catch (e) {}
-  if (pw0) unlock(pw0, true); else $('pw').focus();
+  const pw0 = sg(PK);
+  if (pw0 && expAt() > Date.now()) unlock(pw0, true);
+  else { sdel(PK); sdel(EK); $('pw').focus(); }
 } else start();
 }
 </script>

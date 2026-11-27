@@ -48,6 +48,8 @@ header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
   color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 .badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode.ttl{background:rgba(255,255,255,.12);color:#fff6dc;box-shadow:none;font-weight:500}
+.mode[hidden]{display:none}
 .mode{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
   background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
 body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
@@ -256,7 +258,7 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <section class="sec" id="gate"><div class="login"><h2>พื้นที่สำหรับครู</h2><p>กรุณากรอกรหัสผ่านสำหรับครูเพื่อเข้าใช้งาน</p>
 <form id="tform"><input id="tpw" type="password" autocomplete="off" placeholder="รหัสผ่านสำหรับครู" aria-label="รหัสผ่านสำหรับครู"><button class="btn main" type="submit">เข้าสู่ระบบ</button></form><div class="err" id="terr" aria-live="polite"></div></div></section>
 <section class="sec" id="area" hidden><h2>เลือกระดับชั้น</h2><div class="tgrid" id="tgrid"></div>
-<p class="note"><b>ชุดแข่งขัน</b> กรอกรหัสของชั้นนั้น <span class="nw">(ขอได้จากแอดมิน)</span> เพียงครั้งเดียว แล้วกดเปิดได้ทันที · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
+<p class="note"><b>ชุดแข่งขัน</b> กรอกรหัสของชั้นนั้น <span class="nw">(ขอได้จากแอดมิน)</span> เพียงครั้งเดียว แล้วกดเปิดได้ทันทีภายใน 60 นาที (ล็อกอัตโนมัติเมื่อครบเวลาหรือปิดหน้าเว็บ) · <b>ฝึกซ้อม</b> เข้าได้ทันที มีปุ่มคัดลอกลิงก์ส่งให้นักเรียน</p>
 <div class="tlinks" id="tlinks"></div></section>
 <div class="modal" id="gm" hidden><div class="mcard" id="gcard"><h2 id="gtitle"></h2><p>กรุณากรอกรหัสชุดแข่งขันของชั้นนี้ <span class="nw">(ขอได้จากแอดมิน)</span></p>
 <form id="gform"><input id="gpw" type="password" autocomplete="off" placeholder="รหัสชุดแข่งขัน" aria-label="รหัสชุดแข่งขัน">
@@ -290,27 +292,29 @@ body.practice::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='htt
 <path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
 </g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
 const t=document.getElementById('toast');document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{const u=b.dataset.copy||location.href;try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์แล้ว';}catch(e){prompt('คัดลอกลิงก์นี้',u);return}t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}));}</script>
-<script>{const SALT='D4KD6k90mXGWuEYLGIe/jQ==',PANEL='j3aFlJOPKGzPkYWd0XkZmGhcFbIl5UXeTUHaNz9n4MXIRQ//nt6LVJk5MpZlLVkSOA+7W6+hXqJ8JaiQ5Zh17oTz976+rztjLaIZM75TGPm7ZtSwdew9jME5iGGmZrl5fVfTrbt4PkDh577fG2PegE70gQVc+3p4lKxUv323UajiihijcbvBWJ3dT7SJEKSRhzXhT5lC37h8wuveSRk2aFQMISBCLyeIdGKGfgxSFR2LK0kFO7/FO5lkL0Wa8UR5zduLYeLzgsqbmmhGFEgCdNSLYxKq7wnjPTFPLxuF1E2gukyHXHjbKw33eH5NRYPB/do6da7d5mZ+lKCU/msvagJytbYUiJZJwSk0E7sHnZ10sUWRynzxuwQ2RjDfwuAgVu/KvfeBKbOlSFj+gNKhf0pewQk4aF/3VI1dN/gx3fvHUIso3FITXLWVJSccbfE9hiN5KmC79We2ICqBxShstf4Ge+UUFFixLQKx/EJIoIE26jve0WAxtViXXEW/RgQi+RZ6ccjyKRwi31O1nwH0352UG2Ot69qE/IVFt3n5tfWllciack1aXIq55vxke88S7yonHk/mEL8FGLUFH5SiGStDHrxYs9hlR0Jt7aon1w==';
+<script>{const SALT='SB0ZZ/GeNVuaElWmQHo21g==',PANEL='DlNruMVtB3k9d1XkyG7GKTct8Xjo7mEySDuLQ3EdlGV7IkaTrQhNjW2S+s5SK6Bm5+1wkMJG91V9oX76FIEBvZmt1EkHDFbK0axY1vowGZ45sBp3UxM2uIkq3VozsuOoe2dIiAwIcxAxMl+5o4ob6n1AqVFjzt7JBKtcVjXWxfLz3hwoirzCHBN2yjM9NfHIvShczyk4qlAhjEq/6vn6WYyIwbqDnQo3UbEC39HPD3Y9z/qb2FLmophVbeSyb30HMunI7MEfHqH2iSMT0u9RLPlhxHDUeKGz2J4voli4qm1kLcae+yU7nsoaosE/kdHUFrEveOQFHdo3XDNnbTlquZYw75tkqdKQZiusVrRuIWzFvrIxNBXadhFAJWz10HN/Tqv5DorxKXHVX2lLzh83triJ6zoSkKKGLEMQqm2lc+ZXRoflu+r9TnnxgzvRs2Mk751bM2PZ5AoJesSa40AvodFaHaGBjgomnaqsa01JihL23iH6kLPKnulwgWMyzq8NEbZL5NYhY9CChWQacGYvgXqohuAsAuJ9gd/ujdHgst6RFYMPgfWYoLdNazLw+p28rPAc9/BOejQwET/pqb1K/fItULdxQsFSzjU6/orS1w==';
 const $=id=>document.getElementById(id),b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 async function kdf(pw,salt){const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:600000,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt'])}
 async function dec(key,b){return crypto.subtle.decrypt({name:'AES-GCM',iv:b.slice(0,12)},key,b.slice(12))}
 const ss={get:k=>{try{return sessionStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{sessionStorage.setItem(k,v)}catch(e){}},del:k=>{try{sessionStorage.removeItem(k)}catch(e){}}};
 const shake=el=>{el.classList.remove('shake');void el.offsetWidth;el.classList.add('shake')};
-let P=null,cur=null;
+let P=null,cur=null;const TTL=60*60*1000;
+const valid=g=>{const e=+ss.get('bee-'+g+'-c-exp')||0;if(ss.get('bee-'+g+'-c-pw')&&e>Date.now())return true;ss.del('bee-'+g+'-c-pw');ss.del('bee-'+g+'-c-exp');return false};
+const mins=g=>Math.max(1,Math.ceil(((+ss.get('bee-'+g+'-c-exp')||0)-Date.now())/60000));
 function render(){
- $('tgrid').innerHTML=P.grades.map(x=>{const ok=!!ss.get('bee-'+x.g+'-c-pw');return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?' <span class="ok">ปลดล็อกแล้ว</span>':''}</b><div class="btns">
+ $('tgrid').innerHTML=P.grades.map(x=>{const ok=valid(x.g);return `<div class="trow" style="--acc:${x.acc}"><span class="mini">${x.name}</span><div><b><span class="nw">Spelling Bee</span> <span class="nw">${x.name}</span>${ok?` <span class="ok">ปลดล็อกแล้ว · อีก ${mins(x.g)} นาที</span>`:''}</b><div class="btns">
  <a class="c1" href="compete/${x.g}/" data-g="${x.g}" data-n="${x.name}">🏆 ชุดแข่งขัน</a><a class="c2" href="practice/#${x.g}">📚 ฝึกซ้อม</a></div></div></div>`}).join('');
  $('tlinks').innerHTML=`<a href="${P.sheetKey}" target="_blank" rel="noopener">ตารางเฉลยชุดแข่งขัน ม.1–ม.6</a><a href="${P.sheetPractice}" target="_blank" rel="noopener">ตารางเฉลยชุดฝึกซ้อม</a><a href="#" id="tout">ออกจากระบบ</a>`;
- $('tout').onclick=e=>{e.preventDefault();ss.del('bee-teacher-pw');P.grades.forEach(x=>ss.del('bee-'+x.g+'-c-pw'));location.reload()};
+ $('tout').onclick=e=>{e.preventDefault();ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');P.grades.forEach(x=>{ss.del('bee-'+x.g+'-c-pw');ss.del('bee-'+x.g+'-c-exp')});location.reload()};
 }
 async function login(pw,silent){
- try{const k=await kdf(pw,b64(SALT));P=JSON.parse(new TextDecoder().decode(await dec(k,b64(PANEL))));ss.set('bee-teacher-pw',pw);
+ try{const k=await kdf(pw,b64(SALT));P=JSON.parse(new TextDecoder().decode(await dec(k,b64(PANEL))));ss.set('bee-teacher-pw',pw);if(!silent||!(+ss.get('bee-teacher-exp')))ss.set('bee-teacher-exp',String(Date.now()+TTL));
   $('gate').hidden=true;$('area').hidden=false;render();return true}
  catch(e){if(!silent){$('terr').textContent='รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง';shake($('gate').querySelector('.login'))}return false}
 }
 $('tform').addEventListener('submit',async e=>{e.preventDefault();$('terr').textContent='กำลังตรวจสอบ…';await login($('tpw').value.trim())});
-document.addEventListener('click',e=>{const a=e.target.closest('a.c1[data-g]');if(!a)return;if(ss.get('bee-'+a.dataset.g+'-c-pw'))return;
+document.addEventListener('click',e=>{const a=e.target.closest('a.c1[data-g]');if(!a)return;if(valid(a.dataset.g))return;
  e.preventDefault();cur=a;$('gtitle').textContent='ชุดแข่งขันสะกดคำศัพท์ '+a.dataset.n;$('gerr').textContent='';$('gpw').value='';$('gm').hidden=false;$('gpw').focus()});
 $('gcancel').onclick=()=>{$('gm').hidden=true};
 $('gm').addEventListener('click',e=>{if(e.target.id==='gm')$('gm').hidden=true});
@@ -318,7 +322,8 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')$('gm').hidden=true}
 $('gform').addEventListener('submit',async e=>{e.preventDefault();if(!cur)return;const pw=$('gpw').value.trim(),g=cur.dataset.g;$('gerr').textContent='กำลังตรวจสอบรหัส…';
  try{const txt=(await (await fetch('compete/'+g+'/data.txt',{cache:'no-store'})).text()).trim();const b=b64(txt);
   const salt=b64((await (await fetch('compete/'+g+'/',{cache:'no-store'})).text()).match(/const SALT = '([^']*)'/)[1]);
-  await dec(await kdf(pw,salt),b);ss.set('bee-'+g+'-c-pw',pw);location.href=cur.getAttribute('href')}
+  await dec(await kdf(pw,salt),b);ss.set('bee-'+g+'-c-pw',pw);ss.set('bee-'+g+'-c-exp',String(Date.now()+TTL));location.href=cur.getAttribute('href')}
  catch(err){$('gerr').innerHTML='รหัสไม่ถูกต้อง กรุณาตรวจสอบกับ<span class="nw">แอดมิน</span>';shake($('gcard'))}});
-const pw0=ss.get('bee-teacher-pw');if(pw0)login(pw0,true);else $('tpw').focus();}</script>
+const pw0=ss.get('bee-teacher-pw');if(pw0&&+ss.get('bee-teacher-exp')>Date.now())login(pw0,true);else{ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');$('tpw').focus()}
+setInterval(()=>{if(P&&+ss.get('bee-teacher-exp')<=Date.now()){ss.del('bee-teacher-pw');ss.del('bee-teacher-exp');location.reload()}else if(P)render()},30000);}</script>
 </body></html>
