@@ -1,0 +1,283 @@
+<!DOCTYPE html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ชุดสำหรับฝึกซ้อม ม.1–ม.6 · Spelling Bee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:{{ACC}};
+  --honey:#ffc531;--honey2:#ffdd6e;--amber:#f59e0b;--brown:#7a4a12;--ink:#2b1d0e;--mute:#7a6650;
+  --coral:#ef4444;--sky:#0ea5e9;
+  --bg1:#fff8df;--bg2:#ffe7a1;--card:rgba(255,255,255,.78);--cardline:rgba(180,120,20,.18);--text:#2b1d0e;--soft:#7a6650;
+  --hexline:rgba(214,150,20,.10);
+  color-scheme:light;
+}
+body.compete{
+  --bg1:#1d1638;--bg2:#2e1f55;--card:rgba(255,255,255,.07);--cardline:rgba(255,205,80,.28);--text:#fff6dc;--soft:#cdbfa0;
+  --hexline:rgba(255,197,49,.08);color-scheme:dark;
+}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;color:var(--text);font:17px/1.5 Prompt,"Noto Sans Thai",system-ui,sans-serif;overflow-x:clip;
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(255,255,255,.65),transparent 60%),
+    radial-gradient(700px 520px at -10% 110%,rgba(255,197,49,.35),transparent 60%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-attachment:fixed}
+body.compete{background:
+    radial-gradient(800px 420px at 50% -8%,rgba(255,205,80,.28),transparent 65%),
+    radial-gradient(600px 480px at 100% 100%,rgba(140,90,255,.25),transparent 60%),
+    linear-gradient(170deg,var(--bg1),var(--bg2));background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23d6961a' stroke-opacity='.13' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size:56px 97px}
+body.compete::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23ffc531' stroke-opacity='.09' stroke-width='1.5'/%3E%3C/svg%3E")}
+main,header,footer,.lock{position:relative;z-index:1}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.en{font-family:Fredoka,Prompt,system-ui,sans-serif}
+
+/* ---------- header ---------- */
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px max(3.5vw,14px) 6px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand .mini{width:62px;height:62px;flex:none}
+.word-mark{display:grid;line-height:1}
+.word-mark b{font:700 clamp(26px,3.4vw,40px)/1 Fredoka,Prompt,sans-serif;letter-spacing:.5px;
+  background:linear-gradient(180deg,#fff3b0 0%,#ffc531 45%,#f08a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #9a5a07) drop-shadow(0 4px 0 #6b3d05) drop-shadow(0 8px 10px rgba(80,40,0,.3))}
+.word-mark small{font-size:14px;color:var(--soft);margin-top:10px;font-weight:500}
+.badge{position:relative;display:grid;place-items:center;width:64px;height:58px;flex:none;
+  clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
+  color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
+  background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
+body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
+.pill3d{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;
+  color:var(--ink);background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 8px 16px rgba(120,70,0,.12);transition:transform .12s,box-shadow .12s}
+.pill3d:hover{transform:translateY(-1px)}
+.pill3d:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 3px 8px rgba(120,70,0,.12)}
+body.compete .pill3d{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.35)}
+
+/* ---------- pickers ---------- */
+.pickers{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding:8px max(3.5vw,14px) 4px}
+.grp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.grp > span{font-size:14px;color:var(--soft);margin-right:2px}
+.chip{white-space:nowrap;min-height:42px;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff3d1);box-shadow:0 3px 0 #e6c26a,0 6px 12px rgba(120,70,0,.08);transition:transform .12s}
+.chip:active{transform:translateY(2px)}
+.chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00,0 8px 16px rgba(245,158,11,.35)}
+body.compete .chip{color:#fff6dc;background:rgba(255,255,255,.08);box-shadow:0 3px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.25)}
+body.compete .chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #8a5600,0 8px 18px rgba(255,190,40,.35)}
+.chip.x{font-style:normal}
+
+/* ---------- stage ---------- */
+.stage{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:clamp(14px,2.6vw,36px);align-items:center;padding:10px max(3.5vw,14px) 12px}
+.left{display:flex;align-items:center;gap:clamp(12px,2.4vw,30px)}
+.timer{position:relative;width:clamp(190px,25vw,300px);aspect-ratio:1/1.06;flex:none}
+.timer > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.timer .track{stroke:rgba(214,150,20,.18)}
+body.compete .timer .track{stroke:rgba(255,255,255,.12)}
+.timer .bar{transition:stroke .25s}
+.timer .face{position:absolute;inset:16%;display:grid;place-content:center;text-align:center;line-height:1}
+.timer .lbl{font-size:clamp(14px,1.6vw,18px);color:#7a4a12;font-weight:600}
+.timer .n{font:700 clamp(64px,10vw,128px)/1 Fredoka,Prompt,sans-serif;color:#fff;
+  text-shadow:0 3px 0 #c77800,0 6px 0 #8f5300,0 10px 18px rgba(80,40,0,.35)}
+.timer .of{font-size:clamp(13px,1.4vw,16px);color:#7a4a12;font-weight:600;margin-top:4px}
+.timer.small .n{font-size:clamp(34px,5vw,60px)}
+.timer.ready .n{font-size:clamp(28px,3.6vw,46px);margin:6px 0}
+.timer.hot .n{text-shadow:0 3px 0 #b91c1c,0 6px 0 #7f1d1d,0 10px 18px rgba(127,29,29,.35)}
+.timer .bee{position:absolute;width:40%;right:-16%;top:-14%;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(80,40,0,.25))}
+.status{display:grid;gap:8px;padding:clamp(14px,2vw,22px);border-radius:24px;background:var(--card);border:1px solid var(--cardline);
+  box-shadow:0 12px 30px rgba(120,70,0,.12);backdrop-filter:blur(6px);min-width:0;flex:1}
+body.compete .status{box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.phase{justify-self:start;max-width:100%;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.9vw,21px);
+  background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.08)}
+body.compete .phase{background:rgba(255,255,255,.12);color:var(--text)}
+.phase.listen{background:linear-gradient(180deg,#ffe58a,#ffc531);color:#3b2200;box-shadow:0 3px 0 #b06e00}
+.phase.write{background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 70%,#fff),var(--acc));color:#fff;box-shadow:0 3px 0 color-mix(in srgb,var(--acc) 60%,#000)}
+.phase.check{background:linear-gradient(180deg,#7dd3fc,#0ea5e9);color:#fff;box-shadow:0 3px 0 #0369a1}
+.phase.hot,.phase.stop{background:linear-gradient(180deg,#fca5a5,#ef4444);color:#fff;box-shadow:0 3px 0 #991b1b}
+.phase.hot{animation:pulse .5s ease-in-out infinite alternate}
+.secs{font:700 clamp(46px,7vw,86px)/1.02 Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+.secs small{font:600 .34em Prompt,sans-serif;color:var(--soft);margin-left:6px}
+.word{font:600 clamp(26px,3.8vw,46px)/1.1 Fredoka,Prompt,sans-serif;min-height:1.1em;white-space:nowrap;overflow:hidden;color:var(--brown)}
+body.compete .word{color:#ffd76a}
+.word.hide{color:var(--soft);font:400 clamp(15px,1.7vw,19px) Prompt,sans-serif}
+
+/* ---------- honeycomb board ---------- */
+.board{--w:clamp(52px,6.6vw,92px);--g:6px;display:grid;justify-content:center;padding-bottom:calc(var(--w)*.2)}
+.row{display:flex;gap:var(--g)}
+.row + .row{margin-top:calc(var(--w) * -0.2887 + var(--g) * .6)}
+.row.odd{margin-left:calc(var(--w) / 2 + var(--g) / 2)}
+.cell{width:var(--w);aspect-ratio:.866/1;padding:0;filter:drop-shadow(0 5px 0 #d89a1a) drop-shadow(0 9px 10px rgba(120,70,0,.18));transition:transform .2s,filter .2s}
+body.compete .cell{filter:drop-shadow(0 5px 0 rgba(0,0,0,.55)) drop-shadow(0 9px 12px rgba(0,0,0,.35))}
+.hex{position:relative;display:grid;place-content:center;text-align:center;width:100%;height:100%;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:linear-gradient(165deg,#fffdf2 0%,#fff3c6 55%,#ffe08a 100%)}
+.hex::before{content:"";position:absolute;inset:7%;clip-path:inherit;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0) 60%);opacity:.55}
+body.compete .hex{background:linear-gradient(165deg,#3c2d6b 0%,#2b2050 60%,#221944 100%)}
+body.compete .hex::before{opacity:.12}
+.hex b{position:relative;font:700 clamp(18px,2.2vw,30px)/1 Fredoka,Prompt,sans-serif;color:#7a4a12}
+body.compete .hex b{color:#ffe6a0}
+.hex i{position:relative;font:500 11px/1.1 Fredoka,Prompt,sans-serif;font-style:normal;color:#7a4a12;white-space:nowrap;margin-top:2px}
+body.compete .hex i{color:#ffe6a0}
+.cell.done .hex{background:linear-gradient(165deg,#ffe58a 0%,#ffc531 55%,#f2a300 100%)}
+.cell.done .hex b{color:#6b3d05}
+.cell.done .hex::after{content:"✓";position:absolute;top:14%;left:50%;transform:translateX(-50%);font:700 12px Fredoka;color:#6b3d05;opacity:.8}
+.cell.done .hex b{margin-top:8px}
+.cell.now{transform:translateY(-6px) scale(1.12);z-index:2;filter:drop-shadow(0 6px 0 #a8620a) drop-shadow(0 0 18px rgba(255,200,60,.9))}
+.cell.now .hex{background:radial-gradient(circle at 35% 25%,#fffbe0 0%,#ffd84d 40%,#f59e0b 100%)}
+.cell.now .hex b{color:#3b2200;font-size:clamp(22px,2.6vw,34px)}
+.cell.now.hot{filter:drop-shadow(0 6px 0 #7f1d1d) drop-shadow(0 0 18px rgba(239,68,68,.9))}
+.cell.now.hot .hex{background:radial-gradient(circle at 35% 25%,#ffe4e4 0%,#f87171 45%,#dc2626 100%)}
+.cell.now.hot .hex b{color:#fff}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:6px max(3.5vw,14px) 10px}
+.btn{white-space:nowrap;min-height:50px;min-width:50px;padding:0 18px;border-radius:14px;font-weight:600;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 10px 18px rgba(120,70,0,.12);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 4px 8px rgba(120,70,0,.12)}
+.btn.main{min-width:150px;color:#3b2200;font-size:18px;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #a8620a,0 12px 22px rgba(245,158,11,.35)}
+.btn.main:active{box-shadow:0 2px 0 #a8620a,0 5px 10px rgba(245,158,11,.3)}
+body.compete .btn{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,205,80,.3)}
+body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #8a5600,0 12px 24px rgba(255,190,40,.3)}
+.speed{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:5px 6px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.speed span{font-size:14px;color:var(--soft);padding:0 6px}
+.speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
+.speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
+.seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
+.seek{flex:1;height:40px;accent-color:#f59e0b}
+.time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+footer{padding:4px max(3.5vw,14px) 26px;color:var(--soft);font-size:14px}
+kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;background:var(--card);border:1px solid var(--cardline);color:var(--text)}
+
+/* ---------- toast / lock ---------- */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;z-index:9;padding:12px 20px;border-radius:14px;
+  background:#2b1d0e;color:#fff6dc;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.lock{position:fixed;inset:0;z-index:8;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(700px 400px at 50% 0%,rgba(255,205,80,.25),transparent 70%),linear-gradient(170deg,#1d1638,#2e1f55)}
+.lock[hidden]{display:none}
+.lockcard{width:min(440px,100%);text-align:center;padding:28px 26px 26px;border-radius:28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.3);box-shadow:0 30px 60px rgba(0,0,0,.45);color:#fff6dc}
+.lockcard .bigbee{width:150px;height:150px;margin:-90px auto 4px}
+.lockcard h2{margin:6px 0 2px;font:700 28px/1.2 Fredoka,Prompt,sans-serif;color:#ffd76a}
+.lockcard p{margin:0 0 16px;color:#cdbfa0;font-size:15px}
+.lockcard form{display:grid;gap:12px}
+.lockcard input{min-height:52px;border-radius:14px;border:2px solid rgba(255,205,80,.45);background:rgba(0,0,0,.25);color:#fff;font:600 18px Fredoka,Prompt,sans-serif;text-align:center;letter-spacing:.06em;padding:0 14px}
+.lockcard .err{min-height:1.4em;color:#fca5a5;font-size:14px}
+.lockcard.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+@keyframes pulse{to{transform:scale(1.06)}}
+
+/* ---------- bee mascot animation ---------- */
+.beesvg .wing{transform-box:fill-box;transform-origin:50% 100%;animation:flap .12s ease-in-out infinite alternate}
+.beesvg .wing.b{animation-delay:.06s}
+.beesvg .body{animation:bob 2.4s ease-in-out infinite}
+.beesvg .shadow{animation:shad 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.beesvg .eye{animation:blink 4.2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes flap{from{transform:scaleY(1) rotate(-6deg)}to{transform:scaleY(.55) rotate(6deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes shad{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(.8);opacity:.15}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.timer.hot .bee .body{animation:buzz .12s linear infinite}
+@keyframes buzz{0%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
+.flyer{position:fixed;width:46px;z-index:0;pointer-events:none;opacity:.85;animation:fly 26s linear infinite}
+.flyer.two{width:34px;animation-duration:34s;animation-delay:-12s;opacity:.6}
+@keyframes fly{0%{transform:translate(-10vw,70vh) rotate(8deg)}25%{transform:translate(30vw,52vh) rotate(-6deg)}50%{transform:translate(65vw,78vh) rotate(6deg)}75%{transform:translate(95vw,48vh) rotate(-8deg)}100%{transform:translate(112vw,66vh) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:980px){.stage{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.left{flex-direction:column;align-items:stretch}.timer{margin:0 auto}.board{--w:clamp(46px,15vw,72px)}.row.odd{margin-left:calc(var(--w)/2)}.brand .mini{width:48px;height:48px}}
+
+.hero{display:grid;grid-template-columns:auto 1fr;gap:clamp(16px,3vw,34px);align-items:center;padding:clamp(20px,4vw,48px) max(4vw,16px) 8px;max-width:1220px;margin:0 auto}
+.hero .big{width:clamp(130px,17vw,210px);aspect-ratio:1}
+.hero h1{margin:0;font:700 clamp(40px,6.4vw,78px)/1 Fredoka,Prompt,sans-serif;background:linear-gradient(180deg,#fff3b0 0%,#ffc531 45%,#f08a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 #9a5a07) drop-shadow(0 6px 0 #6b3d05) drop-shadow(0 12px 14px rgba(80,40,0,.3))}
+.hero p{margin:14px 0 0;color:var(--soft);font-size:clamp(16px,1.7vw,19px);max-width:60ch}
+.sec{max-width:1220px;margin:0 auto;padding:14px max(4vw,16px) 6px}
+.sec h2{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;margin:8px 0 14px;font:700 clamp(22px,2.4vw,28px)/1.2 Prompt,sans-serif}
+.sec h2 small{font-size:15px;font-weight:500;color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,150px),1fr));gap:clamp(10px,2vw,18px)}
+.card{position:relative;display:grid;justify-items:center;align-content:start;gap:clamp(5px,1vw,8px);padding:clamp(14px,2.4vw,22px) clamp(8px,1.6vw,14px) clamp(12px,2vw,18px);border-radius:24px;text-decoration:none;color:var(--text);
+  background:var(--card);border:1px solid var(--cardline);box-shadow:0 6px 0 rgba(214,150,20,.25),0 16px 30px rgba(120,70,0,.12);transition:transform .18s,box-shadow .18s}
+.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 10px 0 rgba(214,150,20,.3),0 24px 36px rgba(120,70,0,.16)}
+.card .hx{filter:drop-shadow(0 6px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 10px 12px rgba(0,0,0,.2));transition:transform .25s}
+.card:hover .hx{transform:rotate(-6deg) scale(1.05)}
+.card .hx span{display:grid;place-items:center;width:clamp(70px,15vw,104px);aspect-ratio:104/94;font-size:clamp(20px,4.4vw,30px)!important;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 50%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));color:#fff;font:700 30px Prompt,sans-serif;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.card b{font:600 clamp(13px,3.2vw,16px)/1.35 Prompt,sans-serif;text-align:center}
+.nw{white-space:nowrap}
+.card em{font-style:normal;font-size:clamp(11.5px,2.8vw,14px);line-height:1.4;color:var(--soft);text-align:center}
+.card .go{margin-top:4px;padding:clamp(5px,1vw,6px) clamp(10px,2.4vw,16px);border-radius:12px;font-weight:600;font-size:clamp(12.5px,3vw,15px);white-space:nowrap;color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00}
+.dark{margin-top:26px;padding:26px 0 34px;background:linear-gradient(170deg,#1d1638,#2e1f55);color:#fff6dc;--text:#fff6dc;--soft:#cdbfa0;--card:rgba(255,255,255,.07);--cardline:rgba(255,205,80,.28)}
+.dark .card{box-shadow:0 6px 0 rgba(0,0,0,.45),0 16px 30px rgba(0,0,0,.35)}
+.dark .card .lockico{position:absolute;top:12px;right:14px;font-size:18px}
+.info{max-width:1220px;margin:0 auto;padding:18px max(4vw,16px) 30px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.box{padding:16px 18px;border-radius:18px;background:var(--card);border:1px solid var(--cardline)}
+.box h3{margin:0 0 6px;font-size:17px}.box ul{margin:0;padding-left:20px;color:var(--soft);font-size:15px}
+@media(max-width:620px){.hero{grid-template-columns:1fr;justify-items:center;text-align:center}}
+
+.nw{white-space:nowrap}
+.acts{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:4px}
+.acts .go{text-decoration:none;color:#3b2200}
+.cp{padding:clamp(5px,1vw,6px) clamp(9px,2vw,12px);border-radius:12px;font-weight:600;font-size:clamp(12px,2.9vw,14px);white-space:nowrap;color:var(--ink);background:#fff;box-shadow:0 3px 0 #e2b74d}
+
+html{background:#ffefb8}
+.card{text-decoration:none}.card .hx{text-decoration:none}
+.card:target{outline:4px solid #f5a300;outline-offset:4px}
+.back{display:inline-flex;margin:14px max(4vw,16px) 0;padding:8px 16px;border-radius:12px;font-weight:600;font-size:15px;color:#fff6dc;text-decoration:none;background:linear-gradient(180deg,#3a2c66,#241b45);box-shadow:0 3px 0 #120d26}
+.back[hidden]{display:none}
+</style></head><body class="practice">
+<div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
+<main><a class="back" id="back" href="../" hidden>← กลับหน้าหลักสำหรับครู</a>
+<section class="hero"><div class="big" data-bee></div><div><h1>Spelling Bee</h1><p>ชุดสำหรับฝึกซ้อมการสะกดคำศัพท์ภาษาอังกฤษ ระดับชั้นมัธยมศึกษาปีที่ 1–6<br>กด “คัดลอกลิงก์ส่งนักเรียน” เพื่อส่งลิงก์เฉพาะชั้นนั้นให้นักเรียน</p></div></section>
+<section class="sec"><h2>ชุดสำหรับฝึกซ้อม</h2><div class="grid"><div class="card" id="m1" style="--acc:#1f7ae0"><a class="hx" href="m1/" aria-label="ชุดสำหรับฝึกซ้อม ม.1"><span>ม.1</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.1</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 5 รอบ</em>
+<div class="acts"><a class="go" href="m1/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m1/">คัดลอกลิงก์ส่งนักเรียน</button></div></div>
+<div class="card" id="m2" style="--acc:#1f9d55"><a class="hx" href="m2/" aria-label="ชุดสำหรับฝึกซ้อม ม.2"><span>ม.2</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.2</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<div class="acts"><a class="go" href="m2/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m2/">คัดลอกลิงก์ส่งนักเรียน</button></div></div>
+<div class="card" id="m3" style="--acc:#e8710a"><a class="hx" href="m3/" aria-label="ชุดสำหรับฝึกซ้อม ม.3"><span>ม.3</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.3</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 1 รอบ</em>
+<div class="acts"><a class="go" href="m3/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m3/">คัดลอกลิงก์ส่งนักเรียน</button></div></div>
+<div class="card" id="m4" style="--acc:#d6336c"><a class="hx" href="m4/" aria-label="ชุดสำหรับฝึกซ้อม ม.4"><span>ม.4</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.4</span></b><em>3 ชุด ชุดละ 4 รอบ</em>
+<div class="acts"><a class="go" href="m4/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m4/">คัดลอกลิงก์ส่งนักเรียน</button></div></div>
+<div class="card" id="m5" style="--acc:#6b4fd8"><a class="hx" href="m5/" aria-label="ชุดสำหรับฝึกซ้อม ม.5"><span>ม.5</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.5</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 2 รอบ</em>
+<div class="acts"><a class="go" href="m5/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m5/">คัดลอกลิงก์ส่งนักเรียน</button></div></div>
+<div class="card" id="m6" style="--acc:#b38600"><a class="hx" href="m6/" aria-label="ชุดสำหรับฝึกซ้อม ม.6"><span>ม.6</span></a>
+<b><span class="nw">ชุดสำหรับฝึกซ้อม</span> <span class="nw">ม.6</span></b><em>3 ชุด ชุดละ 4 รอบ และชุดฝึกเพิ่มเติม 3 รอบ</em>
+<div class="acts"><a class="go" href="m6/">เข้าสู่ชุดฝึกซ้อม</a><button class="cp" type="button" data-copy="m6/">คัดลอกลิงก์ส่งนักเรียน</button></div></div></div></section>
+<section class="info">
+<div class="box"><h3>ลำดับการดำเนินการในแต่ละข้อ</h3><ul><li>Number … → 2 วินาที → คำศัพท์ → 3 วินาที → คำศัพท์</li><li>เขียนคำตอบ 20 วินาที มีเสียงเตือนทุกวินาทีใน 5 วินาทีสุดท้าย</li><li>เมื่อครบทุกข้อ: ตรวจทาน 20 วินาที → สัญญาณหมดเวลา → วางปากกา</li></ul></div>
+<div class="box"><h3>สัดส่วนระดับความยาก (ง่าย / ปานกลาง / ยาก)</h3><ul><li>รอบ 1: 30 / 30 / 40 · รอบ 2: 20 / 40 / 40</li><li>รอบ 3: 10 / 50 / 40 · รอบ 4: 0 / 60 / 40</li><li>สามารถปรับความเร็วเสียงได้ 0.75× – 1.5×</li></ul></div>
+</section></main><div class="toast" id="toast" role="status"></div>
+<script>{const BEE=`<svg class="beesvg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<radialGradient id="bb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff3a8"/><stop offset=".45" stop-color="#ffcc2e"/><stop offset="1" stop-color="#e08600"/></radialGradient>
+<radialGradient id="bh" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff6b8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#e59400"/></radialGradient>
+<linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#bfe6ff" stop-opacity=".6"/></linearGradient>
+<clipPath id="bc"><ellipse cx="62" cy="70" rx="30" ry="25"/></clipPath>
+</defs>
+<ellipse class="shadow" cx="62" cy="112" rx="26" ry="5" fill="#5a3200"/>
+<g class="body">
+<g class="wing b"><ellipse cx="72" cy="38" rx="13" ry="22" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(20 72 38)"/></g>
+<path d="M88 72 l14 4 -13 6z" fill="#3a2410"/>
+<ellipse cx="62" cy="70" rx="30" ry="25" fill="url(#bb)"/>
+<g clip-path="url(#bc)" fill="#3a2410"><rect x="58" y="40" width="9" height="60" rx="4"/><rect x="74" y="40" width="9" height="60" rx="4"/></g>
+<ellipse cx="55" cy="58" rx="16" ry="7" fill="#fff" opacity=".35"/>
+<g class="wing"><ellipse cx="56" cy="36" rx="14" ry="24" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(-14 56 36)"/></g>
+<path d="M30 34 q-6 -16 -16 -16" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="18" r="4.5" fill="#3a2410"/>
+<path d="M40 32 q2 -17 -6 -22" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="10" r="4.5" fill="#3a2410"/>
+<circle cx="34" cy="62" r="23" fill="url(#bh)"/>
+<ellipse cx="28" cy="50" rx="9" ry="5" fill="#fff" opacity=".45"/>
+<g class="eye"><ellipse cx="26" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="27.6" cy="57.6" r="2" fill="#fff"/></g>
+<g class="eye"><ellipse cx="41" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="42.6" cy="57.6" r="2" fill="#fff"/></g>
+<ellipse cx="20" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/><ellipse cx="46" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/>
+<path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
+</g></svg>`;document.querySelectorAll('[data-bee]').forEach(e=>e.innerHTML=BEE);
+}</script>
+<script>{const t=document.getElementById('toast');
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-copy]');if(!b)return;e.preventDefault();const u=new URL(b.dataset.copy,location.href).href;
+try{await navigator.clipboard.writeText(u);t.textContent='คัดลอกลิงก์เรียบร้อยแล้ว';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}catch(err){prompt('คัดลอกลิงก์นี้',u)}});
+try{const r=document.referrer&&new URL(document.referrer);if(r&&r.origin===location.origin&&new URL('../',location.href).pathname===r.pathname)document.getElementById('back').hidden=false}catch(e){}
+if(location.hash){const c=document.querySelector(location.hash);if(c)setTimeout(()=>c.scrollIntoView({behavior:'smooth',block:'center'}),300)}}</script>
+</body></html>
