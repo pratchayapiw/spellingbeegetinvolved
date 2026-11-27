@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ชุดสำหรับฝึกซ้อม ม.4 · Spelling Bee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#d6336c;
+  --honey:#ffc531;--honey2:#ffdd6e;--amber:#f59e0b;--brown:#7a4a12;--ink:#2b1d0e;--mute:#7a6650;
+  --coral:#ef4444;--sky:#0ea5e9;
+  --bg1:#fff8df;--bg2:#ffe7a1;--card:rgba(255,255,255,.78);--cardline:rgba(180,120,20,.18);--text:#2b1d0e;--soft:#7a6650;
+  --hexline:rgba(214,150,20,.10);
+  color-scheme:light;
+}
+body.compete{
+  --bg1:#1d1638;--bg2:#2e1f55;--card:rgba(255,255,255,.07);--cardline:rgba(255,205,80,.28);--text:#fff6dc;--soft:#cdbfa0;
+  --hexline:rgba(255,197,49,.08);color-scheme:dark;
+}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;color:var(--text);font:17px/1.5 Prompt,"Noto Sans Thai",system-ui,sans-serif;overflow-x:clip;
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(255,255,255,.65),transparent 60%),
+    radial-gradient(700px 520px at -10% 110%,rgba(255,197,49,.35),transparent 60%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-attachment:fixed}
+body.compete{background:
+    radial-gradient(800px 420px at 50% -8%,rgba(255,205,80,.28),transparent 65%),
+    radial-gradient(600px 480px at 100% 100%,rgba(140,90,255,.25),transparent 60%),
+    linear-gradient(170deg,var(--bg1),var(--bg2));background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23d6961a' stroke-opacity='.13' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size:56px 97px}
+body.compete::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23ffc531' stroke-opacity='.09' stroke-width='1.5'/%3E%3C/svg%3E")}
+main,header,footer,.lock{position:relative;z-index:1}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.en{font-family:Fredoka,Prompt,system-ui,sans-serif}
+
+/* ---------- header ---------- */
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px max(3.5vw,14px) 6px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand .mini{width:62px;height:62px;flex:none}
+.word-mark{display:grid;line-height:1}
+.word-mark b{font:700 clamp(26px,3.4vw,40px)/1 Fredoka,Prompt,sans-serif;letter-spacing:.5px;
+  background:linear-gradient(180deg,#fff3b0 0%,#ffc531 45%,#f08a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #9a5a07) drop-shadow(0 4px 0 #6b3d05) drop-shadow(0 8px 10px rgba(80,40,0,.3))}
+.word-mark small{font-size:14px;color:var(--soft);margin-top:10px;font-weight:500}
+.badge{position:relative;display:grid;place-items:center;width:64px;height:58px;flex:none;
+  clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
+  color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
+  background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
+body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
+.pill3d{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;
+  color:var(--ink);background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 8px 16px rgba(120,70,0,.12);transition:transform .12s,box-shadow .12s}
+.pill3d:hover{transform:translateY(-1px)}
+.pill3d:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 3px 8px rgba(120,70,0,.12)}
+body.compete .pill3d{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.35)}
+
+/* ---------- pickers ---------- */
+.pickers{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding:8px max(3.5vw,14px) 4px}
+.grp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.grp > span{font-size:14px;color:var(--soft);margin-right:2px}
+.chip{min-height:42px;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff3d1);box-shadow:0 3px 0 #e6c26a,0 6px 12px rgba(120,70,0,.08);transition:transform .12s}
+.chip:active{transform:translateY(2px)}
+.chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00,0 8px 16px rgba(245,158,11,.35)}
+body.compete .chip{color:#fff6dc;background:rgba(255,255,255,.08);box-shadow:0 3px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.25)}
+body.compete .chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #8a5600,0 8px 18px rgba(255,190,40,.35)}
+.chip.x{font-style:normal}
+
+/* ---------- stage ---------- */
+.stage{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:clamp(14px,2.6vw,36px);align-items:center;padding:10px max(3.5vw,14px) 12px}
+.left{display:flex;align-items:center;gap:clamp(12px,2.4vw,30px)}
+.timer{position:relative;width:clamp(190px,25vw,300px);aspect-ratio:1/1.06;flex:none}
+.timer > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.timer .track{stroke:rgba(214,150,20,.18)}
+body.compete .timer .track{stroke:rgba(255,255,255,.12)}
+.timer .bar{transition:stroke .25s}
+.timer .face{position:absolute;inset:16%;display:grid;place-content:center;text-align:center;line-height:1}
+.timer .lbl{font-size:clamp(14px,1.6vw,18px);color:#7a4a12;font-weight:600}
+.timer .n{font:700 clamp(64px,10vw,128px)/1 Fredoka,Prompt,sans-serif;color:#fff;
+  text-shadow:0 3px 0 #c77800,0 6px 0 #8f5300,0 10px 18px rgba(80,40,0,.35)}
+.timer .of{font-size:clamp(13px,1.4vw,16px);color:#7a4a12;font-weight:600;margin-top:4px}
+.timer.small .n{font-size:clamp(34px,5vw,60px)}
+.timer.ready .n{font-size:clamp(28px,3.6vw,46px);margin:6px 0}
+.timer.hot .n{text-shadow:0 3px 0 #b91c1c,0 6px 0 #7f1d1d,0 10px 18px rgba(127,29,29,.35)}
+.timer .bee{position:absolute;width:40%;right:-16%;top:-14%;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(80,40,0,.25))}
+.status{display:grid;gap:8px;padding:clamp(14px,2vw,22px);border-radius:24px;background:var(--card);border:1px solid var(--cardline);
+  box-shadow:0 12px 30px rgba(120,70,0,.12);backdrop-filter:blur(6px);min-width:0;flex:1}
+body.compete .status{box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.phase{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.9vw,21px);
+  background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.08)}
+body.compete .phase{background:rgba(255,255,255,.12);color:var(--text)}
+.phase.listen{background:linear-gradient(180deg,#ffe58a,#ffc531);color:#3b2200;box-shadow:0 3px 0 #b06e00}
+.phase.write{background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 70%,#fff),var(--acc));color:#fff;box-shadow:0 3px 0 color-mix(in srgb,var(--acc) 60%,#000)}
+.phase.check{background:linear-gradient(180deg,#7dd3fc,#0ea5e9);color:#fff;box-shadow:0 3px 0 #0369a1}
+.phase.hot,.phase.stop{background:linear-gradient(180deg,#fca5a5,#ef4444);color:#fff;box-shadow:0 3px 0 #991b1b}
+.phase.hot{animation:pulse .5s ease-in-out infinite alternate}
+.secs{font:700 clamp(46px,7vw,86px)/1.02 Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+.secs small{font:600 .34em Prompt,sans-serif;color:var(--soft);margin-left:6px}
+.word{font:600 clamp(26px,3.8vw,46px)/1.1 Fredoka,Prompt,sans-serif;min-height:1.1em;overflow-wrap:anywhere;color:var(--brown)}
+body.compete .word{color:#ffd76a}
+.word.hide{color:var(--soft);font:400 clamp(15px,1.7vw,19px) Prompt,sans-serif}
+
+/* ---------- honeycomb board ---------- */
+.board{--w:clamp(52px,6.6vw,92px);--g:6px;display:grid;justify-content:center;padding-bottom:calc(var(--w)*.2)}
+.row{display:flex;gap:var(--g)}
+.row + .row{margin-top:calc(var(--w) * -0.2887 + var(--g) * .6)}
+.row.odd{margin-left:calc(var(--w) / 2 + var(--g) / 2)}
+.cell{width:var(--w);aspect-ratio:.866/1;padding:0;filter:drop-shadow(0 5px 0 #d89a1a) drop-shadow(0 9px 10px rgba(120,70,0,.18));transition:transform .2s,filter .2s}
+body.compete .cell{filter:drop-shadow(0 5px 0 rgba(0,0,0,.55)) drop-shadow(0 9px 12px rgba(0,0,0,.35))}
+.hex{position:relative;display:grid;place-content:center;text-align:center;width:100%;height:100%;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:linear-gradient(165deg,#fffdf2 0%,#fff3c6 55%,#ffe08a 100%)}
+.hex::before{content:"";position:absolute;inset:7%;clip-path:inherit;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0) 60%);opacity:.55}
+body.compete .hex{background:linear-gradient(165deg,#3c2d6b 0%,#2b2050 60%,#221944 100%)}
+body.compete .hex::before{opacity:.12}
+.hex b{position:relative;font:700 clamp(18px,2.2vw,30px)/1 Fredoka,Prompt,sans-serif;color:#7a4a12}
+body.compete .hex b{color:#ffe6a0}
+.hex i{position:relative;font:500 11px/1.1 Fredoka,Prompt,sans-serif;font-style:normal;color:#7a4a12;max-width:calc(var(--w) * .8);overflow-wrap:anywhere;margin-top:2px}
+body.compete .hex i{color:#ffe6a0}
+.cell.done .hex{background:linear-gradient(165deg,#ffe58a 0%,#ffc531 55%,#f2a300 100%)}
+.cell.done .hex b{color:#6b3d05}
+.cell.done .hex::after{content:"✓";position:absolute;top:14%;left:50%;transform:translateX(-50%);font:700 12px Fredoka;color:#6b3d05;opacity:.8}
+.cell.done .hex b{margin-top:8px}
+.cell.now{transform:translateY(-6px) scale(1.12);z-index:2;filter:drop-shadow(0 6px 0 #a8620a) drop-shadow(0 0 18px rgba(255,200,60,.9))}
+.cell.now .hex{background:radial-gradient(circle at 35% 25%,#fffbe0 0%,#ffd84d 40%,#f59e0b 100%)}
+.cell.now .hex b{color:#3b2200;font-size:clamp(22px,2.6vw,34px)}
+.cell.now.hot{filter:drop-shadow(0 6px 0 #7f1d1d) drop-shadow(0 0 18px rgba(239,68,68,.9))}
+.cell.now.hot .hex{background:radial-gradient(circle at 35% 25%,#ffe4e4 0%,#f87171 45%,#dc2626 100%)}
+.cell.now.hot .hex b{color:#fff}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:6px max(3.5vw,14px) 10px}
+.btn{min-height:50px;min-width:50px;padding:0 18px;border-radius:14px;font-weight:600;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 10px 18px rgba(120,70,0,.12);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 4px 8px rgba(120,70,0,.12)}
+.btn.main{min-width:150px;color:#3b2200;font-size:18px;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #a8620a,0 12px 22px rgba(245,158,11,.35)}
+.btn.main:active{box-shadow:0 2px 0 #a8620a,0 5px 10px rgba(245,158,11,.3)}
+body.compete .btn{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,205,80,.3)}
+body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #8a5600,0 12px 24px rgba(255,190,40,.3)}
+.speed{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:5px 6px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.speed span{font-size:14px;color:var(--soft);padding:0 6px}
+.speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
+.speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
+.seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
+.seek{flex:1;height:40px;accent-color:#f59e0b}
+.time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+footer{padding:4px max(3.5vw,14px) 26px;color:var(--soft);font-size:14px}
+kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;background:var(--card);border:1px solid var(--cardline);color:var(--text)}
+
+/* ---------- toast / lock ---------- */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;z-index:9;padding:12px 20px;border-radius:14px;
+  background:#2b1d0e;color:#fff6dc;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.lock{position:fixed;inset:0;z-index:8;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(700px 400px at 50% 0%,rgba(255,205,80,.25),transparent 70%),linear-gradient(170deg,#1d1638,#2e1f55)}
+.lock[hidden]{display:none}
+.lockcard{width:min(440px,100%);text-align:center;padding:28px 26px 26px;border-radius:28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.3);box-shadow:0 30px 60px rgba(0,0,0,.45);color:#fff6dc}
+.lockcard .bigbee{width:150px;height:150px;margin:-90px auto 4px}
+.lockcard h2{margin:6px 0 2px;font:700 28px/1.2 Fredoka,Prompt,sans-serif;color:#ffd76a}
+.lockcard p{margin:0 0 16px;color:#cdbfa0;font-size:15px}
+.lockcard form{display:grid;gap:12px}
+.lockcard input{min-height:52px;border-radius:14px;border:2px solid rgba(255,205,80,.45);background:rgba(0,0,0,.25);color:#fff;font:600 18px Fredoka,Prompt,sans-serif;text-align:center;letter-spacing:.06em;padding:0 14px}
+.lockcard .err{min-height:1.4em;color:#fca5a5;font-size:14px}
+.lockcard.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+@keyframes pulse{to{transform:scale(1.06)}}
+
+/* ---------- bee mascot animation ---------- */
+.beesvg .wing{transform-box:fill-box;transform-origin:50% 100%;animation:flap .12s ease-in-out infinite alternate}
+.beesvg .wing.b{animation-delay:.06s}
+.beesvg .body{animation:bob 2.4s ease-in-out infinite}
+.beesvg .shadow{animation:shad 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.beesvg .eye{animation:blink 4.2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes flap{from{transform:scaleY(1) rotate(-6deg)}to{transform:scaleY(.55) rotate(6deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes shad{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(.8);opacity:.15}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.timer.hot .bee .body{animation:buzz .12s linear infinite}
+@keyframes buzz{0%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
+.flyer{position:fixed;width:46px;z-index:0;pointer-events:none;opacity:.85;animation:fly 26s linear infinite}
+.flyer.two{width:34px;animation-duration:34s;animation-delay:-12s;opacity:.6}
+@keyframes fly{0%{transform:translate(-10vw,70vh) rotate(8deg)}25%{transform:translate(30vw,52vh) rotate(-6deg)}50%{transform:translate(65vw,78vh) rotate(6deg)}75%{transform:translate(95vw,48vh) rotate(-8deg)}100%{transform:translate(112vw,66vh) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:980px){.stage{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.left{flex-direction:column;align-items:stretch}.timer{margin:0 auto}.board{--w:clamp(46px,15vw,72px)}.row.odd{margin-left:calc(var(--w)/2)}.brand .mini{width:48px;height:48px}}
+</style>
+</head>
+<body class="practice">
+<div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
+
+<header>
+  <div class="brand">
+    <div class="mini" data-bee></div>
+    <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
+  </div>
+  <span class="badge-wrap"><span class="badge">ม.4</span></span>
+  <span class="mode">ชุดสำหรับฝึกซ้อม ม.4</span>
+  <button class="pill3d" id="copy" type="button">คัดลอกลิงก์สำหรับนักเรียน</button>
+  
+</header>
+
+<main>
+<div class="pickers">
+  <div class="grp" id="sets" role="group" aria-label="เลือกชุด"><span>เลือกชุด</span></div>
+  <div class="grp" id="rounds" role="group" aria-label="เลือกรอบ"><span>เลือกรอบ</span></div>
+</div>
+
+<section class="stage">
+  <div class="left">
+    <div class="timer" id="timer">
+      <svg viewBox="0 0 100 106" aria-hidden="true">
+        <defs>
+          <linearGradient id="gHoney" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe58a"/><stop offset=".5" stop-color="#ffc531"/><stop offset="1" stop-color="#f08a00"/></linearGradient>
+          <linearGradient id="gHot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fca5a5"/><stop offset="1" stop-color="#dc2626"/></linearGradient>
+          <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
+          <radialGradient id="gFace" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#fff6c2"/><stop offset=".45" stop-color="#ffd24a"/><stop offset="1" stop-color="#e48a00"/></radialGradient>
+          <radialGradient id="gFaceHot" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#ffe1e1"/><stop offset=".45" stop-color="#f87171"/><stop offset="1" stop-color="#b91c1c"/></radialGradient>
+        </defs>
+        <polygon points="50,13 83.5,32 83.5,74 50,93 16.5,74 16.5,32" fill="#a8620a" transform="translate(0,4.5)" opacity=".7"/>
+        <polygon id="face" points="50,13 83.5,32 83.5,74 50,93 16.5,74 16.5,32" fill="url(#gFace)"/>
+        <polygon points="50,17 78,33 50,30 22,33" fill="#fff" opacity=".35"/>
+        <path class="track" d="M50 3 L93 27.5 L93 78.5 L50 103 L7 78.5 L7 27.5 Z" fill="none" stroke-width="5" stroke-linejoin="round"/>
+        <path class="bar" id="arc" d="M50 3 L93 27.5 L93 78.5 L50 103 L7 78.5 L7 27.5 Z" fill="none" stroke="url(#gHoney)" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>
+      </svg>
+      <div class="face"><div class="lbl" id="lbl">ข้อที่</div><div class="n" id="n">พร้อม</div><div class="of" id="of">จาก 20</div></div>
+      <div class="bee" data-bee></div>
+    </div>
+    <div class="status" aria-live="polite">
+      <span class="phase" id="phase">กดปุ่ม “เริ่ม” เพื่อเล่นเสียง</span>
+      <div class="secs" id="secs"></div>
+      <div class="word hide" id="word">ซ่อนคำศัพท์</div>
+    </div>
+  </div>
+  <div class="board" id="board"></div>
+</section>
+
+<div class="controls">
+  <button class="btn main" id="play">▶ เริ่ม</button>
+  <button class="btn" id="prev">◀ ข้อก่อนหน้า</button>
+  <button class="btn" id="next">ข้อถัดไป ▶</button>
+  <button class="btn" id="reveal" aria-pressed="false">แสดงคำศัพท์</button>
+  <button class="btn" id="full">เต็มหน้าจอ</button>
+  <div class="speed" id="speed" role="group" aria-label="ความเร็วเสียง"><span>ความเร็ว</span><button data-v="0.75" aria-pressed="false">0.75×</button><button data-v="0.85" aria-pressed="false">0.85×</button><button data-v="0.95" aria-pressed="false">0.95×</button><button data-v="1" aria-pressed="true">1.0×</button><button data-v="1.25" aria-pressed="false">1.25×</button><button data-v="1.5" aria-pressed="false">1.5×</button></div>
+</div>
+<div class="seekrow"><input class="seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="ตำแหน่งเสียง"><span class="time" id="time">0:00 / 0:00</span></div>
+</main>
+<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วเสียงมีผลต่อเวลานับถอยหลังด้วย (0.75× ≈ 27 วินาที) · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น</footer>
+
+
+<div class="toast" id="toast" role="status"></div>
+<audio id="au" preload="auto"></audio>
+
+<script>
+{
+const MODE = 'practice', KP = 'bee-m4-p', SHARE = '';
+let DATA = {"WORDS": {"1-1": ["tiny", "happy", "tour", "edit", "ask", "noisy", "painting", "steady", "useless", "charge", "magazine", "canoe", "interview", "self-portrait", "knowledge", "sugar", "manipulated", "wearable", "printmaking", "like-minded"], "1-2": ["share", "tell", "ugly", "boost", "reached", "ancient", "positive", "traffic", "careful", "app", "own", "website", "discover", "challenging", "experimented", "shocking", "enough", "realistic", "research", "astonishing"], "1-3": ["great", "funny", "promise", "password", "admit", "reporter", "spare", "expensive", "travel", "generate", "trailer", "regulate", "unreliable", "interviewer", "journalism", "physicist", "headline", "sculpture", "experiment", "satellite"], "1-4": ["selfie", "active", "friendly", "moped", "raised", "retouch", "freezing", "solar", "comment", "photo", "engineer", "off-road", "recovered", "instruction", "unforgettable", "photography", "support", "media", "broadcast", "award"], "2-1": ["coach", "lens", "kind", "offer", "awful", "calm", "sensible", "useful", "blogger", "colorful", "earning", "pottery", "mountain", "embarrassed", "scientist", "device", "newscaster", "archaeological", "exclusive", "biologist"], "2-2": ["agree", "radio", "train", "easy", "drawing", "improve", "talented", "say", "handy", "original", "pleasant", "doctor", "delicious", "highlight", "favorite", "focus", "balloon", "round-trip", "fashion", "confident"], "2-3": ["ride", "ferry", "mood", "video", "tripod", "cable", "newspaper", "plastic", "invite", "creative", "pollution", "regret", "electricity", "develop", "prosthetic", "achieve", "tutorial", "photogenic", "discovery", "environment"], "2-4": ["tempted", "close-up", "well-made", "amazing", "patient", "quality", "throw", "social", "podcast", "account", "suggest", "chemist", "difference", "practice", "image", "instant", "healthcare", "entrepreneur", "sociable", "outdoors"], "3-1": ["master", "trust", "huge", "rise", "ship", "quiet", "abstract", "tabloid", "viral", "source", "journey", "refuse", "exciting", "graffiti", "network", "pop-up", "impractical", "innovative", "traditional", "uncomfortable"], "3-2": ["trash", "cheap", "slow", "trip", "product", "bullying", "subway", "energy", "trolley", "print", "hands-on", "save", "interviewee", "code", "sleep", "installation", "enthusiastic", "investigate", "vibrant", "invention"], "3-3": ["blog", "brave", "cheer", "culture", "check", "release", "stressful", "profile", "modeling", "campaign", "recycle", "explain", "enjoyable", "residential", "inexpensive", "selfie-stick", "determined", "world", "must-see", "reliable"], "3-4": ["advise", "wireless", "delighted", "curious", "fit", "chill", "remote", "boring", "goal", "inventor", "hard-working", "generous", "graphic", "update", "exhausted", "comfortable", "privacy", "encourage", "practical", "society"]}, "T": {"1-1": {"items": [[1.0, 8.191], [28.191, 35.645], [55.645, 62.687], [82.687, 89.636], [109.636, 117.132], [137.132, 144.854], [164.854, 172.356], [192.356, 199.526], [219.526, 227.219], [247.219, 254.76], [274.76, 282.723], [302.723, 310.106], [330.106, 337.859], [357.859, 366.131], [386.131, 394.063], [414.063, 421.693], [441.693, 450.302], [470.302, 478.047], [498.047, 505.998], [525.998, 534.035]], "check": 554.035, "checkCountdown": 565.219, "alarm": 585.219, "pens": 588.399, "end": 599.376}, "1-2": {"items": [[1.0, 8.172], [28.172, 35.152], [55.152, 62.245], [82.245, 89.278], [109.278, 116.613], [136.613, 144.009], [164.009, 171.675], [191.675, 198.927], [218.927, 226.111], [246.111, 252.953], [272.953, 280.182], [300.182, 307.641], [327.641, 335.221], [355.221, 362.856], [382.856, 391.167], [411.167, 418.887], [438.887, 446.606], [466.606, 474.479], [494.479, 502.353], [522.353, 530.167]], "check": 550.167, "checkCountdown": 561.351, "alarm": 581.351, "pens": 584.531, "end": 595.508}, "1-3": {"items": [[1.0, 8.13], [28.13, 35.001], [55.001, 62.426], [82.426, 90.023], [110.023, 117.4], [137.4, 144.77], [164.77, 172.371], [192.371, 200.181], [220.181, 227.445], [247.445, 255.008], [275.008, 282.352], [302.352, 309.958], [329.958, 337.902], [357.902, 365.349], [385.349, 393.278], [413.278, 421.267], [441.267, 449.183], [469.183, 476.955], [496.955, 505.402], [525.402, 533.102]], "check": 553.102, "checkCountdown": 564.286, "alarm": 584.286, "pens": 587.466, "end": 598.442}, "1-4": {"items": [[1.0, 8.453], [28.453, 35.742], [55.742, 63.134], [83.134, 90.308], [110.308, 117.698], [137.698, 145.249], [165.249, 173.092], [193.092, 200.444], [220.444, 227.849], [247.849, 255.126], [275.126, 282.485], [302.485, 309.981], [329.981, 337.412], [357.412, 365.221], [385.221, 393.266], [413.266, 421.292], [441.292, 449.187], [469.187, 476.773], [496.773, 504.474], [524.474, 531.904]], "check": 551.904, "checkCountdown": 563.087, "alarm": 583.087, "pens": 586.267, "end": 597.244}, "2-1": {"items": [[1.0, 8.206], [28.206, 35.656], [55.656, 62.86], [82.86, 89.898], [109.898, 117.18], [137.18, 144.413], [164.413, 172.307], [192.307, 199.67], [219.67, 227.06], [247.06, 254.36], [274.36, 281.618], [301.618, 308.92], [328.92, 336.441], [356.441, 364.38], [384.38, 392.649], [412.649, 420.464], [440.464, 448.611], [468.611, 476.949], [496.949, 505.154], [525.154, 533.046]], "check": 553.046, "checkCountdown": 564.229, "alarm": 584.229, "pens": 587.409, "end": 598.386}, "2-2": {"items": [[1.0, 8.098], [28.098, 35.364], [55.364, 62.538], [82.537, 89.571], [109.571, 117.03], [137.03, 144.626], [164.626, 172.322], [192.322, 199.335], [219.335, 226.492], [246.492, 254.034], [274.034, 281.382], [301.382, 308.715], [328.715, 336.53], [356.53, 364.06], [384.06, 391.764], [411.764, 419.501], [439.501, 447.266], [467.266, 475.015], [495.015, 502.594], [522.594, 530.044]], "check": 550.044, "checkCountdown": 561.227, "alarm": 581.227, "pens": 584.407, "end": 595.384}, "2-3": {"items": [[1.0, 8.036], [28.036, 35.117], [55.117, 62.114], [82.114, 89.229], [109.229, 116.76], [136.76, 143.812], [163.812, 171.729], [191.729, 199.107], [219.107, 226.371], [246.371, 253.853], [273.853, 281.364], [301.364, 308.771], [328.771, 336.631], [356.631, 363.928], [383.928, 391.738], [411.738, 419.377], [439.377, 447.434], [467.434, 475.314], [495.314, 503.209], [523.209, 531.232]], "check": 551.232, "checkCountdown": 562.415, "alarm": 582.415, "pens": 585.595, "end": 596.572}, "2-4": {"items": [[1.0, 8.21], [28.21, 35.4], [55.4, 62.968], [82.968, 90.75], [110.75, 118.078], [138.078, 145.508], [165.508, 173.004], [193.004, 200.483], [220.483, 228.15], [248.15, 255.501], [275.501, 283.174], [303.174, 310.452], [330.452, 338.051], [358.051, 365.664], [385.664, 393.12], [413.12, 420.695], [440.695, 448.44], [468.44, 476.49], [496.49, 504.101], [524.101, 531.922]], "check": 551.922, "checkCountdown": 563.105, "alarm": 583.105, "pens": 586.285, "end": 597.262}, "3-1": {"items": [[1.0, 8.479], [28.479, 35.703], [55.703, 63.286], [83.286, 90.617], [110.617, 117.822], [137.822, 144.863], [164.863, 172.947], [192.947, 200.391], [220.391, 227.669], [247.669, 255.035], [275.035, 282.353], [302.353, 310.017], [330.017, 337.597], [357.597, 364.996], [384.996, 392.678], [412.678, 420.236], [440.236, 448.479], [468.479, 476.192], [496.192, 503.789], [523.789, 531.571]], "check": 551.571, "checkCountdown": 562.754, "alarm": 582.754, "pens": 585.934, "end": 596.911}, "3-2": {"items": [[1.0, 8.484], [28.484, 35.324], [55.324, 62.638], [82.638, 89.459], [109.459, 116.763], [136.762, 144.068], [164.068, 171.666], [191.666, 198.822], [218.822, 226.07], [246.07, 253.021], [273.021, 280.709], [300.709, 307.991], [327.991, 335.986], [355.986, 363.146], [383.146, 390.619], [410.619, 418.813], [438.813, 447.653], [467.653, 475.529], [495.529, 503.291], [523.291, 530.831]], "check": 550.831, "checkCountdown": 562.014, "alarm": 582.014, "pens": 585.194, "end": 596.171}, "3-3": {"items": [[1.0, 8.091], [28.091, 35.069], [55.069, 62.117], [82.117, 89.201], [109.201, 116.203], [136.203, 143.843], [163.843, 171.525], [191.525, 198.767], [218.767, 226.143], [246.143, 253.896], [273.896, 281.305], [301.305, 308.778], [328.778, 336.549], [356.549, 364.197], [384.197, 392.88], [412.88, 420.919], [440.919, 448.639], [468.639, 476.205], [496.205, 504.069], [524.069, 531.453]], "check": 551.453, "checkCountdown": 562.637, "alarm": 582.637, "pens": 585.817, "end": 596.793}, "3-4": {"items": [[1.0, 8.49], [28.49, 36.063], [56.063, 63.623], [83.623, 91.147], [111.147, 118.313], [138.313, 145.382], [165.382, 172.856], [192.856, 200.146], [220.146, 227.122], [247.122, 254.514], [274.514, 282.495], [302.495, 309.955], [329.955, 337.336], [357.336, 364.426], [384.426, 392.324], [412.324, 419.931], [439.931, 447.683], [467.683, 475.82], [495.82, 503.319], [523.319, 530.975]], "check": 550.975, "checkCountdown": 562.159, "alarm": 582.159, "pens": 585.339, "end": 596.316}}};
+const SALT = '';
+const $ = id => document.getElementById(id);
+
+/* ---------- original cartoon bee (inline SVG) ---------- */
+const BEE = `<svg class="beesvg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<radialGradient id="bb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff3a8"/><stop offset=".45" stop-color="#ffcc2e"/><stop offset="1" stop-color="#e08600"/></radialGradient>
+<radialGradient id="bh" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff6b8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#e59400"/></radialGradient>
+<linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#bfe6ff" stop-opacity=".6"/></linearGradient>
+<clipPath id="bc"><ellipse cx="62" cy="70" rx="30" ry="25"/></clipPath>
+</defs>
+<ellipse class="shadow" cx="62" cy="112" rx="26" ry="5" fill="#5a3200"/>
+<g class="body">
+<g class="wing b"><ellipse cx="72" cy="38" rx="13" ry="22" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(20 72 38)"/></g>
+<path d="M88 72 l14 4 -13 6z" fill="#3a2410"/>
+<ellipse cx="62" cy="70" rx="30" ry="25" fill="url(#bb)"/>
+<g clip-path="url(#bc)" fill="#3a2410"><rect x="58" y="40" width="9" height="60" rx="4"/><rect x="74" y="40" width="9" height="60" rx="4"/></g>
+<ellipse cx="55" cy="58" rx="16" ry="7" fill="#fff" opacity=".35"/>
+<g class="wing"><ellipse cx="56" cy="36" rx="14" ry="24" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(-14 56 36)"/></g>
+<path d="M30 34 q-6 -16 -16 -16" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="18" r="4.5" fill="#3a2410"/>
+<path d="M40 32 q2 -17 -6 -22" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="10" r="4.5" fill="#3a2410"/>
+<circle cx="34" cy="62" r="23" fill="url(#bh)"/>
+<ellipse cx="28" cy="50" rx="9" ry="5" fill="#fff" opacity=".45"/>
+<g class="eye"><ellipse cx="26" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="27.6" cy="57.6" r="2" fill="#fff"/></g>
+<g class="eye"><ellipse cx="41" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="42.6" cy="57.6" r="2" fill="#fff"/></g>
+<ellipse cx="20" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/><ellipse cx="46" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/>
+<path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
+</g></svg>`;
+document.querySelectorAll('[data-bee]').forEach(el => { el.innerHTML = BEE; });
+
+const toast = msg => { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 2200); };
+
+/* ---------- copy practice link ---------- */
+const cp = $('copy');
+if (cp) cp.addEventListener('click', async () => {
+  const url = SHARE || location.href;
+  try { await navigator.clipboard.writeText(url); toast('คัดลอกลิงก์เรียบร้อยแล้ว'); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('คัดลอกลิงก์เรียบร้อยแล้ว'); } catch (e2) { prompt('คัดลอกลิงก์นี้', url); }
+    ta.remove();
+  }
+});
+
+/* ---------- crypto (compete mode) ---------- */
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+let KEY = null;
+async function deriveKey(pw) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: 150000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+}
+async function decryptFile(url) {
+  const buf = b64((await (await fetch(url, { cache: 'force-cache' })).text()).trim());
+  return crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, KEY, buf.slice(12));
+}
+const blobCache = {};
+async function audioURL(k) {
+  const [s, r] = k.split('-');
+  if (MODE !== 'compete') return s === 'x' ? 'x' + r + '.mp3' : 's' + s + 'r' + r + '.mp3';
+  if (!blobCache[k]) blobCache[k] = URL.createObjectURL(new Blob([await decryptFile('c' + s + 'r' + r + '.txt')], { type: 'audio/mpeg' }));
+  return blobCache[k];
+}
+
+/* ---------- player ---------- */
+const COUNT = 20;
+const au = $('au'), board = $('board'), timer = $('timer'), arc = $('arc');
+let rate = 1, set = '1', round = 1, reveal = false, dragging = false, lastKey = '', loadTok = 0;
+const key = () => set + '-' + round;
+const W = () => DATA.WORDS[key()] || [];
+const fmt = x => { x = Math.max(0, Math.floor(x || 0)); return Math.floor(x / 60) + ':' + String(x % 60).padStart(2, '0'); };
+const setsList = () => [...new Set(Object.keys(DATA.WORDS).map(k => k.split('-')[0]))];
+const roundsOf = s => Object.keys(DATA.WORDS).filter(k => k.split('-')[0] === s).map(k => +k.split('-')[1]).sort((a, b) => a - b);
+
+function buildPickers() {
+  const sl = $('sets'); sl.querySelectorAll('button').forEach(b => b.remove());
+  setsList().forEach(s => { const b = document.createElement('button'); b.className = 'chip'; b.dataset.s = s; b.textContent = s === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + s; sl.appendChild(b); });
+  const rl = $('rounds'); rl.querySelectorAll('button').forEach(b => b.remove());
+  roundsOf(set).forEach(r => { const b = document.createElement('button'); b.className = 'chip'; b.dataset.r = r; b.textContent = 'รอบที่ ' + r; rl.appendChild(b); });
+  sl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.s === set)));
+  rl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.r === round)));
+}
+function buildBoard() {
+  const w = W(); let html = '', row = [];
+  w.forEach((x, i) => {
+    row.push(`<button class="cell" data-i="${i}" aria-label="ข้อ ${i + 1}"><span class="hex"><b>${i + 1}</b>${reveal ? `<i>${x}</i>` : ''}</span></button>`);
+    if (row.length === 5 || i === w.length - 1) { const r = html.split('class="row').length - 1; html += `<div class="row${r % 2 ? ' odd' : ''}">${row.join('')}</div>`; row = []; }
+  });
+  board.innerHTML = html;
+}
+function where(t) {
+  const d = DATA.T[key()]; if (!d) return { i: -1, phase: 'ready' };
+  const tl = d.items, n = tl.length;
+  if (t >= d.pens) return { i: n, phase: 'pens' };
+  if (t >= d.alarm) return { i: n, phase: 'alarm' };
+  if (t >= d.checkCountdown) return { i: n, phase: 'checkwrite', left: COUNT - (t - d.checkCountdown) };
+  if (t >= d.check) return { i: n, phase: 'check' };
+  if (t < tl[0][0] - 0.05) return { i: -1, phase: 'ready' };
+  for (let i = n - 1; i >= 0; i--) if (t >= tl[i][0] - 0.05) {
+    if (t < tl[i][1]) return { i, phase: 'listen' };
+    return { i, phase: 'write', left: Math.max(0, COUNT - (t - tl[i][1])) };
+  }
+  return { i: -1, phase: 'ready' };
+}
+function render() {
+  const n = W().length, t = au.currentTime || 0, s = where(t);
+  const timed = s.phase === 'write' || s.phase === 'checkwrite';
+  const hot = timed && s.left <= 5 && s.left > 0;
+  let frac = 1; if (timed) frac = Math.max(0, s.left / COUNT); if (s.phase === 'alarm' || s.phase === 'pens') frac = 0;
+  arc.setAttribute('stroke-dashoffset', String(100 - frac * 100));
+  if (!dragging) $('seek').value = au.duration ? Math.round(t / au.duration * 1000) : 0;
+  $('time').textContent = fmt(t) + ' / ' + fmt(au.duration);
+  const k = [key(), s.i, s.phase, hot, reveal, au.paused, timed ? Math.ceil(s.left) : ''].join('|');
+  if (k === lastKey) return; lastKey = k;
+  const end = s.i === n, chk = s.phase === 'check' || s.phase === 'checkwrite', stop = s.phase === 'alarm' || s.phase === 'pens';
+  $('n').textContent = chk ? 'ตรวจ' : end ? 'หมด' : s.i >= 0 ? s.i + 1 : 'พร้อม';
+  timer.classList.toggle('small', chk || end);
+  timer.classList.toggle('ready', !chk && !end && s.i < 0);
+  $('lbl').textContent = end ? 'ครบ ' + n + ' ข้อ' : s.i < 0 && !chk ? 'สถานะ' : 'ข้อที่';
+  $('of').textContent = end ? (stop ? 'เวลา' : 'คำตอบ') : 'จาก ' + n;
+  timer.classList.toggle('hot', hot || stop);
+  arc.setAttribute('stroke', hot || stop ? 'url(#gHot)' : chk ? 'url(#gSky)' : 'url(#gHoney)');
+  $('face').setAttribute('fill', hot || stop ? 'url(#gFaceHot)' : 'url(#gFace)');
+  const ph = $('phase');
+  ph.className = 'phase' + ({ listen: ' listen', write: hot ? ' hot' : ' write', check: ' check', checkwrite: hot ? ' hot' : ' check', alarm: ' stop', pens: ' stop' }[s.phase] || '');
+  ph.textContent = { ready: au.paused ? 'กดปุ่ม “เริ่ม” เพื่อเล่นเสียง' : 'เตรียมพร้อม', listen: 'ฟังคำศัพท์', write: hot ? 'ใกล้หมดเวลา' : 'เขียนคำตอบ',
+    check: 'ตรวจทานคำตอบอีกครั้ง', checkwrite: hot ? 'ใกล้หมดเวลา' : 'ตรวจทานคำตอบ', alarm: 'หมดเวลา', pens: 'กรุณาวางปากกาและเตรียมส่งกระดาษคำตอบ' }[s.phase];
+  $('secs').innerHTML = timed ? Math.ceil(s.left) + '<small>วินาที</small>' : s.phase === 'check' ? '20<small>วินาที</small>' : '';
+  const wEl = $('word'), word = s.i >= 0 && s.i < n ? W()[s.i] : '';
+  wEl.classList.toggle('hide', !reveal || !word);
+  wEl.textContent = end ? (set === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + set) + ' · รอบที่ ' + round : reveal ? word : (s.i >= 0 ? 'ซ่อนคำศัพท์' : '');
+  board.querySelectorAll('.cell').forEach((el, i) => { el.classList.toggle('done', i < s.i); el.classList.toggle('now', i === s.i); el.classList.toggle('hot', i === s.i && hot); });
+}
+function loop() { render(); requestAnimationFrame(loop); }
+function setPlayLabel() { $('play').textContent = au.paused ? (au.currentTime > 0.5 ? '▶ เล่นต่อ' : '▶ เริ่ม') : '❚❚ หยุด'; }
+async function load(s, r) {
+  set = String(s); const rs = roundsOf(set); round = rs.includes(+r) ? +r : rs[0]; lastKey = '';
+  buildPickers(); buildBoard(); au.pause(); setPlayLabel();
+  const tok = ++loadTok;
+  try { const u = await audioURL(key()); if (tok !== loadTok) return; au.src = u; au.load(); au.defaultPlaybackRate = rate; au.playbackRate = rate; }
+  catch (e) { toast('โหลดเสียงไม่สำเร็จ'); }
+  setPlayLabel();
+  try { localStorage.setItem(KP + '-sr', key()); } catch (e) {}
+}
+function go(i) {
+  const d = DATA.T[key()]; if (!d) return; const n = d.items.length;
+  au.currentTime = i >= n ? d.check : Math.max(0, d.items[Math.max(0, i)][0] - 0.3); lastKey = '';
+  if (au.paused) au.play().catch(() => {});
+}
+const current = () => where(au.currentTime || 0).i;
+function setRate(v) {
+  rate = v; au.defaultPlaybackRate = v; au.playbackRate = v;
+  document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === v)));
+  try { localStorage.setItem(KP + '-rate', v); } catch (e) {}
+}
+function start() {
+  $('play').addEventListener('click', () => { au.paused ? au.play().catch(() => {}) : au.pause(); });
+  $('prev').addEventListener('click', () => go(Math.min(W().length - 1, current() - 1)));
+  $('next').addEventListener('click', () => go(current() + 1));
+  $('reveal').addEventListener('click', () => { reveal = !reveal; $('reveal').setAttribute('aria-pressed', String(reveal)); $('reveal').textContent = reveal ? 'ซ่อนคำศัพท์' : 'แสดงคำศัพท์'; buildBoard(); lastKey = ''; });
+  $('full').addEventListener('click', () => { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {} });
+  $('sets').addEventListener('click', e => { const b = e.target.closest('button'); if (b) load(b.dataset.s, round); });
+  $('rounds').addEventListener('click', e => { const b = e.target.closest('button'); if (b) load(set, +b.dataset.r); });
+  board.addEventListener('click', e => { const b = e.target.closest('.cell'); if (b) go(+b.dataset.i); });
+  const seek = $('seek');
+  seek.addEventListener('input', () => { dragging = true; if (au.duration) au.currentTime = seek.value / 1000 * au.duration; });
+  seek.addEventListener('change', () => { dragging = false; });
+  ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
+  au.addEventListener('loadedmetadata', () => { au.playbackRate = rate; });
+  $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
+  try { const r = +localStorage.getItem(KP + '-rate'); if ([0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(r)) setRate(r); } catch (e) {}
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space') { e.preventDefault(); $('play').click(); }
+    else if (e.key === 'ArrowRight') $('next').click();
+    else if (e.key === 'ArrowLeft') $('prev').click();
+    else if (e.key === 's' || e.key === 'S') $('reveal').click();
+    else if (e.key === 'f' || e.key === 'F') $('full').click();
+  });
+  let saved = '1-1'; try { saved = localStorage.getItem(KP + '-sr') || '1-1'; } catch (e) {}
+  if (!DATA.WORDS[saved]) saved = '1-1';
+  const [s0, r0] = saved.split('-'); load(s0, +r0); loop();
+}
+
+if (MODE === 'compete') {
+  const lock = $('lock'), form = $('lockform'), card = $('lockcard');
+  async function unlock(pw, silent) {
+    try {
+      KEY = await deriveKey(pw);
+      DATA = JSON.parse(new TextDecoder().decode(await decryptFile('data.txt')));
+      try { sessionStorage.setItem(KP + '-pw', pw); } catch (e) {}
+      lock.hidden = true; start(); return true;
+    } catch (e) {
+      KEY = null;
+      if (!silent) { $('lockerr').textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง'; card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); }
+      return false;
+    }
+  }
+  form.addEventListener('submit', async e => { e.preventDefault(); $('lockerr').textContent = 'กำลังตรวจสอบ…'; await unlock($('pw').value.trim()); });
+  let pw0 = null; try { pw0 = sessionStorage.getItem(KP + '-pw'); } catch (e) {}
+  if (pw0) unlock(pw0, true); else $('pw').focus();
+} else start();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ชุดสำหรับฝึกซ้อม ม.2 · Spelling Bee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Prompt:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#1f9d55;
+  --honey:#ffc531;--honey2:#ffdd6e;--amber:#f59e0b;--brown:#7a4a12;--ink:#2b1d0e;--mute:#7a6650;
+  --coral:#ef4444;--sky:#0ea5e9;
+  --bg1:#fff8df;--bg2:#ffe7a1;--card:rgba(255,255,255,.78);--cardline:rgba(180,120,20,.18);--text:#2b1d0e;--soft:#7a6650;
+  --hexline:rgba(214,150,20,.10);
+  color-scheme:light;
+}
+body.compete{
+  --bg1:#1d1638;--bg2:#2e1f55;--card:rgba(255,255,255,.07);--cardline:rgba(255,205,80,.28);--text:#fff6dc;--soft:#cdbfa0;
+  --hexline:rgba(255,197,49,.08);color-scheme:dark;
+}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;color:var(--text);font:17px/1.5 Prompt,"Noto Sans Thai",system-ui,sans-serif;overflow-x:clip;
+  background:
+    radial-gradient(900px 500px at 85% -10%,rgba(255,255,255,.65),transparent 60%),
+    radial-gradient(700px 520px at -10% 110%,rgba(255,197,49,.35),transparent 60%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  background-attachment:fixed}
+body.compete{background:
+    radial-gradient(800px 420px at 50% -8%,rgba(255,205,80,.28),transparent 65%),
+    radial-gradient(600px 480px at 100% 100%,rgba(140,90,255,.25),transparent 60%),
+    linear-gradient(170deg,var(--bg1),var(--bg2));background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23d6961a' stroke-opacity='.13' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-size:56px 97px}
+body.compete::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='97' viewBox='0 0 56 97'%3E%3Cpath d='M28 0 56 16v33L28 65 0 49V16zM28 65v32' fill='none' stroke='%23ffc531' stroke-opacity='.09' stroke-width='1.5'/%3E%3C/svg%3E")}
+main,header,footer,.lock{position:relative;z-index:1}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.en{font-family:Fredoka,Prompt,system-ui,sans-serif}
+
+/* ---------- header ---------- */
+header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px max(3.5vw,14px) 6px}
+.brand{display:flex;align-items:center;gap:12px;margin-right:auto}
+.brand .mini{width:62px;height:62px;flex:none}
+.word-mark{display:grid;line-height:1}
+.word-mark b{font:700 clamp(26px,3.4vw,40px)/1 Fredoka,Prompt,sans-serif;letter-spacing:.5px;
+  background:linear-gradient(180deg,#fff3b0 0%,#ffc531 45%,#f08a00 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 2px 0 #9a5a07) drop-shadow(0 4px 0 #6b3d05) drop-shadow(0 8px 10px rgba(80,40,0,.3))}
+.word-mark small{font-size:14px;color:var(--soft);margin-top:10px;font-weight:500}
+.badge{position:relative;display:grid;place-items:center;width:64px;height:58px;flex:none;
+  clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);
+  background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
+  color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
+  background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
+body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
+.pill3d{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;
+  color:var(--ink);background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 8px 16px rgba(120,70,0,.12);transition:transform .12s,box-shadow .12s}
+.pill3d:hover{transform:translateY(-1px)}
+.pill3d:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 3px 8px rgba(120,70,0,.12)}
+body.compete .pill3d{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.35)}
+
+/* ---------- pickers ---------- */
+.pickers{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding:8px max(3.5vw,14px) 4px}
+.grp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.grp > span{font-size:14px;color:var(--soft);margin-right:2px}
+.chip{min-height:42px;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff3d1);box-shadow:0 3px 0 #e6c26a,0 6px 12px rgba(120,70,0,.08);transition:transform .12s}
+.chip:active{transform:translateY(2px)}
+.chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00,0 8px 16px rgba(245,158,11,.35)}
+body.compete .chip{color:#fff6dc;background:rgba(255,255,255,.08);box-shadow:0 3px 0 rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,205,80,.25)}
+body.compete .chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #8a5600,0 8px 18px rgba(255,190,40,.35)}
+.chip.x{font-style:normal}
+
+/* ---------- stage ---------- */
+.stage{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.15fr);gap:clamp(14px,2.6vw,36px);align-items:center;padding:10px max(3.5vw,14px) 12px}
+.left{display:flex;align-items:center;gap:clamp(12px,2.4vw,30px)}
+.timer{position:relative;width:clamp(190px,25vw,300px);aspect-ratio:1/1.06;flex:none}
+.timer > svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.timer .track{stroke:rgba(214,150,20,.18)}
+body.compete .timer .track{stroke:rgba(255,255,255,.12)}
+.timer .bar{transition:stroke .25s}
+.timer .face{position:absolute;inset:16%;display:grid;place-content:center;text-align:center;line-height:1}
+.timer .lbl{font-size:clamp(14px,1.6vw,18px);color:#7a4a12;font-weight:600}
+.timer .n{font:700 clamp(64px,10vw,128px)/1 Fredoka,Prompt,sans-serif;color:#fff;
+  text-shadow:0 3px 0 #c77800,0 6px 0 #8f5300,0 10px 18px rgba(80,40,0,.35)}
+.timer .of{font-size:clamp(13px,1.4vw,16px);color:#7a4a12;font-weight:600;margin-top:4px}
+.timer.small .n{font-size:clamp(34px,5vw,60px)}
+.timer.ready .n{font-size:clamp(28px,3.6vw,46px);margin:6px 0}
+.timer.hot .n{text-shadow:0 3px 0 #b91c1c,0 6px 0 #7f1d1d,0 10px 18px rgba(127,29,29,.35)}
+.timer .bee{position:absolute;width:40%;right:-16%;top:-14%;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(80,40,0,.25))}
+.status{display:grid;gap:8px;padding:clamp(14px,2vw,22px);border-radius:24px;background:var(--card);border:1px solid var(--cardline);
+  box-shadow:0 12px 30px rgba(120,70,0,.12);backdrop-filter:blur(6px);min-width:0;flex:1}
+body.compete .status{box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.phase{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.9vw,21px);
+  background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.08)}
+body.compete .phase{background:rgba(255,255,255,.12);color:var(--text)}
+.phase.listen{background:linear-gradient(180deg,#ffe58a,#ffc531);color:#3b2200;box-shadow:0 3px 0 #b06e00}
+.phase.write{background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 70%,#fff),var(--acc));color:#fff;box-shadow:0 3px 0 color-mix(in srgb,var(--acc) 60%,#000)}
+.phase.check{background:linear-gradient(180deg,#7dd3fc,#0ea5e9);color:#fff;box-shadow:0 3px 0 #0369a1}
+.phase.hot,.phase.stop{background:linear-gradient(180deg,#fca5a5,#ef4444);color:#fff;box-shadow:0 3px 0 #991b1b}
+.phase.hot{animation:pulse .5s ease-in-out infinite alternate}
+.secs{font:700 clamp(46px,7vw,86px)/1.02 Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+.secs small{font:600 .34em Prompt,sans-serif;color:var(--soft);margin-left:6px}
+.word{font:600 clamp(26px,3.8vw,46px)/1.1 Fredoka,Prompt,sans-serif;min-height:1.1em;overflow-wrap:anywhere;color:var(--brown)}
+body.compete .word{color:#ffd76a}
+.word.hide{color:var(--soft);font:400 clamp(15px,1.7vw,19px) Prompt,sans-serif}
+
+/* ---------- honeycomb board ---------- */
+.board{--w:clamp(52px,6.6vw,92px);--g:6px;display:grid;justify-content:center;padding-bottom:calc(var(--w)*.2)}
+.row{display:flex;gap:var(--g)}
+.row + .row{margin-top:calc(var(--w) * -0.2887 + var(--g) * .6)}
+.row.odd{margin-left:calc(var(--w) / 2 + var(--g) / 2)}
+.cell{width:var(--w);aspect-ratio:.866/1;padding:0;filter:drop-shadow(0 5px 0 #d89a1a) drop-shadow(0 9px 10px rgba(120,70,0,.18));transition:transform .2s,filter .2s}
+body.compete .cell{filter:drop-shadow(0 5px 0 rgba(0,0,0,.55)) drop-shadow(0 9px 12px rgba(0,0,0,.35))}
+.hex{position:relative;display:grid;place-content:center;text-align:center;width:100%;height:100%;
+  clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);
+  background:linear-gradient(165deg,#fffdf2 0%,#fff3c6 55%,#ffe08a 100%)}
+.hex::before{content:"";position:absolute;inset:7%;clip-path:inherit;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0) 60%);opacity:.55}
+body.compete .hex{background:linear-gradient(165deg,#3c2d6b 0%,#2b2050 60%,#221944 100%)}
+body.compete .hex::before{opacity:.12}
+.hex b{position:relative;font:700 clamp(18px,2.2vw,30px)/1 Fredoka,Prompt,sans-serif;color:#7a4a12}
+body.compete .hex b{color:#ffe6a0}
+.hex i{position:relative;font:500 11px/1.1 Fredoka,Prompt,sans-serif;font-style:normal;color:#7a4a12;max-width:calc(var(--w) * .8);overflow-wrap:anywhere;margin-top:2px}
+body.compete .hex i{color:#ffe6a0}
+.cell.done .hex{background:linear-gradient(165deg,#ffe58a 0%,#ffc531 55%,#f2a300 100%)}
+.cell.done .hex b{color:#6b3d05}
+.cell.done .hex::after{content:"✓";position:absolute;top:14%;left:50%;transform:translateX(-50%);font:700 12px Fredoka;color:#6b3d05;opacity:.8}
+.cell.done .hex b{margin-top:8px}
+.cell.now{transform:translateY(-6px) scale(1.12);z-index:2;filter:drop-shadow(0 6px 0 #a8620a) drop-shadow(0 0 18px rgba(255,200,60,.9))}
+.cell.now .hex{background:radial-gradient(circle at 35% 25%,#fffbe0 0%,#ffd84d 40%,#f59e0b 100%)}
+.cell.now .hex b{color:#3b2200;font-size:clamp(22px,2.6vw,34px)}
+.cell.now.hot{filter:drop-shadow(0 6px 0 #7f1d1d) drop-shadow(0 0 18px rgba(239,68,68,.9))}
+.cell.now.hot .hex{background:radial-gradient(circle at 35% 25%,#ffe4e4 0%,#f87171 45%,#dc2626 100%)}
+.cell.now.hot .hex b{color:#fff}
+
+/* ---------- controls ---------- */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:6px max(3.5vw,14px) 10px}
+.btn{min-height:50px;min-width:50px;padding:0 18px;border-radius:14px;font-weight:600;color:var(--ink);
+  background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 10px 18px rgba(120,70,0,.12);transition:transform .1s,box-shadow .1s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 4px 8px rgba(120,70,0,.12)}
+.btn.main{min-width:150px;color:#3b2200;font-size:18px;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #a8620a,0 12px 22px rgba(245,158,11,.35)}
+.btn.main:active{box-shadow:0 2px 0 #a8620a,0 5px 10px rgba(245,158,11,.3)}
+body.compete .btn{color:#fff6dc;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.06));box-shadow:0 4px 0 rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,205,80,.3)}
+body.compete .btn.main{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #8a5600,0 12px 24px rgba(255,190,40,.3)}
+.speed{display:flex;flex-wrap:wrap;align-items:center;gap:4px;padding:5px 6px;border-radius:14px;background:var(--card);border:1px solid var(--cardline)}
+.speed span{font-size:14px;color:var(--soft);padding:0 6px}
+.speed button{min-height:40px;min-width:50px;padding:0 10px;border-radius:10px;font:600 15px Fredoka,Prompt,sans-serif}
+.speed button[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531);box-shadow:0 2px 0 #b06e00}
+.seekrow{display:flex;align-items:center;gap:12px;padding:0 max(3.5vw,14px) 10px}
+.seek{flex:1;height:40px;accent-color:#f59e0b}
+.time{color:var(--soft);font:500 15px Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
+footer{padding:4px max(3.5vw,14px) 26px;color:var(--soft);font-size:14px}
+kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;background:var(--card);border:1px solid var(--cardline);color:var(--text)}
+
+/* ---------- toast / lock ---------- */
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;z-index:9;padding:12px 20px;border-radius:14px;
+  background:#2b1d0e;color:#fff6dc;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:.25s;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.lock{position:fixed;inset:0;z-index:8;display:grid;place-items:center;padding:20px;
+  background:radial-gradient(700px 400px at 50% 0%,rgba(255,205,80,.25),transparent 70%),linear-gradient(170deg,#1d1638,#2e1f55)}
+.lock[hidden]{display:none}
+.lockcard{width:min(440px,100%);text-align:center;padding:28px 26px 26px;border-radius:28px;background:rgba(255,255,255,.07);border:1px solid rgba(255,205,80,.3);box-shadow:0 30px 60px rgba(0,0,0,.45);color:#fff6dc}
+.lockcard .bigbee{width:150px;height:150px;margin:-90px auto 4px}
+.lockcard h2{margin:6px 0 2px;font:700 28px/1.2 Fredoka,Prompt,sans-serif;color:#ffd76a}
+.lockcard p{margin:0 0 16px;color:#cdbfa0;font-size:15px}
+.lockcard form{display:grid;gap:12px}
+.lockcard input{min-height:52px;border-radius:14px;border:2px solid rgba(255,205,80,.45);background:rgba(0,0,0,.25);color:#fff;font:600 18px Fredoka,Prompt,sans-serif;text-align:center;letter-spacing:.06em;padding:0 14px}
+.lockcard .err{min-height:1.4em;color:#fca5a5;font-size:14px}
+.lockcard.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+@keyframes pulse{to{transform:scale(1.06)}}
+
+/* ---------- bee mascot animation ---------- */
+.beesvg .wing{transform-box:fill-box;transform-origin:50% 100%;animation:flap .12s ease-in-out infinite alternate}
+.beesvg .wing.b{animation-delay:.06s}
+.beesvg .body{animation:bob 2.4s ease-in-out infinite}
+.beesvg .shadow{animation:shad 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.beesvg .eye{animation:blink 4.2s infinite;transform-box:fill-box;transform-origin:center}
+@keyframes flap{from{transform:scaleY(1) rotate(-6deg)}to{transform:scaleY(.55) rotate(6deg)}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes shad{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(.8);opacity:.15}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+.timer.hot .bee .body{animation:buzz .12s linear infinite}
+@keyframes buzz{0%{transform:translate(0,0)}25%{transform:translate(2px,-1px)}50%{transform:translate(-2px,1px)}75%{transform:translate(1px,2px)}100%{transform:translate(0,0)}}
+.flyer{position:fixed;width:46px;z-index:0;pointer-events:none;opacity:.85;animation:fly 26s linear infinite}
+.flyer.two{width:34px;animation-duration:34s;animation-delay:-12s;opacity:.6}
+@keyframes fly{0%{transform:translate(-10vw,70vh) rotate(8deg)}25%{transform:translate(30vw,52vh) rotate(-6deg)}50%{transform:translate(65vw,78vh) rotate(6deg)}75%{transform:translate(95vw,48vh) rotate(-8deg)}100%{transform:translate(112vw,66vh) rotate(4deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (max-width:980px){.stage{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:620px){.left{flex-direction:column;align-items:stretch}.timer{margin:0 auto}.board{--w:clamp(46px,15vw,72px)}.row.odd{margin-left:calc(var(--w)/2)}.brand .mini{width:48px;height:48px}}
+</style>
+</head>
+<body class="practice">
+<div class="flyer" data-bee></div><div class="flyer two" data-bee></div>
+
+<header>
+  <div class="brand">
+    <div class="mini" data-bee></div>
+    <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
+  </div>
+  <span class="badge-wrap"><span class="badge">ม.2</span></span>
+  <span class="mode">ชุดสำหรับฝึกซ้อม ม.2</span>
+  <button class="pill3d" id="copy" type="button">คัดลอกลิงก์สำหรับนักเรียน</button>
+  
+</header>
+
+<main>
+<div class="pickers">
+  <div class="grp" id="sets" role="group" aria-label="เลือกชุด"><span>เลือกชุด</span></div>
+  <div class="grp" id="rounds" role="group" aria-label="เลือกรอบ"><span>เลือกรอบ</span></div>
+</div>
+
+<section class="stage">
+  <div class="left">
+    <div class="timer" id="timer">
+      <svg viewBox="0 0 100 106" aria-hidden="true">
+        <defs>
+          <linearGradient id="gHoney" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe58a"/><stop offset=".5" stop-color="#ffc531"/><stop offset="1" stop-color="#f08a00"/></linearGradient>
+          <linearGradient id="gHot" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fca5a5"/><stop offset="1" stop-color="#dc2626"/></linearGradient>
+          <linearGradient id="gSky" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="1" stop-color="#0284c7"/></linearGradient>
+          <radialGradient id="gFace" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#fff6c2"/><stop offset=".45" stop-color="#ffd24a"/><stop offset="1" stop-color="#e48a00"/></radialGradient>
+          <radialGradient id="gFaceHot" cx=".38" cy=".3" r=".8"><stop offset="0" stop-color="#ffe1e1"/><stop offset=".45" stop-color="#f87171"/><stop offset="1" stop-color="#b91c1c"/></radialGradient>
+        </defs>
+        <polygon points="50,13 83.5,32 83.5,74 50,93 16.5,74 16.5,32" fill="#a8620a" transform="translate(0,4.5)" opacity=".7"/>
+        <polygon id="face" points="50,13 83.5,32 83.5,74 50,93 16.5,74 16.5,32" fill="url(#gFace)"/>
+        <polygon points="50,17 78,33 50,30 22,33" fill="#fff" opacity=".35"/>
+        <path class="track" d="M50 3 L93 27.5 L93 78.5 L50 103 L7 78.5 L7 27.5 Z" fill="none" stroke-width="5" stroke-linejoin="round"/>
+        <path class="bar" id="arc" d="M50 3 L93 27.5 L93 78.5 L50 103 L7 78.5 L7 27.5 Z" fill="none" stroke="url(#gHoney)" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="0"/>
+      </svg>
+      <div class="face"><div class="lbl" id="lbl">ข้อที่</div><div class="n" id="n">พร้อม</div><div class="of" id="of">จาก 20</div></div>
+      <div class="bee" data-bee></div>
+    </div>
+    <div class="status" aria-live="polite">
+      <span class="phase" id="phase">กดปุ่ม “เริ่ม” เพื่อเล่นเสียง</span>
+      <div class="secs" id="secs"></div>
+      <div class="word hide" id="word">ซ่อนคำศัพท์</div>
+    </div>
+  </div>
+  <div class="board" id="board"></div>
+</section>
+
+<div class="controls">
+  <button class="btn main" id="play">▶ เริ่ม</button>
+  <button class="btn" id="prev">◀ ข้อก่อนหน้า</button>
+  <button class="btn" id="next">ข้อถัดไป ▶</button>
+  <button class="btn" id="reveal" aria-pressed="false">แสดงคำศัพท์</button>
+  <button class="btn" id="full">เต็มหน้าจอ</button>
+  <div class="speed" id="speed" role="group" aria-label="ความเร็วเสียง"><span>ความเร็ว</span><button data-v="0.75" aria-pressed="false">0.75×</button><button data-v="0.85" aria-pressed="false">0.85×</button><button data-v="0.95" aria-pressed="false">0.95×</button><button data-v="1" aria-pressed="true">1.0×</button><button data-v="1.25" aria-pressed="false">1.25×</button><button data-v="1.5" aria-pressed="false">1.5×</button></div>
+</div>
+<div class="seekrow"><input class="seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="ตำแหน่งเสียง"><span class="time" id="time">0:00 / 0:00</span></div>
+</main>
+<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วเสียงมีผลต่อเวลานับถอยหลังด้วย (0.75× ≈ 27 วินาที) · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น</footer>
+
+
+<div class="toast" id="toast" role="status"></div>
+<audio id="au" preload="auto"></audio>
+
+<script>
+{
+const MODE = 'practice', KP = 'bee-m2-p', SHARE = '';
+let DATA = {"WORDS": {"1-1": ["rice", "snake", "coat", "pencil", "hat", "shirt", "butter", "Ireland", "parrot", "tight", "casual", "careful", "marine", "comfortable", "toothpaste", "waterfall", "receptionist", "classmate", "technology", "engineer"], "1-2": ["clock", "goat", "music", "warm", "cloud", "shoe", "window", "horn", "feather", "T-shirt", "shell", "long", "mushroom", "American", "Nigeria", "enormous", "habitat", "autograph", "passport", "freezing"], "1-3": ["cool", "draw", "nervous", "noise", "frost", "skirt", "library", "spring", "grass", "German", "climb", "Mexico", "civics", "suitcase", "sunscreen", "mustache", "champion", "expensive", "spotted", "special"], "1-4": ["beard", "artist", "sweater", "roof", "wing", "nephew", "cousin", "teacher", "French", "thick", "herb", "history", "Moroccan", "campaign", "uncomfortable", "physics", "nightmare", "salesperson", "guidebook", "takeout"], "2-1": ["milk", "snow", "top", "math", "cake", "fall", "sauce", "hero", "safe", "amazing", "Canada", "beef", "journalist", "frosty", "biology", "population", "thunderstorm", "dentist", "photographer", "Spanish"], "2-2": ["cold", "chair", "hot", "cheap", "drama", "windy", "niece", "Irish", "destroy", "rude", "sandal", "pilot", "penguin", "colorful", "talented", "citizen", "electricity", "generous", "accountant", "Canadian"], "2-3": ["egg", "dry", "noodle", "brother", "foggy", "Japan", "pasta", "actor", "waiter", "kind", "scarf", "melon", "Australia", "rhinoceros", "Mexican", "delicious", "parachute", "geography", "striped", "toothbrush"], "2-4": ["jacket", "mother", "grape", "smell", "yogurt", "singer", "summer", "chicken", "notebook", "hoodie", "hotel", "onion", "chocolate", "crocodile", "campsite", "mechanic", "daughter", "computer", "Morocco", "peacock"], "3-1": ["dress", "fin", "thin", "sleep", "short", "book", "trendy", "cheese", "tooth", "mix", "uniform", "brave", "Brazil", "businessman", "sunbathe", "scientist", "dictionary", "grandmother", "excited", "chemistry"], "3-2": ["fog", "tall", "wet", "art", "backpack", "doctor", "shark", "turtle", "nurse", "lazy", "Turkey", "spice", "hairbrush", "dangerous", "superstar", "careless", "Japanese", "unfriendly", "lawyer", "poisonous"], "3-3": ["ice", "oil", "icy", "beak", "France", "sister", "banana", "winter", "subject", "cloudy", "father", "yard", "Australian", "Nigerian", "grandfather", "dressy", "Chinese", "apartment", "friendly", "Brazilian"], "3-4": ["parent", "baggy", "gym", "British", "dolphin", "uncle", "Spain", "chef", "China", "boot", "sunny", "polite", "businesswoman", "normal", "old-fashioned", "Turkish", "neighbor", "unkind", "sharpener", "museum"], "x-1": ["last", "hunting", "sneaker", "junior", "desert", "grade", "law", "average", "train", "shower", "design"]}, "T": {"1-1": {"items": [[1.0, 8.162], [28.162, 35.378], [55.378, 62.802], [82.802, 89.992], [109.992, 117.127], [137.127, 144.367], [164.367, 171.46], [191.46, 198.975], [218.975, 226.182], [246.182, 253.171], [273.171, 280.558], [300.558, 307.936], [327.936, 335.463], [355.463, 362.878], [382.878, 390.785], [410.785, 418.705], [438.705, 447.034], [467.034, 474.856], [494.856, 502.867], [522.867, 530.308]], "check": 550.308, "checkCountdown": 561.491, "alarm": 581.491, "pens": 584.671, "end": 595.648}, "1-2": {"items": [[1.0, 8.334], [28.334, 35.276], [55.276, 62.748], [82.748, 90.063], [110.063, 117.443], [137.443, 144.794], [164.794, 172.339], [192.339, 199.482], [219.482, 226.63], [246.63, 254.493], [274.493, 281.885], [301.885, 309.363], [329.363, 337.074], [357.074, 364.832], [384.832, 392.911], [412.911, 420.996], [440.996, 449.038], [469.038, 476.946], [496.946, 504.914], [524.914, 532.478]], "check": 552.478, "checkCountdown": 563.661, "alarm": 583.661, "pens": 586.841, "end": 597.818}, "1-3": {"items": [[1.0, 7.892], [27.892, 34.85], [54.85, 62.421], [82.421, 89.806], [109.806, 117.347], [137.347, 144.684], [164.684, 172.656], [192.656, 199.973], [219.973, 227.368], [247.368, 254.657], [274.657, 282.017], [302.017, 309.763], [329.763, 337.43], [357.43, 365.198], [385.198, 393.154], [413.154, 421.23], [441.23, 449.034], [469.034, 476.994], [496.994, 504.711], [524.711, 532.103]], "check": 552.103, "checkCountdown": 563.286, "alarm": 583.286, "pens": 586.466, "end": 597.443}, "1-4": {"items": [[1.0, 7.938], [27.938, 35.178], [55.178, 62.633], [82.633, 89.8], [109.8, 117.061], [137.061, 144.42], [164.42, 171.803], [191.803, 198.873], [218.873, 226.216], [246.216, 253.485], [273.485, 280.633], [300.633, 308.157], [328.157, 335.916], [355.916, 363.696], [383.696, 391.881], [411.881, 419.526], [439.526, 447.556], [467.556, 475.87], [495.87, 503.774], [523.774, 530.886]], "check": 550.886, "checkCountdown": 562.069, "alarm": 582.069, "pens": 585.249, "end": 596.226}, "2-1": {"items": [[1.0, 8.03], [28.03, 35.362], [55.362, 62.324], [82.324, 89.46], [109.46, 116.581], [136.581, 143.715], [163.715, 171.343], [191.343, 198.481], [218.481, 225.858], [245.858, 253.453], [273.453, 280.873], [300.873, 308.006], [328.006, 335.785], [355.785, 363.261], [383.261, 391.147], [411.147, 419.418], [439.418, 447.479], [467.479, 475.198], [495.198, 503.271], [523.271, 530.817]], "check": 550.817, "checkCountdown": 562.0, "alarm": 582.0, "pens": 585.18, "end": 596.157}, "2-2": {"items": [[1.0, 8.116], [28.116, 35.139], [55.139, 62.231], [82.231, 89.18], [109.18, 116.437], [136.438, 143.794], [163.794, 171.313], [191.313, 198.601], [218.601, 226.213], [246.213, 253.395], [273.395, 280.974], [300.974, 308.349], [328.349, 335.922], [355.922, 363.601], [383.601, 391.42], [411.42, 419.302], [439.302, 447.412], [467.412, 475.144], [495.144, 503.122], [523.122, 530.73]], "check": 550.73, "checkCountdown": 561.913, "alarm": 581.913, "pens": 585.093, "end": 596.07}, "2-3": {"items": [[1.0, 7.805], [27.805, 35.01], [55.01, 62.109], [82.109, 89.288], [109.288, 116.763], [136.763, 144.26], [164.26, 171.804], [191.804, 198.96], [218.96, 226.137], [246.137, 253.331], [273.331, 280.881], [300.881, 308.107], [328.107, 336.111], [356.111, 364.213], [384.213, 392.038], [412.038, 419.982], [439.982, 447.837], [467.837, 475.934], [495.934, 503.56], [523.56, 531.104]], "check": 551.104, "checkCountdown": 562.287, "alarm": 582.287, "pens": 585.467, "end": 596.444}, "2-4": {"items": [[1.0, 8.473], [28.473, 35.663], [55.663, 62.705], [82.705, 90.038], [110.038, 117.619], [137.619, 144.896], [164.896, 172.372], [192.372, 199.493], [219.493, 227.058], [247.058, 254.126], [274.126, 281.539], [301.539, 308.799], [328.799, 336.16], [356.16, 363.947], [383.947, 391.884], [411.884, 419.824], [439.824, 447.361], [467.361, 475.073], [495.073, 502.821], [522.821, 530.141]], "check": 550.141, "checkCountdown": 561.325, "alarm": 581.325, "pens": 584.505, "end": 595.481}, "3-1": {"items": [[1.0, 8.087], [28.087, 35.147], [55.147, 62.097], [82.097, 89.309], [109.309, 116.745], [136.745, 143.692], [163.692, 171.325], [191.325, 198.608], [218.608, 225.704], [245.704, 252.967], [272.967, 280.964], [300.964, 308.482], [328.482, 336.106], [356.106, 364.043], [384.043, 392.157], [412.157, 420.414], [440.414, 448.627], [468.627, 476.706], [496.706, 504.491], [524.491, 531.9]], "check": 551.9, "checkCountdown": 563.084, "alarm": 583.084, "pens": 586.264, "end": 597.241}, "3-2": {"items": [[1.0, 8.383], [28.383, 35.378], [55.378, 62.516], [82.516, 89.578], [109.578, 117.181], [137.181, 144.662], [164.662, 172.219], [192.219, 199.222], [219.222, 226.637], [246.637, 253.928], [273.928, 281.211], [301.211, 308.861], [328.861, 336.539], [356.539, 364.249], [384.249, 392.505], [412.505, 420.423], [440.423, 448.68], [468.68, 476.501], [496.501, 503.898], [523.898, 531.638]], "check": 551.638, "checkCountdown": 562.821, "alarm": 582.821, "pens": 586.001, "end": 596.978}, "3-3": {"items": [[1.0, 8.001], [28.001, 34.899], [54.899, 62.024], [82.024, 88.927], [108.927, 116.581], [136.581, 143.965], [163.965, 171.418], [191.418, 198.591], [218.591, 226.167], [246.167, 253.4], [273.4, 280.783], [300.783, 308.045], [328.045, 336.001], [356.001, 363.893], [383.893, 391.78], [411.78, 419.307], [439.307, 447.289], [467.289, 475.75], [495.75, 503.12], [523.12, 530.709]], "check": 550.709, "checkCountdown": 561.892, "alarm": 581.892, "pens": 585.072, "end": 596.049}, "3-4": {"items": [[1.0, 8.325], [28.325, 35.449], [55.449, 62.619], [82.619, 89.922], [109.922, 117.374], [137.374, 144.44], [164.44, 172.303], [192.303, 199.732], [219.732, 227.084], [247.084, 254.12], [274.12, 281.448], [301.448, 308.989], [328.989, 337.009], [357.009, 364.347], [384.347, 393.03], [413.03, 420.905], [440.905, 448.594], [468.594, 476.555], [496.555, 504.288], [524.288, 531.836]], "check": 551.836, "checkCountdown": 563.019, "alarm": 583.019, "pens": 586.199, "end": 597.176}, "x-1": {"items": [[1.0, 8.385], [28.385, 35.622], [55.622, 63.005], [83.005, 90.354], [110.354, 117.737], [137.737, 144.896], [164.896, 172.256], [192.256, 199.619], [219.619, 226.899], [246.899, 254.286], [274.286, 281.819]], "check": 301.819, "checkCountdown": 313.002, "alarm": 333.002, "pens": 336.182, "end": 347.159}}};
+const SALT = '';
+const $ = id => document.getElementById(id);
+
+/* ---------- original cartoon bee (inline SVG) ---------- */
+const BEE = `<svg class="beesvg" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+<radialGradient id="bb" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff3a8"/><stop offset=".45" stop-color="#ffcc2e"/><stop offset="1" stop-color="#e08600"/></radialGradient>
+<radialGradient id="bh" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff6b8"/><stop offset=".5" stop-color="#ffd23a"/><stop offset="1" stop-color="#e59400"/></radialGradient>
+<linearGradient id="bw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".95"/><stop offset="1" stop-color="#bfe6ff" stop-opacity=".6"/></linearGradient>
+<clipPath id="bc"><ellipse cx="62" cy="70" rx="30" ry="25"/></clipPath>
+</defs>
+<ellipse class="shadow" cx="62" cy="112" rx="26" ry="5" fill="#5a3200"/>
+<g class="body">
+<g class="wing b"><ellipse cx="72" cy="38" rx="13" ry="22" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(20 72 38)"/></g>
+<path d="M88 72 l14 4 -13 6z" fill="#3a2410"/>
+<ellipse cx="62" cy="70" rx="30" ry="25" fill="url(#bb)"/>
+<g clip-path="url(#bc)" fill="#3a2410"><rect x="58" y="40" width="9" height="60" rx="4"/><rect x="74" y="40" width="9" height="60" rx="4"/></g>
+<ellipse cx="55" cy="58" rx="16" ry="7" fill="#fff" opacity=".35"/>
+<g class="wing"><ellipse cx="56" cy="36" rx="14" ry="24" fill="url(#bw)" stroke="#9ccfee" stroke-width="1.5" transform="rotate(-14 56 36)"/></g>
+<path d="M30 34 q-6 -16 -16 -16" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="14" cy="18" r="4.5" fill="#3a2410"/>
+<path d="M40 32 q2 -17 -6 -22" fill="none" stroke="#3a2410" stroke-width="3" stroke-linecap="round"/><circle cx="34" cy="10" r="4.5" fill="#3a2410"/>
+<circle cx="34" cy="62" r="23" fill="url(#bh)"/>
+<ellipse cx="28" cy="50" rx="9" ry="5" fill="#fff" opacity=".45"/>
+<g class="eye"><ellipse cx="26" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="27.6" cy="57.6" r="2" fill="#fff"/></g>
+<g class="eye"><ellipse cx="41" cy="60" rx="5" ry="6.5" fill="#2b1a0c"/><circle cx="42.6" cy="57.6" r="2" fill="#fff"/></g>
+<ellipse cx="20" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/><ellipse cx="46" cy="70" rx="4.5" ry="3" fill="#ff8a8a" opacity=".7"/>
+<path d="M27 71 q6 6 12 0" fill="none" stroke="#2b1a0c" stroke-width="2.6" stroke-linecap="round"/>
+</g></svg>`;
+document.querySelectorAll('[data-bee]').forEach(el => { el.innerHTML = BEE; });
+
+const toast = msg => { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove('show'), 2200); };
+
+/* ---------- copy practice link ---------- */
+const cp = $('copy');
+if (cp) cp.addEventListener('click', async () => {
+  const url = SHARE || location.href;
+  try { await navigator.clipboard.writeText(url); toast('คัดลอกลิงก์เรียบร้อยแล้ว'); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('คัดลอกลิงก์เรียบร้อยแล้ว'); } catch (e2) { prompt('คัดลอกลิงก์นี้', url); }
+    ta.remove();
+  }
+});
+
+/* ---------- crypto (compete mode) ---------- */
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+let KEY = null;
+async function deriveKey(pw) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pw), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({ name: 'PBKDF2', salt: b64(SALT), iterations: 150000, hash: 'SHA-256' }, base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+}
+async function decryptFile(url) {
+  const buf = b64((await (await fetch(url, { cache: 'force-cache' })).text()).trim());
+  return crypto.subtle.decrypt({ name: 'AES-GCM', iv: buf.slice(0, 12) }, KEY, buf.slice(12));
+}
+const blobCache = {};
+async function audioURL(k) {
+  const [s, r] = k.split('-');
+  if (MODE !== 'compete') return s === 'x' ? 'x' + r + '.mp3' : 's' + s + 'r' + r + '.mp3';
+  if (!blobCache[k]) blobCache[k] = URL.createObjectURL(new Blob([await decryptFile('c' + s + 'r' + r + '.txt')], { type: 'audio/mpeg' }));
+  return blobCache[k];
+}
+
+/* ---------- player ---------- */
+const COUNT = 20;
+const au = $('au'), board = $('board'), timer = $('timer'), arc = $('arc');
+let rate = 1, set = '1', round = 1, reveal = false, dragging = false, lastKey = '', loadTok = 0;
+const key = () => set + '-' + round;
+const W = () => DATA.WORDS[key()] || [];
+const fmt = x => { x = Math.max(0, Math.floor(x || 0)); return Math.floor(x / 60) + ':' + String(x % 60).padStart(2, '0'); };
+const setsList = () => [...new Set(Object.keys(DATA.WORDS).map(k => k.split('-')[0]))];
+const roundsOf = s => Object.keys(DATA.WORDS).filter(k => k.split('-')[0] === s).map(k => +k.split('-')[1]).sort((a, b) => a - b);
+
+function buildPickers() {
+  const sl = $('sets'); sl.querySelectorAll('button').forEach(b => b.remove());
+  setsList().forEach(s => { const b = document.createElement('button'); b.className = 'chip'; b.dataset.s = s; b.textContent = s === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + s; sl.appendChild(b); });
+  const rl = $('rounds'); rl.querySelectorAll('button').forEach(b => b.remove());
+  roundsOf(set).forEach(r => { const b = document.createElement('button'); b.className = 'chip'; b.dataset.r = r; b.textContent = 'รอบที่ ' + r; rl.appendChild(b); });
+  sl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.s === set)));
+  rl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.r === round)));
+}
+function buildBoard() {
+  const w = W(); let html = '', row = [];
+  w.forEach((x, i) => {
+    row.push(`<button class="cell" data-i="${i}" aria-label="ข้อ ${i + 1}"><span class="hex"><b>${i + 1}</b>${reveal ? `<i>${x}</i>` : ''}</span></button>`);
+    if (row.length === 5 || i === w.length - 1) { const r = html.split('class="row').length - 1; html += `<div class="row${r % 2 ? ' odd' : ''}">${row.join('')}</div>`; row = []; }
+  });
+  board.innerHTML = html;
+}
+function where(t) {
+  const d = DATA.T[key()]; if (!d) return { i: -1, phase: 'ready' };
+  const tl = d.items, n = tl.length;
+  if (t >= d.pens) return { i: n, phase: 'pens' };
+  if (t >= d.alarm) return { i: n, phase: 'alarm' };
+  if (t >= d.checkCountdown) return { i: n, phase: 'checkwrite', left: COUNT - (t - d.checkCountdown) };
+  if (t >= d.check) return { i: n, phase: 'check' };
+  if (t < tl[0][0] - 0.05) return { i: -1, phase: 'ready' };
+  for (let i = n - 1; i >= 0; i--) if (t >= tl[i][0] - 0.05) {
+    if (t < tl[i][1]) return { i, phase: 'listen' };
+    return { i, phase: 'write', left: Math.max(0, COUNT - (t - tl[i][1])) };
+  }
+  return { i: -1, phase: 'ready' };
+}
+function render() {
+  const n = W().length, t = au.currentTime || 0, s = where(t);
+  const timed = s.phase === 'write' || s.phase === 'checkwrite';
+  const hot = timed && s.left <= 5 && s.left > 0;
+  let frac = 1; if (timed) frac = Math.max(0, s.left / COUNT); if (s.phase === 'alarm' || s.phase === 'pens') frac = 0;
+  arc.setAttribute('stroke-dashoffset', String(100 - frac * 100));
+  if (!dragging) $('seek').value = au.duration ? Math.round(t / au.duration * 1000) : 0;
+  $('time').textContent = fmt(t) + ' / ' + fmt(au.duration);
+  const k = [key(), s.i, s.phase, hot, reveal, au.paused, timed ? Math.ceil(s.left) : ''].join('|');
+  if (k === lastKey) return; lastKey = k;
+  const end = s.i === n, chk = s.phase === 'check' || s.phase === 'checkwrite', stop = s.phase === 'alarm' || s.phase === 'pens';
+  $('n').textContent = chk ? 'ตรวจ' : end ? 'หมด' : s.i >= 0 ? s.i + 1 : 'พร้อม';
+  timer.classList.toggle('small', chk || end);
+  timer.classList.toggle('ready', !chk && !end && s.i < 0);
+  $('lbl').textContent = end ? 'ครบ ' + n + ' ข้อ' : s.i < 0 && !chk ? 'สถานะ' : 'ข้อที่';
+  $('of').textContent = end ? (stop ? 'เวลา' : 'คำตอบ') : 'จาก ' + n;
+  timer.classList.toggle('hot', hot || stop);
+  arc.setAttribute('stroke', hot || stop ? 'url(#gHot)' : chk ? 'url(#gSky)' : 'url(#gHoney)');
+  $('face').setAttribute('fill', hot || stop ? 'url(#gFaceHot)' : 'url(#gFace)');
+  const ph = $('phase');
+  ph.className = 'phase' + ({ listen: ' listen', write: hot ? ' hot' : ' write', check: ' check', checkwrite: hot ? ' hot' : ' check', alarm: ' stop', pens: ' stop' }[s.phase] || '');
+  ph.textContent = { ready: au.paused ? 'กดปุ่ม “เริ่ม” เพื่อเล่นเสียง' : 'เตรียมพร้อม', listen: 'ฟังคำศัพท์', write: hot ? 'ใกล้หมดเวลา' : 'เขียนคำตอบ',
+    check: 'ตรวจทานคำตอบอีกครั้ง', checkwrite: hot ? 'ใกล้หมดเวลา' : 'ตรวจทานคำตอบ', alarm: 'หมดเวลา', pens: 'กรุณาวางปากกาและเตรียมส่งกระดาษคำตอบ' }[s.phase];
+  $('secs').innerHTML = timed ? Math.ceil(s.left) + '<small>วินาที</small>' : s.phase === 'check' ? '20<small>วินาที</small>' : '';
+  const wEl = $('word'), word = s.i >= 0 && s.i < n ? W()[s.i] : '';
+  wEl.classList.toggle('hide', !reveal || !word);
+  wEl.textContent = end ? (set === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + set) + ' · รอบที่ ' + round : reveal ? word : (s.i >= 0 ? 'ซ่อนคำศัพท์' : '');
+  board.querySelectorAll('.cell').forEach((el, i) => { el.classList.toggle('done', i < s.i); el.classList.toggle('now', i === s.i); el.classList.toggle('hot', i === s.i && hot); });
+}
+function loop() { render(); requestAnimationFrame(loop); }
+function setPlayLabel() { $('play').textContent = au.paused ? (au.currentTime > 0.5 ? '▶ เล่นต่อ' : '▶ เริ่ม') : '❚❚ หยุด'; }
+async function load(s, r) {
+  set = String(s); const rs = roundsOf(set); round = rs.includes(+r) ? +r : rs[0]; lastKey = '';
+  buildPickers(); buildBoard(); au.pause(); setPlayLabel();
+  const tok = ++loadTok;
+  try { const u = await audioURL(key()); if (tok !== loadTok) return; au.src = u; au.load(); au.defaultPlaybackRate = rate; au.playbackRate = rate; }
+  catch (e) { toast('โหลดเสียงไม่สำเร็จ'); }
+  setPlayLabel();
+  try { localStorage.setItem(KP + '-sr', key()); } catch (e) {}
+}
+function go(i) {
+  const d = DATA.T[key()]; if (!d) return; const n = d.items.length;
+  au.currentTime = i >= n ? d.check : Math.max(0, d.items[Math.max(0, i)][0] - 0.3); lastKey = '';
+  if (au.paused) au.play().catch(() => {});
+}
+const current = () => where(au.currentTime || 0).i;
+function setRate(v) {
+  rate = v; au.defaultPlaybackRate = v; au.playbackRate = v;
+  document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === v)));
+  try { localStorage.setItem(KP + '-rate', v); } catch (e) {}
+}
+function start() {
+  $('play').addEventListener('click', () => { au.paused ? au.play().catch(() => {}) : au.pause(); });
+  $('prev').addEventListener('click', () => go(Math.min(W().length - 1, current() - 1)));
+  $('next').addEventListener('click', () => go(current() + 1));
+  $('reveal').addEventListener('click', () => { reveal = !reveal; $('reveal').setAttribute('aria-pressed', String(reveal)); $('reveal').textContent = reveal ? 'ซ่อนคำศัพท์' : 'แสดงคำศัพท์'; buildBoard(); lastKey = ''; });
+  $('full').addEventListener('click', () => { try { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen().catch(() => {}); } catch (e) {} });
+  $('sets').addEventListener('click', e => { const b = e.target.closest('button'); if (b) load(b.dataset.s, round); });
+  $('rounds').addEventListener('click', e => { const b = e.target.closest('button'); if (b) load(set, +b.dataset.r); });
+  board.addEventListener('click', e => { const b = e.target.closest('.cell'); if (b) go(+b.dataset.i); });
+  const seek = $('seek');
+  seek.addEventListener('input', () => { dragging = true; if (au.duration) au.currentTime = seek.value / 1000 * au.duration; });
+  seek.addEventListener('change', () => { dragging = false; });
+  ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
+  au.addEventListener('loadedmetadata', () => { au.playbackRate = rate; });
+  $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
+  try { const r = +localStorage.getItem(KP + '-rate'); if ([0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(r)) setRate(r); } catch (e) {}
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT') return;
+    if (e.code === 'Space') { e.preventDefault(); $('play').click(); }
+    else if (e.key === 'ArrowRight') $('next').click();
+    else if (e.key === 'ArrowLeft') $('prev').click();
+    else if (e.key === 's' || e.key === 'S') $('reveal').click();
+    else if (e.key === 'f' || e.key === 'F') $('full').click();
+  });
+  let saved = '1-1'; try { saved = localStorage.getItem(KP + '-sr') || '1-1'; } catch (e) {}
+  if (!DATA.WORDS[saved]) saved = '1-1';
+  const [s0, r0] = saved.split('-'); load(s0, +r0); loop();
+}
+
+if (MODE === 'compete') {
+  const lock = $('lock'), form = $('lockform'), card = $('lockcard');
+  async function unlock(pw, silent) {
+    try {
+      KEY = await deriveKey(pw);
+      DATA = JSON.parse(new TextDecoder().decode(await decryptFile('data.txt')));
+      try { sessionStorage.setItem(KP + '-pw', pw); } catch (e) {}
+      lock.hidden = true; start(); return true;
+    } catch (e) {
+      KEY = null;
+      if (!silent) { $('lockerr').textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง'; card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); }
+      return false;
+    }
+  }
+  form.addEventListener('submit', async e => { e.preventDefault(); $('lockerr').textContent = 'กำลังตรวจสอบ…'; await unlock($('pw').value.trim()); });
+  let pw0 = null; try { pw0 = sessionStorage.getItem(KP + '-pw'); } catch (e) {}
+  if (pw0) unlock(pw0, true); else $('pw').focus();
+} else start();
+}
+</script>
+</body>
+</html>
