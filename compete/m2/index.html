@@ -444,14 +444,16 @@ function slowWord() {
   const d = DATA.T[key()]; if (!d) return; const t = au.currentTime;
   for (let i = 0; i < d.items.length; i++) {
     const [a, b] = d.items[i]; if (t < a) return; if (t > b) continue;
-    for (const [ws, we] of wordWins(i)) if (t >= ws - 0.03 && t < we - 0.12) { startClip(i, we); return; }
+    for (const [ws, we] of wordWins(i)) if (t >= ws - LEAD && t < we - 0.12) { startClip(i, we, ws - t); return; }
     return;
   }
 }
-function startClip(i, we) {
-  clipOn = { we }; au.pause();
-  wa.src = clipURLs[i]; wa.defaultPlaybackRate = rate; wa.playbackRate = rate;
-  wa.play().catch(() => endClip(true)); setPlayLabel();
+const LEAD = 0.45; /* stop the main track while it is still in the silence before the word (iOS stops a little late) */
+function startClip(i, we, wait) {
+  au.pause(); const tok = clipOn = { we };
+  wa.src = clipURLs[i]; wa.defaultPlaybackRate = rate; wa.playbackRate = rate; wa.load();
+  setTimeout(() => { if (clipOn !== tok) return; wa.play().catch(() => endClip(true)); }, Math.max(0, (wait - 0.08) * 1000));
+  setPlayLabel();
 }
 function endClip(resume) {
   if (!clipOn) return; const we = clipOn.we; clipOn = null;
