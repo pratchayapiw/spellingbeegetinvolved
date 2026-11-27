@@ -54,6 +54,8 @@ header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
   color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 .badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
+.mode.ttl{background:rgba(255,255,255,.12);color:#fff6dc;box-shadow:none;font-weight:500}
+.mode[hidden]{display:none}
 .mode{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
   background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
 body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
@@ -203,7 +205,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
     <div class="word-mark"><b>Spelling Bee</b><small>การแข่งขันสะกดคำศัพท์ภาษาอังกฤษ</small></div>
   </div>
   <span class="badge-wrap"><span class="badge">ม.4</span></span>
-  <span class="mode">ชุดสำหรับฝึกซ้อม ม.4</span>
+  <span class="mode">ชุดสำหรับฝึกซ้อม ม.4</span><span class="mode ttl" id="ttl" hidden></span>
   <button class="pill3d" id="copy" type="button">คัดลอกลิงก์สำหรับนักเรียน</button>
   
 </header>
@@ -253,7 +255,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 </div>
 <div class="seekrow"><input class="seek" id="seek" type="range" min="0" max="1000" value="0" aria-label="ตำแหน่งเสียง"><span class="time" id="time">0:00 / 0:00</span></div>
 </main>
-<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วเสียงมีผลต่อเวลานับถอยหลังด้วย (0.75× ≈ 27 วินาที) · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น</footer>
+<footer>แป้นพิมพ์ลัด: <kbd>Space</kbd> เล่น/หยุด · <kbd>←</kbd> <kbd>→</kbd> ข้อก่อน/ถัดไป · <kbd>S</kbd> แสดง/ซ่อนคำ · <kbd>F</kbd> เต็มหน้าจอ · การปรับความเร็วมีผลเฉพาะเสียงอ่านคำศัพท์ เวลาเขียนคำตอบคงที่ 20 วินาที · คลิกหมายเลขข้อเพื่อไปยังข้อนั้น</footer>
 
 
 <div class="toast" id="toast" role="status"></div>
@@ -402,13 +404,24 @@ function render() {
   wEl.textContent = end ? (set === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + set) + ' · รอบที่ ' + round : reveal ? word : (s.i >= 0 ? 'ซ่อนคำศัพท์' : ''); fitWord();
   board.querySelectorAll('.cell').forEach((el, i) => { el.classList.toggle('done', i < s.i); el.classList.toggle('now', i === s.i); el.classList.toggle('hot', i === s.i && hot); });
 }
-function loop() { render(); requestAnimationFrame(loop); }
+const ND = [0.879, 0.811, 0.887, 0.863, 1.056, 0.966, 1.179, 0.91, 0.991, 0.952, 1.1, 1.07, 1.122, 1.031, 1.259, 1.29, 1.344, 1.241, 1.217, 1.007];
+function inWord(t) {
+  const d = DATA && DATA.T[key()]; if (!d) return false;
+  for (let i = 0; i < d.items.length; i++) {
+    const [a, b] = d.items[i]; if (t < a - 0.02) return false; if (t > b + 0.02) continue;
+    const wd = (b - a - 5 - (ND[i] || 1)) / 2, w1 = a + (ND[i] || 1) + 2;
+    return (t >= w1 - 0.06 && t <= w1 + wd + 0.06) || t >= b - wd - 0.06;
+  }
+  return false;
+}
+function applyRate() { const r = rate !== 1 && inWord(au.currentTime || 0) ? rate : 1; if (au.playbackRate !== r) au.playbackRate = r; }
+function loop() { applyRate(); render(); requestAnimationFrame(loop); }
 function setPlayLabel() { $('play').textContent = au.paused ? (au.currentTime > 0.5 ? '▶ เล่นต่อ' : '▶ เริ่ม') : '❚❚ หยุด'; }
 async function load(s, r) {
   set = String(s); const rs = roundsOf(set); round = rs.includes(+r) ? +r : rs[0]; lastKey = '';
   buildPickers(); buildBoard(); au.pause(); setPlayLabel();
   const tok = ++loadTok;
-  try { const u = await audioURL(key()); if (tok !== loadTok) return; au.src = u; au.load(); au.defaultPlaybackRate = rate; au.playbackRate = rate; }
+  try { const u = await audioURL(key()); if (tok !== loadTok) return; au.src = u; au.load(); }
   catch (e) { toast('โหลดเสียงไม่สำเร็จ'); }
   setPlayLabel();
   try { localStorage.setItem(KP + '-sr', key()); } catch (e) {}
@@ -420,7 +433,7 @@ function go(i) {
 }
 const current = () => where(au.currentTime || 0).i;
 function setRate(v) {
-  rate = v; au.defaultPlaybackRate = v; au.playbackRate = v;
+  rate = v; applyRate();
   document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === v)));
   try { localStorage.setItem(KP + '-rate', v); } catch (e) {}
 }
@@ -437,7 +450,7 @@ function start() {
   seek.addEventListener('input', () => { dragging = true; if (au.duration) au.currentTime = seek.value / 1000 * au.duration; });
   seek.addEventListener('change', () => { dragging = false; });
   ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
-  au.addEventListener('loadedmetadata', () => { au.playbackRate = rate; });
+  au.addEventListener('timeupdate', applyRate);
   $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
   try { const r = +localStorage.getItem(KP + '-rate'); if ([0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(r)) setRate(r); } catch (e) {}
   document.addEventListener('keydown', e => {
@@ -455,12 +468,25 @@ function start() {
 
 if (MODE === 'compete') {
   const lock = $('lock'), form = $('lockform'), card = $('lockcard');
+  const TTL = 60 * 60 * 1000, PK = KP + '-pw', EK = KP + '-exp';
+  const sg = k => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+  const sset = (k, v) => { try { sessionStorage.setItem(k, v); } catch (e) {} };
+  const sdel = k => { try { sessionStorage.removeItem(k); } catch (e) {} };
+  const expAt = () => +sg(EK) || 0;
+  function relockIfDue() {
+    const left = expAt() - Date.now(), b = $('ttl');
+    if (b && expAt()) { const m = Math.max(0, Math.ceil(left / 60000)); b.textContent = '🔓 ล็อกอัตโนมัติใน ' + m + ' นาที'; b.hidden = false; }
+    if (lock.hidden && left <= 0) {
+      if (!au.paused) { if (b) b.textContent = '🔒 ครบ 60 นาที จะล็อกเมื่อหยุดเสียง'; return; }
+      sdel(PK); sdel(EK); location.reload();
+    }
+  }
   async function unlock(pw, silent) {
     try {
       KEY = await deriveKey(pw);
       DATA = JSON.parse(new TextDecoder().decode(await decryptFile('data.txt')));
-      try { sessionStorage.setItem(KP + '-pw', pw); } catch (e) {}
-      lock.hidden = true; start(); return true;
+      sset(PK, pw); if (!silent || !expAt()) sset(EK, String(Date.now() + TTL));
+      lock.hidden = true; start(); relockIfDue(); setInterval(relockIfDue, 10000); au.addEventListener('pause', relockIfDue); return true;
     } catch (e) {
       KEY = null;
       if (!silent) { $('lockerr').textContent = 'รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง'; card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake'); }
@@ -468,8 +494,9 @@ if (MODE === 'compete') {
     }
   }
   form.addEventListener('submit', async e => { e.preventDefault(); $('lockerr').textContent = 'กำลังตรวจสอบ…'; await unlock($('pw').value.trim()); });
-  let pw0 = null; try { pw0 = sessionStorage.getItem(KP + '-pw'); } catch (e) {}
-  if (pw0) unlock(pw0, true); else $('pw').focus();
+  const pw0 = sg(PK);
+  if (pw0 && expAt() > Date.now()) unlock(pw0, true);
+  else { sdel(PK); sdel(EK); $('pw').focus(); }
 } else start();
 }
 </script>
