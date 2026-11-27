@@ -417,12 +417,52 @@ function inWord(t) {
   }
   return false;
 }
-function applyRate() { const r = rate !== 1 && inWord(au.currentTime || 0) ? rate : 1; if (au.playbackRate !== r) au.playbackRate = r; }
-function loop() { applyRate(); render(); requestAnimationFrame(loop); }
-function setPlayLabel() { $('play').textContent = au.paused ? (au.currentTime > 0.5 ? '▶ เล่นต่อ' : '▶ เริ่ม') : '❚❚ หยุด'; }
+/* slow/fast speed: each word is played from its own clip at the chosen speed while the main track waits,
+   so only the spoken word changes speed and every pause/countdown stays in real time */
+const wa = new Audio(); wa.preload = 'auto'; window.__wa = wa;
+const SILENT = 'data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjYwLjE2LjEwMAAAAAAAAAAAAAAA//NAxAAAAANIAAAAAExBTUUzLjEwMFVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80LEWwAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVVVMQU1FMy4xMDBVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVX/80DEpAAAA0gAAAAAVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsSjAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV//NCxKMAAANIAAAAAFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV';
+let clipURLs = null, clipKey = '', clipOn = null, waReady = false;
+async function loadClips(k) {
+  clipURLs = null; clipKey = k;
+  try {
+    const [s, r] = k.split('-'); let txt;
+    if (MODE === 'compete') txt = new TextDecoder().decode(await decryptFile('wc' + s + 'r' + r + '.txt'));
+    else txt = await (await fetch(s === 'x' ? 'wx' + r + '.txt' : 'ws' + s + 'r' + r + '.txt', { cache: 'force-cache' })).text();
+    if (clipKey !== k) return;
+    clipURLs = JSON.parse(txt).map(c => URL.createObjectURL(new Blob([b64(c)], { type: 'audio/mpeg' })));
+  } catch (e) { clipURLs = null; }
+}
+function wordWins(i) {
+  const [a, b] = DATA.T[key()].items[i], nd = ND[i] || 1, wd = (b - a - 5 - nd) / 2, w1 = a + nd + 2;
+  return [[w1, w1 + wd], [b - wd, b]];
+}
+function slowWord() {
+  if (rate === 1 || clipOn || au.paused || !clipURLs || !DATA) return;
+  const d = DATA.T[key()]; if (!d) return; const t = au.currentTime;
+  for (let i = 0; i < d.items.length; i++) {
+    const [a, b] = d.items[i]; if (t < a) return; if (t > b) continue;
+    for (const [ws, we] of wordWins(i)) if (t >= ws - 0.03 && t < we - 0.12) { startClip(i, we); return; }
+    return;
+  }
+}
+function startClip(i, we) {
+  clipOn = { we }; au.pause();
+  wa.src = clipURLs[i]; wa.defaultPlaybackRate = rate; wa.playbackRate = rate;
+  wa.play().catch(() => endClip(true)); setPlayLabel();
+}
+function endClip(resume) {
+  if (!clipOn) return; const we = clipOn.we; clipOn = null;
+  try { wa.pause(); } catch (e) {}
+  au.currentTime = we + 0.01; if (resume) au.play().catch(() => {}); setPlayLabel(); lastKey = '';
+}
+wa.addEventListener('ended', () => endClip(true));
+function pausePlayer() { if (clipOn) { clipOn = null; try { wa.pause(); } catch (e) {} setPlayLabel(); } else au.pause(); }
+function unlockClip() { if (waReady) return; waReady = true; try { wa.src = SILENT; const p = wa.play(); if (p) p.then(() => wa.pause()).catch(() => {}); } catch (e) {} }
+function loop() { slowWord(); render(); requestAnimationFrame(loop); }
+function setPlayLabel() { $('play').textContent = (au.paused && !clipOn) ? (au.currentTime > 0.5 ? '▶ เล่นต่อ' : '▶ เริ่ม') : '❚❚ หยุด'; }
 async function load(s, r) {
   set = String(s); const rs = roundsOf(set); round = rs.includes(+r) ? +r : rs[0]; lastKey = '';
-  buildPickers(); buildBoard(); au.pause(); setPlayLabel();
+  buildPickers(); buildBoard(); pausePlayer(); au.playbackRate = 1; setPlayLabel(); loadClips(key());
   const tok = ++loadTok;
   try { const u = await audioURL(key()); if (tok !== loadTok) return; au.src = u; au.load(); }
   catch (e) { toast('โหลดเสียงไม่สำเร็จ'); }
@@ -431,12 +471,13 @@ async function load(s, r) {
 }
 function go(i) {
   const d = DATA.T[key()]; if (!d) return; const n = d.items.length;
+  if (clipOn) { clipOn = null; try { wa.pause(); } catch (e) {} }
   au.currentTime = i >= n ? d.check : Math.max(0, d.items[Math.max(0, i)][0] - 0.3); lastKey = '';
   if (au.paused) au.play().catch(() => {});
 }
 const current = () => where(au.currentTime || 0).i;
 function setRate(v) {
-  rate = v; applyRate();
+  rate = v; au.playbackRate = 1; if (clipOn) wa.playbackRate = v;
   document.querySelectorAll('#speed button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.v === v)));
   try { localStorage.setItem(KP + '-rate', v); } catch (e) {}
 }
@@ -446,13 +487,13 @@ function setupBrief() {
   const mark = () => box.querySelectorAll('button').forEach(b => { const on = b.dataset.b === cur && !ba.paused; b.setAttribute('aria-pressed', String(on)); b.textContent = (b.dataset.b === 'th' ? 'ไทย' : 'English') + (on ? ' ■' : ''); });
   box.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return;
     if (cur === b.dataset.b && !ba.paused) { ba.pause(); ba.currentTime = 0; mark(); return; }
-    au.pause(); cur = b.dataset.b; ba.src = 'brief_' + cur + '.mp3'; ba.play().catch(() => toast('เล่นเสียงไม่สำเร็จ')); mark(); });
+    pausePlayer(); cur = b.dataset.b; ba.src = 'brief_' + cur + '.mp3'; ba.play().catch(() => toast('เล่นเสียงไม่สำเร็จ')); mark(); });
   ['play', 'pause', 'ended'].forEach(ev => ba.addEventListener(ev, mark));
   au.addEventListener('play', () => { if (!ba.paused) { ba.pause(); mark(); } });
 }
 function start() {
   setupBrief();
-  $('play').addEventListener('click', () => { au.paused ? au.play().catch(() => {}) : au.pause(); });
+  $('play').addEventListener('click', () => { unlockClip(); if (au.paused && !clipOn) au.play().catch(() => {}); else pausePlayer(); });
   $('prev').addEventListener('click', () => go(Math.min(W().length - 1, current() - 1)));
   $('next').addEventListener('click', () => go(current() + 1));
   $('reveal').addEventListener('click', () => { reveal = !reveal; $('reveal').setAttribute('aria-pressed', String(reveal)); $('reveal').textContent = reveal ? 'ซ่อนคำศัพท์' : 'แสดงคำศัพท์'; buildBoard(); lastKey = ''; });
@@ -461,10 +502,10 @@ function start() {
   $('rounds').addEventListener('click', e => { const b = e.target.closest('button'); if (b) load(set, +b.dataset.r); });
   board.addEventListener('click', e => { const b = e.target.closest('.cell'); if (b) go(+b.dataset.i); });
   const seek = $('seek');
-  seek.addEventListener('input', () => { dragging = true; if (au.duration) au.currentTime = seek.value / 1000 * au.duration; });
+  seek.addEventListener('input', () => { dragging = true; if (clipOn) { clipOn = null; try { wa.pause(); } catch (e) {} } if (au.duration) au.currentTime = seek.value / 1000 * au.duration; });
   seek.addEventListener('change', () => { dragging = false; });
   ['play', 'pause', 'loadedmetadata'].forEach(ev => au.addEventListener(ev, () => { setPlayLabel(); lastKey = ''; }));
-  au.addEventListener('timeupdate', applyRate);
+  au.addEventListener('timeupdate', slowWord);
   $('speed').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setRate(+b.dataset.v); });
   let rv0 = null; try { rv0 = localStorage.getItem(KP + '-rate'); } catch (e) {}
   if (rv0 !== null && [0.75, 0.85, 0.95, 1, 1.25, 1.5].includes(+rv0)) setRate(+rv0); else if (MODE === 'compete') setRate(0.85);
@@ -492,7 +533,7 @@ if (MODE === 'compete') {
     const left = expAt() - Date.now(), b = $('ttl');
     if (b && expAt()) { const m = Math.max(0, Math.ceil(left / 60000)); b.textContent = '🔓 ล็อกอัตโนมัติใน ' + m + ' นาที'; b.hidden = false; }
     if (lock.hidden && left <= 0) {
-      if (!au.paused) { if (b) b.textContent = '🔒 ครบ 60 นาที จะล็อกเมื่อหยุดเสียง'; return; }
+      if (!au.paused || clipOn) { if (b) b.textContent = '🔒 ครบ 60 นาที จะล็อกเมื่อหยุดเสียง'; return; }
       sdel(PK); sdel(EK); location.reload();
     }
   }
