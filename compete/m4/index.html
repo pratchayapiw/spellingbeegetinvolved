@@ -54,10 +54,10 @@ header{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding:14px
   background:linear-gradient(160deg,color-mix(in srgb,var(--acc) 55%,#fff),var(--acc) 55%,color-mix(in srgb,var(--acc) 70%,#000));
   color:#fff;font-weight:700;font-size:20px;text-shadow:0 2px 0 rgba(0,0,0,.25)}
 .badge-wrap{filter:drop-shadow(0 4px 0 color-mix(in srgb,var(--acc) 60%,#000)) drop-shadow(0 8px 10px rgba(0,0,0,.18))}
-.mode{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
+.mode{white-space:nowrap;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;font-weight:600;font-size:15px;
   background:linear-gradient(180deg,#e9fbe9,#bdf0c3);color:#14532d;box-shadow:0 3px 0 #7ccf8a,0 6px 14px rgba(0,0,0,.08)}
 body.compete .mode{background:linear-gradient(180deg,#ffe28a,#ffb300);color:#4a2700;box-shadow:0 3px 0 #b86d00,0 6px 16px rgba(255,180,0,.3)}
-.pill3d{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;
+.pill3d{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:14px;font-weight:600;font-size:15px;text-decoration:none;
   color:var(--ink);background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 8px 16px rgba(120,70,0,.12);transition:transform .12s,box-shadow .12s}
 .pill3d:hover{transform:translateY(-1px)}
 .pill3d:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 3px 8px rgba(120,70,0,.12)}
@@ -67,7 +67,7 @@ body.compete .pill3d{color:#fff6dc;background:linear-gradient(180deg,rgba(255,25
 .pickers{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding:8px max(3.5vw,14px) 4px}
 .grp{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .grp > span{font-size:14px;color:var(--soft);margin-right:2px}
-.chip{min-height:42px;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink);
+.chip{white-space:nowrap;min-height:42px;padding:0 16px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink);
   background:linear-gradient(180deg,#fff,#fff3d1);box-shadow:0 3px 0 #e6c26a,0 6px 12px rgba(120,70,0,.08);transition:transform .12s}
 .chip:active{transform:translateY(2px)}
 .chip[aria-pressed=true]{color:#3b2200;background:linear-gradient(180deg,#ffe58a,#ffc531 60%,#f5a300);box-shadow:0 3px 0 #b06e00,0 8px 16px rgba(245,158,11,.35)}
@@ -95,7 +95,7 @@ body.compete .timer .track{stroke:rgba(255,255,255,.12)}
 .status{display:grid;gap:8px;padding:clamp(14px,2vw,22px);border-radius:24px;background:var(--card);border:1px solid var(--cardline);
   box-shadow:0 12px 30px rgba(120,70,0,.12);backdrop-filter:blur(6px);min-width:0;flex:1}
 body.compete .status{box-shadow:0 12px 30px rgba(0,0,0,.35)}
-.phase{justify-self:start;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.9vw,21px);
+.phase{justify-self:start;max-width:100%;display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;font-weight:600;font-size:clamp(16px,1.9vw,21px);
   background:rgba(255,255,255,.8);color:var(--ink);box-shadow:0 3px 0 rgba(0,0,0,.08)}
 body.compete .phase{background:rgba(255,255,255,.12);color:var(--text)}
 .phase.listen{background:linear-gradient(180deg,#ffe58a,#ffc531);color:#3b2200;box-shadow:0 3px 0 #b06e00}
@@ -105,7 +105,7 @@ body.compete .phase{background:rgba(255,255,255,.12);color:var(--text)}
 .phase.hot{animation:pulse .5s ease-in-out infinite alternate}
 .secs{font:700 clamp(46px,7vw,86px)/1.02 Fredoka,Prompt,sans-serif;font-variant-numeric:tabular-nums}
 .secs small{font:600 .34em Prompt,sans-serif;color:var(--soft);margin-left:6px}
-.word{font:600 clamp(26px,3.8vw,46px)/1.1 Fredoka,Prompt,sans-serif;min-height:1.1em;overflow-wrap:anywhere;color:var(--brown)}
+.word{font:600 clamp(26px,3.8vw,46px)/1.1 Fredoka,Prompt,sans-serif;min-height:1.1em;white-space:nowrap;overflow:hidden;color:var(--brown)}
 body.compete .word{color:#ffd76a}
 .word.hide{color:var(--soft);font:400 clamp(15px,1.7vw,19px) Prompt,sans-serif}
 
@@ -124,7 +124,7 @@ body.compete .hex{background:linear-gradient(165deg,#3c2d6b 0%,#2b2050 60%,#2219
 body.compete .hex::before{opacity:.12}
 .hex b{position:relative;font:700 clamp(18px,2.2vw,30px)/1 Fredoka,Prompt,sans-serif;color:#7a4a12}
 body.compete .hex b{color:#ffe6a0}
-.hex i{position:relative;font:500 11px/1.1 Fredoka,Prompt,sans-serif;font-style:normal;color:#7a4a12;max-width:calc(var(--w) * .8);overflow-wrap:anywhere;margin-top:2px}
+.hex i{position:relative;font:500 11px/1.1 Fredoka,Prompt,sans-serif;font-style:normal;color:#7a4a12;white-space:nowrap;margin-top:2px}
 body.compete .hex i{color:#ffe6a0}
 .cell.done .hex{background:linear-gradient(165deg,#ffe58a 0%,#ffc531 55%,#f2a300 100%)}
 .cell.done .hex b{color:#6b3d05}
@@ -139,7 +139,7 @@ body.compete .hex i{color:#ffe6a0}
 
 /* ---------- controls ---------- */
 .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:6px max(3.5vw,14px) 10px}
-.btn{min-height:50px;min-width:50px;padding:0 18px;border-radius:14px;font-weight:600;color:var(--ink);
+.btn{white-space:nowrap;min-height:50px;min-width:50px;padding:0 18px;border-radius:14px;font-weight:600;color:var(--ink);
   background:linear-gradient(180deg,#fff,#fff1c9);box-shadow:0 4px 0 #e2b74d,0 10px 18px rgba(120,70,0,.12);transition:transform .1s,box-shadow .1s}
 .btn:active{transform:translateY(3px);box-shadow:0 1px 0 #e2b74d,0 4px 8px rgba(120,70,0,.12)}
 .btn.main{min-width:150px;color:#3b2200;font-size:18px;background:linear-gradient(180deg,#ffe58a,#ffc531 55%,#f59e0b);box-shadow:0 5px 0 #a8620a,0 12px 22px rgba(245,158,11,.35)}
@@ -266,7 +266,7 @@ kbd{font:600 13px Fredoka,Prompt,sans-serif;padding:1px 7px;border-radius:6px;ba
 {
 const MODE = 'compete', KP = 'bee-m4-c', SHARE = '';
 let DATA = {"WORDS":{},"T":{}};
-const SALT = 'mUg8VlLpuY4f9ap+awdR3w==';
+const SALT = 'nxQ7qRqUzVKzrtWr+hXFTg==';
 const $ = id => document.getElementById(id);
 
 /* ---------- original cartoon bee (inline SVG) ---------- */
@@ -347,13 +347,20 @@ function buildPickers() {
   sl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.s === set)));
   rl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.r === round)));
 }
+function fitOne(el, maxW, minPx) {
+  el.style.fontSize = ''; let fs = parseFloat(getComputedStyle(el).fontSize);
+  while (el.scrollWidth > maxW && fs > minPx) { fs -= 1; el.style.fontSize = fs + 'px'; }
+}
+function fitTiles() { board.querySelectorAll('.hex i').forEach(i => fitOne(i, i.closest('.cell').clientWidth * 0.82, 7)); }
+function fitWord() { const w = $('word'); w.style.fontSize = ''; let fs = parseFloat(getComputedStyle(w).fontSize); while (w.scrollWidth > w.clientWidth + 1 && fs > 14) { fs -= 1; w.style.fontSize = fs + 'px'; } }
+addEventListener('resize', () => { fitTiles(); fitWord(); });
 function buildBoard() {
   const w = W(); let html = '', row = [];
   w.forEach((x, i) => {
     row.push(`<button class="cell" data-i="${i}" aria-label="ข้อ ${i + 1}"><span class="hex"><b>${i + 1}</b>${reveal ? `<i>${x}</i>` : ''}</span></button>`);
     if (row.length === 5 || i === w.length - 1) { const r = html.split('class="row').length - 1; html += `<div class="row${r % 2 ? ' odd' : ''}">${row.join('')}</div>`; row = []; }
   });
-  board.innerHTML = html;
+  board.innerHTML = html; fitTiles();
 }
 function where(t) {
   const d = DATA.T[key()]; if (!d) return { i: -1, phase: 'ready' };
@@ -395,7 +402,7 @@ function render() {
   $('secs').innerHTML = timed ? Math.ceil(s.left) + '<small>วินาที</small>' : s.phase === 'check' ? '20<small>วินาที</small>' : '';
   const wEl = $('word'), word = s.i >= 0 && s.i < n ? W()[s.i] : '';
   wEl.classList.toggle('hide', !reveal || !word);
-  wEl.textContent = end ? (set === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + set) + ' · รอบที่ ' + round : reveal ? word : (s.i >= 0 ? 'ซ่อนคำศัพท์' : '');
+  wEl.textContent = end ? (set === 'x' ? 'ชุดฝึกเพิ่มเติม' : 'ชุดที่ ' + set) + ' · รอบที่ ' + round : reveal ? word : (s.i >= 0 ? 'ซ่อนคำศัพท์' : ''); fitWord();
   board.querySelectorAll('.cell').forEach((el, i) => { el.classList.toggle('done', i < s.i); el.classList.toggle('now', i === s.i); el.classList.toggle('hot', i === s.i && hot); });
 }
 function loop() { render(); requestAnimationFrame(loop); }
